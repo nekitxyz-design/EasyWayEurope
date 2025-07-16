@@ -18,16 +18,16 @@ export const OverviewSection = (): JSX.Element => {
       </header>
 
       <div className="flex flex-col items-start gap-4 pt-8 pb-12 px-6 w-full">
-        <h1 className="w-full font-h-1 text-white">
+        <h1 className="w-full font-font-h-1 text-font-h-1 text-white md:text-[56px] md:leading-[66px]">
           Ваш путь в Европу через ВНЖ Болгарии
         </h1>
 
-        <p className="w-full font-body text-white">
+        <p className="w-full font-font-body text-font-body text-white md:text-[20px] md:leading-[28px]">
           Обеспечим полное юридическое сопровождение для получения вида на
           жительство. Прозрачно, надежно и с гарантией результата.
         </p>
 
-        <Button className="w-[345px] px-[42px] py-[18px] bg-[#0023e9] rounded-none hover:bg-[#0023e9]/90">
+        <Button variant="primary" size="compact" className="text-white">
           <span className="[font-family:'Space_Grotesk',Helvetica] font-bold text-white text-lg tracking-[-0.18px]">
             Хочу ВНЖ Болгарии
           </span>

@@ -60,7 +60,7 @@ export const ServicesSection = (): JSX.Element => {
         </SelectTrigger>
       </Select>
 
-      <Button className="w-full bg-[#ffd23f] hover:bg-[#ffd23f]/90 text-black font-medium text-lg tracking-[-0.18px] py-[18px] px-[42px] rounded-none [font-family:'Space_Grotesk',Helvetica]">
+      <Button variant="accent" size="full" className="text-black">
         Записаться на консультацию
       </Button>
 

@@ -81,7 +81,7 @@ export const CallToActionSection = (): JSX.Element => {
         ))}
       </Accordion>
 
-      <Button className="w-[345px] bg-[#ffd23f] hover:bg-[#e6bd39] text-black font-bold text-lg px-[42px] py-[18px] rounded-none">
+      <Button variant="accent" size="lg" className="text-black">
         Задать Вопрос
       </Button>
     </section>

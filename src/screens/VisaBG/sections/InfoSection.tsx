@@ -12,7 +12,7 @@ export const InfoSection = (): JSX.Element => {
       text: "Более 100 реализованных кейсов",
     },
     {
-      icon: "⚖",
+      icon: "⚖️",
       text: "Лучшие юристы Болгарии в команде",
     },
     {
@@ -36,16 +36,16 @@ export const InfoSection = (): JSX.Element => {
   return (
     <section className="gap-6 px-6 py-12 bg-[#3141994c] flex flex-col items-start relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
       <img 
-        src="/company-logo.svg" 
+        src="/Logo_lp.svg" 
         alt="EasyWay Europe Logo" 
         className="w-[88px] h-[88px]"
       />
 
-      <h1 className="relative self-stretch font-h-1 text-[#f3fcf0]">
+      <h1 className="relative self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">
         О Нас
       </h1>
 
-      <h2 className="relative self-stretch font-h2 text-[#f3fcf0]">
+      <h2 className="relative self-stretch font-font-h-2 text-font-h-2 text-[#f3fcf0]">
         Ваш надежный партнер по релокации
       </h2>
 
@@ -54,7 +54,7 @@ export const InfoSection = (): JSX.Element => {
           {features.map((feature, index) => (
             <p
               key={index}
-              className="relative self-stretch font-body text-[#f3fcf0]"
+              className="relative self-stretch font-font-body text-font-body text-[#f3fcf0]"
             >
               {feature.icon} {feature.text}
             </p>

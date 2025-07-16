@@ -39,21 +39,16 @@ export const MainContentSection = (): JSX.Element => {
 
   return (
     <section className="gap-6 px-6 py-12 bg-[#000000b2] flex flex-col items-start relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
-      <div className="relative w-2.5 h-[31px] bg-white/20 rounded"></div>
+      {/* Arrow SVG */}
+      <img src="/arrow_lp.svg" alt="Arrow" className="w-6 h-8 mb-2" />
 
-      <h1 className="self-stretch text-[#f3fcf0] relative font-h-1">
+      <h1 className="self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">
         Процесс получения ВНЖ
       </h1>
 
       <div className="flex flex-col items-start gap-0.5 relative self-stretch w-full">
-        <p className="relative self-stretch mt-[-1.00px] font-body text-white">
-          <span>
-            5 простых шагов,{" "}
-          </span>
-          <span className="tracking-[-0.03px]">чтобы стать резедентов </span>
-          <span className="font-body">
-            Евросоюза
-          </span>
+        <p className="relative self-stretch mt-[-1.00px] font-font-body text-font-body text-white md:text-[20px] md:leading-[28px]">
+          <span className="font-bold">5 простых шагов</span>, чтобы стать резедентов Евросоюза
         </p>
       </div>
 
@@ -64,18 +59,20 @@ export const MainContentSection = (): JSX.Element => {
         >
           <CardContent className="p-0">
             <h2
-              className={`relative self-stretch mt-[-1.00px] font-h-2 ${step.highlighted ? "text-[#ffd23f]" : "text-[#f3fcf0]"}`}
+              className={`relative self-stretch mt-[-1.00px] font-font-h-2 text-font-h-2 ${step.highlighted ? "text-[#ffd23f]" : "text-[#f3fcf0]"} md:text-[32px] md:leading-[40px]`}
             >
-              {step.title}
+              {`${index + 1}. ${step.title}`}
             </h2>
-            <p className="relative self-stretch font-body text-white">
-              {step.description}
-            </p>
+            <ul className="list-disc pl-6 mt-1">
+              <li className="relative self-stretch font-font-body text-font-body text-white md:text-[20px] md:leading-[28px]">
+                {step.description}
+              </li>
+            </ul>
           </CardContent>
         </Card>
       ))}
 
-      <Button className="w-full bg-[#ffd23f] text-black hover:bg-[#ffd23f]/90 font-bold text-lg tracking-[-0.18px] py-[18px] h-auto rounded-none">
+      <Button variant="accent" size="full" className="text-black font-bold">
         Записаться на консультацию
       </Button>
     </section>

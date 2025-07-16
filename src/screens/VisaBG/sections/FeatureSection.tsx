@@ -10,12 +10,12 @@ export const FeatureSection = (): JSX.Element => {
       description: "Низкий уровень преступности в стабильной стране ЕС.",
     },
     {
-      icon: "☀",
+      icon: "☀️",
       title: "Отличный климат",
       description: "Европейская зима и теплое лето без дождей.",
     },
     {
-      icon: "🇪",
+      icon: "🇪🇺",
       title: "Доступ в Евросоюз",
       description:
         "Свобода передвижения и ведения бизнеса в ЕС и Шенгенской зоне",
@@ -36,8 +36,8 @@ export const FeatureSection = (): JSX.Element => {
   return (
     <Card className="flex flex-col items-center gap-8 px-4 py-12 relative self-stretch w-full bg-[#50913bb8] rounded backdrop-blur-[22px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(22px)_brightness(100%)] border-none">
       <CardContent className="flex flex-col items-center gap-8 p-0 w-full">
-        <h1 className="text-white font-h-1 font-[number:var(--h-1-font-weight)] text-[length:var(--h-1-font-size)] tracking-[var(--h-1-letter-spacing)] leading-[var(--h-1-line-height)] [font-style:var(--h-1-font-style)]">
-          Преимущества Болагарии 🇧
+        <h1 className="text-white font-font-h-1 text-font-h-1 md:text-[56px] md:leading-[66px]">
+          Преимущества Болагарии 🇧🇬
         </h1>
 
         <div className="flex flex-col items-start gap-6 w-full">
@@ -46,11 +46,11 @@ export const FeatureSection = (): JSX.Element => {
               key={index}
               className="flex flex-col items-start gap-0.5 w-full"
             >
-              <h2 className="self-stretch mt-[-1.00px] font-h2 font-[number:var(--h2-font-weight)] text-white text-[length:var(--h2-font-size)] tracking-[var(--h2-letter-spacing)] leading-[var(--h2-line-height)] [font-style:var(--h2-font-style)]">
-                {feature.icon}
+              <h2 className="self-stretch mt-[-1.00px] text-white font-font-h-2 text-font-h-2 md:text-[32px] md:leading-[40px]">
+                <span className="mr-2">{feature.icon}</span>
                 {feature.title}
               </h2>
-              <p className="self-stretch font-body font-[number:var(--body-font-weight)] text-white text-[length:var(--body-font-size)] tracking-[var(--body-letter-spacing)] leading-[var(--body-line-height)] [font-style:var(--body-font-style)]">
+              <p className="self-stretch text-white font-font-body text-font-body md:text-[20px] md:leading-[28px]">
                 {feature.description}
               </p>
             </div>

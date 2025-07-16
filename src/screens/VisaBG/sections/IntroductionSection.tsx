@@ -88,7 +88,7 @@ export const IntroductionSection = (): JSX.Element => {
 
   return (
     <section className="flex flex-col items-start gap-[22px] px-4 py-12 bg-[#ff22224c] w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
-      <h1 className="font-h-1 text-[#f3fcf0] text-[length:var(--h-1-font-size)] tracking-[var(--h-1-letter-spacing)] leading-[var(--h-1-line-height)] [font-style:var(--h-1-font-style)]">
+      <h1 className="font-font-h-1 text-font-h-1 text-[#f3fcf0]">
         Тарифы
       </h1>
 
@@ -107,22 +107,24 @@ export const IntroductionSection = (): JSX.Element => {
                 className={`flex flex-col items-start justify-center gap-[19px] px-[15px] py-6 ${plan.headerBgColor}`}
               >
                 <h2
-                  className={`self-stretch font-h2 font-[number:var(--h2-font-weight)] ${plan.headerTextColor} text-[length:var(--h2-font-size)] tracking-[var(--h2-letter-spacing)] leading-[var(--h2-line-height)] [font-style:var(--h2-font-style)]`}
+                  className={`self-stretch font-font-h-2 text-font-h-2 ${plan.headerTextColor}`}
                 >
                   {plan.title}
                 </h2>
                 <p
-                  className={`self-stretch font-body font-[number:var(--body-font-weight)] ${plan.headerTextColor} text-[length:var(--body-font-size)] tracking-[var(--body-letter-spacing)] leading-[var(--body-line-height)] [font-style:var(--body-font-style)]`}
+                  className={`self-stretch font-font-body text-font-body ${plan.headerTextColor}`}
                 >
                   {plan.description}
                 </p>
                 <p
-                  className={`self-stretch font-h2 font-[number:var(--h2-font-weight)] ${plan.headerTextColor} text-[length:var(--h2-font-size)] tracking-[var(--h2-letter-spacing)] leading-[var(--h2-line-height)] [font-style:var(--h2-font-style)]`}
+                  className={`self-stretch font-font-h-2 text-font-h-2 ${plan.headerTextColor}`}
                 >
                   {plan.price}
                 </p>
                 <Button
-                  className={`w-full bg-[#f3fcf0] ${plan.buttonTextColor} [font-family:'Space_Grotesk',Helvetica] font-medium text-lg tracking-[-0.18px] h-auto py-[18px]`}
+                  variant="accent"
+                  size="full"
+                  className={`${plan.buttonTextColor}`}
                 >
                   {plan.buttonText}
                 </Button>
@@ -133,10 +135,10 @@ export const IntroductionSection = (): JSX.Element => {
                     key={featureIndex}
                     className="flex items-start gap-3 w-full"
                   >
-                    <p className="w-56 font-body font-[number:var(--body-font-weight)] text-black text-[length:var(--body-font-size)] tracking-[var(--body-letter-spacing)] leading-[var(--body-line-height)] [font-style:var(--body-font-style)]">
+                    <p className="w-56 font-font-body text-font-body text-black">
                       {feature.text}
                     </p>
-                    <span className="font-h2 font-[number:var(--h2-font-weight)] text-white text-[length:var(--h2-font-size)] tracking-[var(--h2-letter-spacing)] leading-[var(--h2-line-height)] whitespace-nowrap [font-style:var(--h2-font-style)]">
+                    <span className="font-font-h-2 text-font-h-2 text-white whitespace-nowrap">
                       {feature.included ? "✅" : "❌"}
                     </span>
                   </div>
@@ -148,27 +150,27 @@ export const IntroductionSection = (): JSX.Element => {
           <div className="flex flex-col items-start justify-center gap-4 flex-shrink-0">
             <Card className="w-[323px] bg-[#ffffffe0] rounded-[10px] overflow-hidden">
               <CardHeader className="flex flex-col items-start justify-center gap-[19px] px-[15px] py-6 bg-[#f0efef]">
-                <h2 className="self-stretch font-h2 font-[number:var(--h2-font-weight)] text-black text-[length:var(--h2-font-size)] tracking-[var(--h2-letter-spacing)] leading-[var(--h2-line-height)] [font-style:var(--h2-font-style)]">
+                <h2 className="self-stretch font-font-h-2 text-font-h-2 text-black">
                   Индивидуальный
                 </h2>
-                <p className="self-stretch font-body font-[number:var(--body-font-weight)] text-black text-[length:var(--body-font-size)] tracking-[var(--body-letter-spacing)] leading-[var(--body-line-height)] [font-style:var(--body-font-style)]">
+                <p className="self-stretch font-font-body text-font-body text-black">
                   Для нестандартных ситуаций и особых запросов.
                 </p>
-                <p className="self-stretch font-h2 font-[number:var(--h2-font-weight)] text-black text-[length:var(--h2-font-size)] tracking-[var(--h2-letter-spacing)] leading-[var(--h2-line-height)] [font-style:var(--h2-font-style)]">
+                <p className="self-stretch font-font-h-2 text-font-h-2 text-black">
                   По запросу
                 </p>
-                <Button className="w-full bg-[#0023e9] text-[#f3fcf0] [font-family:'Space_Grotesk',Helvetica] font-medium text-lg tracking-[-0.18px] h-auto py-[18px]">
+                <Button variant="primary" size="full" className="text-[#f3fcf0]">
                   Связаться с нами
                 </Button>
               </CardHeader>
               <CardContent className="flex flex-col items-start gap-3 p-4">
-                <p className="w-56 font-body font-[number:var(--body-font-weight)] text-black text-[length:var(--body-font-size)] tracking-[var(--body-letter-spacing)] leading-[var(--body-line-height)] [font-style:var(--body-font-style)]">
+                <p className="w-56 font-font-body text-font-body text-black">
                   Мы можем предложить:
                 </p>
                 {individualPlanBenefits.map((benefit, index) => (
                   <p
                     key={index}
-                    className="w-[285px] font-body font-[number:var(--body-font-weight)] text-black text-[length:var(--body-font-size)] tracking-[var(--body-letter-spacing)] leading-[var(--body-line-height)] [font-style:var(--body-font-style)]"
+                    className="w-[285px] font-font-body text-font-body text-black"
                   >
                     {benefit}
                   </p>
@@ -176,21 +178,7 @@ export const IntroductionSection = (): JSX.Element => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white rounded-[10px] w-full">
-              <CardContent className="flex flex-col items-start justify-center gap-[19px] px-[15px] py-6">
-                <h2 className="self-stretch font-h2 font-[number:var(--h2-font-weight)] text-black text-[length:var(--h2-font-size)] tracking-[var(--h2-letter-spacing)] leading-[var(--h2-line-height)] [font-style:var(--h2-font-style)]">
-                  🌍 Подача документов не из страны гражданства
-                </h2>
-                <div className="flex flex-col items-start gap-1 w-full">
-                  <h3 className="self-stretch font-h2 font-[number:var(--h2-font-weight)] text-black text-[length:var(--h2-font-size)] tracking-[var(--h2-letter-spacing)] leading-[var(--h2-line-height)] [font-style:var(--h2-font-style)]">
-                    +1500 €
-                  </h3>
-                  <p className="self-stretch font-body-s font-[number:var(--body-s-font-weight)] text-black text-[length:var(--body-s-font-size)] tracking-[var(--body-s-letter-spacing)] leading-[var(--body-s-line-height)] [font-style:var(--body-s-font-style)]">
-                    добавляется к выбранному тарифу
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+            {/* Удаляю блок с подачей документов из другой страны */}
           </div>
         </div>
         <ScrollBar orientation="horizontal" />

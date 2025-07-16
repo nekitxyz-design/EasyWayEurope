@@ -18,12 +18,20 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Кастомные варианты для EWE.com
+        primary: "bg-[#0023e9] text-white hover:bg-[#0023e9]/90 font-font-body text-font-body",
+        accent: "bg-[#ffd23f] text-black hover:bg-[#ffd23f]/90 font-font-body text-font-body",
+        yellow: "bg-[#ffd23f] text-black hover:bg-[#e6bd39] font-font-body text-font-body",
       },
       size: {
         default: "h-9 px-4 py-2",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9",
+        // Кастомные размеры для EWE.com
+        custom: "px-[42px] py-[18px] text-lg tracking-[-0.18px]",
+        full: "w-full px-[42px] py-[18px] text-lg tracking-[-0.18px]",
+        compact: "w-[345px] px-[42px] py-[18px] text-lg tracking-[-0.18px]",
       },
     },
     defaultVariants: {

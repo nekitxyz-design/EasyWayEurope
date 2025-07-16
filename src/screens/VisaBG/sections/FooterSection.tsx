@@ -30,11 +30,11 @@ export const FooterSection = (): JSX.Element => {
 
   return (
     <section className="gap-6 px-6 py-12 bg-[#ffffff4c] flex flex-col items-start relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
-      <h1 className="relative w-full mt-[-1.00px] font-h-1 font-[number:var(--h-1-font-weight)] text-[#f3fcf0] text-[length:var(--h-1-font-size)] tracking-[var(--h-1-letter-spacing)] leading-[var(--h-1-line-height)] [font-style:var(--h-1-font-style)]">
+      <h1 className="relative w-full mt-[-1.00px] font-font-h-1 text-font-h-1 text-[#f3fcf0]">
         Гарантии
       </h1>
 
-      <h2 className="relative w-full font-h2 font-[number:var(--h2-font-weight)] text-[#f3fcf0] text-[length:var(--h2-font-size)] tracking-[var(--h2-letter-spacing)] leading-[var(--h2-line-height)] [font-style:var(--h2-font-style)]">
+      <h2 className="relative w-full font-font-h-2 text-font-h-2 text-[#f3fcf0]">
         Мы ценим Ваше доверие
       </h2>
 
@@ -44,10 +44,10 @@ export const FooterSection = (): JSX.Element => {
           className="w-full bg-transparent border-none shadow-none"
         >
           <CardContent className="flex flex-col items-start gap-0.5 p-0">
-            <h3 className="relative w-full mt-[-1.00px] font-h2 font-[number:var(--h2-font-weight)] text-[#f3fcf0] text-[length:var(--h2-font-size)] tracking-[var(--h2-letter-spacing)] leading-[var(--h2-line-height)] [font-style:var(--h2-font-style)]">
-              {item.icon} {item.title}
+            <h3 className="relative w-full mt-[-1.00px] font-font-h-2 text-font-h-2 text-[#f3fcf0]">
+              <span className="mr-1">{item.icon}</span> {item.title}
             </h3>
-            <p className="relative w-full font-body font-[number:var(--body-font-weight)] text-white text-[length:var(--body-font-size)] tracking-[var(--body-letter-spacing)] leading-[var(--body-line-height)] [font-style:var(--body-font-style)]">
+            <p className="relative w-full font-font-body text-font-body text-white">
               {item.description}
             </p>
           </CardContent>
