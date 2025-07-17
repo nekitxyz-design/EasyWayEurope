@@ -51,11 +51,11 @@ export const CallToActionSection = (): JSX.Element => {
 
   return (
     <section className="flex flex-col items-start gap-6 px-6 py-12 bg-[#000000c4] relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
-      <h1 className="self-stretch mt-[-1.00px] font-h-1 font-[number:var(--h-1-font-weight)] text-[#f3fcf0] text-[length:var(--h-1-font-size)] tracking-[var(--h-1-letter-spacing)] leading-[var(--h-1-line-height)] [font-style:var(--h-1-font-style)]">
+      <h1 className="self-stretch mt-[-1.00px] font-font-h-1 text-font-h-1 text-[#f3fcf0]">
         FAQ
       </h1>
 
-      <h2 className="self-stretch font-h2 font-[number:var(--h2-font-weight)] text-[#f3fcf0] text-[length:var(--h2-font-size)] tracking-[var(--h2-letter-spacing)] leading-[var(--h2-line-height)] [font-style:var(--h2-font-style)]">
+      <h2 className="self-stretch font-font-h-2 text-font-h-2 text-[#f3fcf0]">
         Ваши вопросы, наши ответы
       </h2>
 
@@ -71,17 +71,17 @@ export const CallToActionSection = (): JSX.Element => {
             value={`item-${index}`}
             className="mb-3 rounded border-[3px] border-solid border-white overflow-hidden"
           >
-            <AccordionTrigger className="p-4 font-body font-[number:var(--body-font-weight)] text-[#f3fcf0] text-[length:var(--body-font-size)] tracking-[var(--body-letter-spacing)] leading-[var(--body-line-height)] [font-style:var(--body-font-style)]">
+            <AccordionTrigger className="p-4 font-font-body text-font-body text-[#f3fcf0]">
               {item.question}
             </AccordionTrigger>
-            <AccordionContent className="px-4 pb-4 pt-0 font-body font-[number:var(--body-font-weight)] text-white text-[length:var(--body-font-size)] tracking-[var(--body-letter-spacing)] leading-[var(--body-line-height)] [font-style:var(--body-font-style)]">
+            <AccordionContent className="px-4 pb-4 pt-0 font-font-body text-font-body text-white">
               {item.answer}
             </AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>
 
-      <Button variant="accent" size="lg" className="text-black">
+      <Button variant="white" size="full" className="text-black">
         Задать Вопрос
       </Button>
     </section>

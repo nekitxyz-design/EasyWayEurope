@@ -44,15 +44,19 @@ export const TestimonialsSection = (): JSX.Element => {
 
   return (
     <section className="gap-6 px-6 py-12 bg-[#ff6201b2] overflow-hidden flex flex-col items-start relative w-full flex-[0_0_auto] backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
-      <div className="w-[27.19px] h-[21.65px] bg-white/20 rounded"></div>
+      <img 
+        src="/dots_co.svg" 
+        alt="Dots decoration" 
+        className="w-6 h-6 mb-2"
+      />
 
-      <h2 className="self-stretch font-h-1 font-[number:var(--h-1-font-weight)] text-[#f3fcf0] text-[length:var(--h-1-font-size)] tracking-[var(--h-1-letter-spacing)] leading-[var(--h-1-line-height)] [font-style:var(--h-1-font-style)]">
+      <h1 className="self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">
         Наши Клиенты
-      </h2>
+      </h1>
 
-      <h3 className="self-stretch font-h2 font-[number:var(--h2-font-weight)] text-[#f3fcf0] text-[length:var(--h2-font-size)] tracking-[var(--h2-letter-spacing)] leading-[var(--h2-line-height)] [font-style:var(--h2-font-style)]">
+      <h2 className="self-stretch font-font-h-2 text-font-h-2 text-[#f3fcf0]">
         Нам доверяют
-      </h3>
+      </h2>
 
       <Carousel className="w-full">
         <CarouselContent className="w-[868px] mr-[-522.00px]">
@@ -60,7 +64,7 @@ export const TestimonialsSection = (): JSX.Element => {
             <CarouselItem key={index} className="flex-1 grow">
               <Card className="border-none bg-transparent">
                 <CardContent className="p-0 flex flex-col items-start gap-2">
-                  <p className="mt-[-1.00px] self-stretch font-body font-[number:var(--body-font-weight)] text-white text-[length:var(--body-font-size)] tracking-[var(--body-letter-spacing)] leading-[var(--body-line-height)] [font-style:var(--body-font-style)]">
+                  <p className="mt-[-1.00px] self-stretch font-font-body text-font-body text-white">
                     {testimonial.quote}
                   </p>
 
@@ -71,12 +75,12 @@ export const TestimonialsSection = (): JSX.Element => {
                       <AvatarFallback className="bg-[#d9d9d9]"></AvatarFallback>
                     </Avatar>
 
-                    <span className="[font-family:'Manrope',Helvetica] font-normal text-white text-lg leading-[18px] font-[number:var(--body-font-weight)] tracking-[var(--body-letter-spacing)] font-body [font-style:var(--body-font-style)] leading-[var(--body-line-height)] text-[length:var(--body-font-size)]">
+                    <span className="font-font-body text-font-body text-white text-lg leading-[18px]">
                       {testimonial.name}{" "}
                     </span>
                   </div>
 
-                  <p className="self-stretch font-body-s font-[number:var(--body-s-font-weight)] text-white text-[length:var(--body-s-font-size)] tracking-[var(--body-s-letter-spacing)] leading-[var(--body-s-line-height)] [font-style:var(--body-s-font-style)]">
+                  <p className="self-stretch font-font-body-s text-font-body-s text-white">
                     {testimonial.movedDate}
                   </p>
                 </CardContent>

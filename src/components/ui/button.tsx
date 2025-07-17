@@ -22,6 +22,7 @@ const buttonVariants = cva(
         primary: "bg-[#0023e9] text-white hover:bg-[#0023e9]/90 font-font-body text-font-body",
         accent: "bg-[#ffd23f] text-black hover:bg-[#ffd23f]/90 font-font-body text-font-body",
         yellow: "bg-[#ffd23f] text-black hover:bg-[#e6bd39] font-font-body text-font-body",
+        white: "bg-white text-black hover:bg-gray-100 font-font-body text-font-body border border-gray-200",
       },
       size: {
         default: "h-9 px-4 py-2",
