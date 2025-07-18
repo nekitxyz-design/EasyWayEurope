@@ -3,12 +3,22 @@ import { Button } from "../../../components/ui/button";
 import { Card } from "../../../components/ui/card";
 import { Input } from "../../../components/ui/input";
 import {
-  Select,
-  SelectTrigger,
-  SelectValue,
+  CustomSelect,
+  SelectContent,
+  SelectItem,
 } from "../../../components/ui/select";
 
 export const ServicesSection = (): JSX.Element => {
+  const [nameError, setNameError] = React.useState<string>("");
+  const [nameValue, setNameValue] = React.useState<string>("");
+  const [nameTouched, setNameTouched] = React.useState<boolean>(false);
+  const [emailError, setEmailError] = React.useState<string>("");
+  const [emailValue, setEmailValue] = React.useState<string>("");
+  const [emailTouched, setEmailTouched] = React.useState<boolean>(false);
+  const [selectedService, setSelectedService] = React.useState<string>("");
+  const [serviceError, setServiceError] = React.useState<string>("");
+  const [serviceTouched, setServiceTouched] = React.useState<boolean>(false);
+
   // Contact method options data
   const contactOptions = [
     {
@@ -21,50 +31,142 @@ export const ServicesSection = (): JSX.Element => {
     },
   ];
 
+  const validateName = (value: string): string => {
+    if (value.length === 0) return "";
+    
+    // Проверяем, что только буквы
+    if (!/^[а-яёА-ЯЁa-zA-Z\s-]+$/.test(value)) {
+      return "Имя может содержать только буквы, пробелы и дефисы";
+    }
+    
+    // Проверяем максимальную длину
+    if (value.length > 52) {
+      return "Имя не может быть длиннее 52 символов";
+    }
+    
+    return "";
+  };
+
+  const validateEmail = (value: string): string => {
+    if (value.length === 0) return "";
+    
+    // Проверяем email маску
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(value)) {
+      return "Введите корректный email адрес";
+    }
+    
+    // Проверяем максимальную длину
+    if (value.length > 100) {
+      return "Email не может быть длиннее 100 символов";
+    }
+    
+    return "";
+  };
+
+  const validateService = (value: string): string => {
+    if (value.length === 0) return "";
+    return "";
+  };
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setNameValue(value);
+    if (nameTouched) {
+      const error = validateName(value);
+      setNameError(error);
+    }
+  };
+
+  const handleNameBlur = () => {
+    setNameTouched(true);
+    const error = validateName(nameValue);
+    setNameError(error);
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmailValue(value);
+    if (emailTouched) {
+      const error = validateEmail(value);
+      setEmailError(error);
+    }
+  };
+
+  const handleEmailBlur = () => {
+    setEmailTouched(true);
+    const error = validateEmail(emailValue);
+    setEmailError(error);
+  };
+
+  const handleServiceChange = (value: string) => {
+    setSelectedService(value);
+    if (serviceTouched) {
+      const error = validateService(value);
+      setServiceError(error);
+    }
+  };
+
+  const handleServiceBlur = () => {
+    setServiceTouched(true);
+    const error = validateService(selectedService);
+    setServiceError(error);
+  };
+
   return (
-    <section className="gap-6 px-6 py-12 bg-[#0023e9] flex flex-col items-start relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
+    <section className="gap-6 px-6 py-12 bg-[#0023e9] flex flex-col items-stretch relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
       <img 
         src="/logo.svg" 
         alt="EasyWay Logo" 
         className="w-[153px] h-[43px]"
       />
 
-      <h1 className="self-stretch font-h-1 text-[#f3fcf0]">
+      <h1 className="self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">
         Записаться на Консультацию
       </h1>
 
-      <h2 className="self-stretch font-h2 text-[#f3fcf0]">
-        Начните свой&nbsp;&nbsp;по получению ВНЖ в Болагрии
+      <h2 className="self-stretch font-font-h-2 text-font-h-2 text-[#f3fcf0]">
+        Начните свой путь по получению ВНЖ в Болагрии
       </h2>
 
       <Input
-        className="w-full p-4 rounded border-2 border-solid border-white bg-transparent text-white font-body placeholder:text-white"
         placeholder="Ваше Имя"
+        value={nameValue}
+        onChange={handleNameChange}
+        onBlur={handleNameBlur}
+        error={nameTouched ? nameError : ""}
+        maxLength={52}
       />
 
-      <div className="flex flex-col items-start gap-2 w-full">
-        <Input
-          className="w-full p-4 rounded border-2 border-solid border-white bg-transparent text-white font-body placeholder:text-white"
-          placeholder="Удобный способ связи"
-        />
+      <Input
+        placeholder="E-mail"
+        value={emailValue}
+        onChange={handleEmailChange}
+        onBlur={handleEmailBlur}
+        error={emailTouched ? emailError : ""}
+        maxLength={100}
+      />
 
-        <p className="self-stretch font-body-s text-[#f3fcf0]">
-          Введите любой удобный способ связи, от e-mail до телеграма, просто
-          укажите детали.
-        </p>
-      </div>
-
-      <Select>
-        <SelectTrigger className="w-full flex items-center justify-between p-4 rounded border-2 border-solid border-white bg-transparent text-white font-body">
-          <SelectValue placeholder="Что вас интересует?" />
-        </SelectTrigger>
-      </Select>
+      <CustomSelect
+        placeholder="Что вас интересует?"
+        value={selectedService}
+        onValueChange={handleServiceChange}
+        onBlur={handleServiceBlur}
+        error={serviceTouched ? serviceError : ""}
+      >
+        <SelectContent>
+          <SelectItem value="visa">Получение ВНЖ</SelectItem>
+          <SelectItem value="citizenship">Получение гражданства</SelectItem>
+          <SelectItem value="consultation">Консультация</SelectItem>
+          <SelectItem value="other">Другое</SelectItem>
+        </SelectContent>
+      </CustomSelect>
 
       <Button variant="accent" size="full" className="text-black">
         Записаться на консультацию
       </Button>
 
-      <div className="self-stretch [font-family:'Space_Grotesk',Helvetica] font-medium text-white text-lg text-center tracking-[-0.18px]">
+      <div className="self-stretch font-font-body text-font-body text-white text-lg text-center tracking-[-0.18px]">
         — или просто&nbsp;&nbsp;—
       </div>
 
@@ -79,7 +181,7 @@ export const ServicesSection = (): JSX.Element => {
               alt={option.text} 
               className="w-8 h-8"
             />
-            <div className="w-[228px] [font-family:'Roboto',Helvetica] font-medium text-[#f3fcf0] text-[22px] tracking-[-0.22px]">
+            <div className="w-[228px] font-font-body text-font-body text-[#f3fcf0] text-[22px] tracking-[-0.22px]">
               {option.text}
             </div>
           </Card>

@@ -1,9 +1,101 @@
 "use client";
 
 import * as SelectPrimitive from "@radix-ui/react-select";
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
+import { CheckIcon, ChevronDownIcon, ChevronUpIcon, XIcon } from "lucide-react";
 import * as React from "react";
 import { cn } from "../../lib/utils";
+
+interface CustomSelectProps {
+  placeholder?: string;
+  label?: string;
+  error?: string;
+  value?: string;
+  onValueChange?: (value: string) => void;
+  onBlur?: () => void;
+  children: React.ReactNode;
+  className?: string;
+}
+
+const CustomSelect = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Root>,
+  CustomSelectProps
+>(({ placeholder, label, error, value, onValueChange, onBlur, children, className, ...props }, ref) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const hasValue = value && value.length > 0;
+
+  return (
+    <div className="relative">
+      <SelectPrimitive.Root
+        value={value}
+        onValueChange={onValueChange}
+        onOpenChange={(open) => {
+          setIsOpen(open);
+          if (!open && onBlur) {
+            onBlur();
+          }
+        }}
+        {...props}
+      >
+        <SelectPrimitive.Trigger
+          className={cn(
+            "flex w-full md:w-[280px] border bg-transparent text-base shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0023e9] disabled:cursor-not-allowed disabled:opacity-50 text-white !text-white leading-normal items-center justify-between",
+            error 
+              ? isOpen || hasValue 
+                ? "border-red-500/50 hover:border-red-500/50 focus-visible:border-red-500/50" 
+                : "border-red-500 hover:border-red-500 focus-visible:border-red-500"
+              : hasValue && !isOpen
+                ? "border-white hover:border-white focus-visible:border-white"
+                : "border-input hover:border-white/50 focus-visible:border-white/50",
+            (isOpen || hasValue || error) ? "px-4 pt-6 pb-2 rounded-none font-font-body text-font-body" : "px-4 py-4 rounded-none font-font-body text-font-body",
+            className,
+          )}
+        >
+          <SelectPrimitive.Value placeholder="" />
+          <div className="flex items-center gap-2">
+            {hasValue && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onValueChange?.("");
+                }}
+                className="p-1 hover:bg-white/10 rounded transition-colors"
+              >
+                <XIcon className="h-4 w-4 text-white opacity-70 hover:opacity-100" />
+              </button>
+            )}
+            <SelectPrimitive.Icon asChild>
+              <ChevronDownIcon className="h-4 w-4 opacity-50 text-white" />
+            </SelectPrimitive.Icon>
+          </div>
+        </SelectPrimitive.Trigger>
+        
+        {(label || placeholder) && (
+          <label
+            className={cn(
+              "absolute left-4 transition-all duration-200 pointer-events-none leading-none",
+              (isOpen || hasValue || error)
+                ? "top-2 text-xs font-font-body-s text-font-body-s !text-white/70"
+                : "top-4 text-base font-font-body text-font-body !text-white"
+            )}
+          >
+            {label || placeholder}
+          </label>
+        )}
+        
+        {error && (
+          <p className="mt-4 font-font-body-s text-font-body-s text-white text-sm">
+            {error}
+          </p>
+        )}
+        
+        {children}
+      </SelectPrimitive.Root>
+    </div>
+  );
+});
+CustomSelect.displayName = "CustomSelect";
 
 const Select = SelectPrimitive.Root;
 
@@ -155,4 +247,5 @@ export {
   SelectSeparator,
   SelectScrollUpButton,
   SelectScrollDownButton,
+  CustomSelect,
 };
