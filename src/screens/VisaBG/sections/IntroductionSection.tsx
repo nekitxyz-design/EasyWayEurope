@@ -21,32 +21,6 @@ interface PlanFeature {
   }
 
 export const IntroductionSection = ({ setSelectedTariff }: { setSelectedTariff: (value: string) => void }) => {
-  // Custom scrollbar functionality
-  React.useEffect(() => {
-    const scrollContainer = document.querySelector('.hide-scrollbar');
-    const customThumb = document.getElementById('custom-scrollbar-thumb');
-    
-    if (!scrollContainer || !customThumb) return;
-    
-    const updateScrollbar = () => {
-      const scrollLeft = scrollContainer.scrollLeft;
-      const scrollWidth = scrollContainer.scrollWidth;
-      const clientWidth = scrollContainer.clientWidth;
-      const maxScroll = scrollWidth - clientWidth;
-      if (maxScroll > 0) {
-        const thumbWidth = (clientWidth / scrollWidth) * 100;
-        const thumbLeft = (scrollLeft / maxScroll) * (100 - thumbWidth);
-        customThumb.style.width = `${thumbWidth}%`;
-        customThumb.style.left = `${thumbLeft}%`;
-      }
-    };
-    scrollContainer.addEventListener('scroll', updateScrollbar);
-    updateScrollbar(); // Initial position
-    
-    return () => {
-      scrollContainer.removeEventListener('scroll', updateScrollbar);
-    };
-  }, []);
   // Basic plan features
   const basicPlanFeatures: PlanFeature[] = [
     { text: "♟️ Первичная консультация и стратегия", included: true },
@@ -106,82 +80,153 @@ export const IntroductionSection = ({ setSelectedTariff }: { setSelectedTariff: 
     },
   ];
 
+  // useRef для контейнера с карточками
+  const cardsScrollRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    // Только на мобилке
+    if (window.innerWidth >= 768) return;
+    const el = cardsScrollRef.current;
+    if (!el) return;
+
+    // wheel для мыши/трекпада
+    const onWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        // Если можно скроллить по горизонтали
+        const maxScroll = el.scrollWidth - el.clientWidth;
+        if (
+          (e.deltaY > 0 && el.scrollLeft < maxScroll) ||
+          (e.deltaY < 0 && el.scrollLeft > 0)
+        ) {
+          el.scrollLeft += e.deltaY;
+          e.preventDefault();
+        }
+      }
+    };
+
+    // touchmove для тача
+    let startX = 0, startY = 0, lastX = 0, lastY = 0, isTouching = false;
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 1) {
+        isTouching = true;
+        startX = lastX = e.touches[0].clientX;
+        startY = lastY = e.touches[0].clientY;
+      }
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      if (!isTouching || e.touches.length !== 1) return;
+      const dx = e.touches[0].clientX - lastX;
+      const dy = e.touches[0].clientY - lastY;
+      lastX = e.touches[0].clientX;
+      lastY = e.touches[0].clientY;
+      // Если вертикальный свайп — скроллим горизонтально
+      if (Math.abs(dy) > Math.abs(dx)) {
+        const maxScroll = el.scrollWidth - el.clientWidth;
+        if (
+          (dy < 0 && el.scrollLeft < maxScroll) ||
+          (dy > 0 && el.scrollLeft > 0)
+        ) {
+          el.scrollLeft += -dy;
+          e.preventDefault();
+        }
+      }
+    };
+    const onTouchEnd = () => { isTouching = false; };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+    el.addEventListener('touchstart', onTouchStart, { passive: false });
+    el.addEventListener('touchmove', onTouchMove, { passive: false });
+    el.addEventListener('touchend', onTouchEnd);
+    return () => {
+      el.removeEventListener('wheel', onWheel);
+      el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchmove', onTouchMove);
+      el.removeEventListener('touchend', onTouchEnd);
+    };
+  }, []);
+
   return (
     <section className="flex flex-col items-start gap-[22px] bg-[#ff22224c] w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)] md:pt-10 md:pb-10">
-      <div className="px-4 pt-16">
-        <h1 className="font-font-h-1 text-font-h-1 text-[#f3fcf0]">
-          Тарифы
-        </h1>
+      {/* Блок заголовка */}
+      <div className="w-full md:max-w-[1600px] md:mx-auto md:px-16">
+        <div className="px-4 pt-16">
+          <h1 className="font-font-h-1 text-font-h-1 text-[#f3fcf0]">
+            Тарифы
+          </h1>
+        </div>
       </div>
 
-      <div className="w-full">
-        <div className="px-4 mb-4 md:hidden">
-          <div className="h-[6px] bg-white rounded-full relative">
-            <div className="h-full bg-[#0023e9] rounded-full w-1/3 absolute left-0 top-0 cursor-pointer" id="custom-scrollbar-thumb"></div>
-          </div>
-        </div>
-        <div className="w-full overflow-x-auto hide-scrollbar">
-          <div
-            className="flex items-start gap-[22px] pb-12 p-4"
-            style={{ minWidth: `${(323 + 22) * (plans.length + 1) + 16}px` }} // 323px карточка, 22px gap, +1 индивидуальный, +16px запас
-          >
-          {plans.map((plan, index) => (
-            <Card
-              key={index}
-              className="w-[323px] bg-[#ffffffe0] rounded-[10px] overflow-hidden flex-shrink-0 border-none"
-            >
-              <CardHeader
-                className={`flex flex-col items-start justify-center gap-[19px] px-[15px] py-6 ${plan.headerBgColor}`}
+      {/* Удалена стрелка. Добавлен обработчик wheel/touchmove для горизонтального скролла карточек на мобилке */}
+      
+      {/* Карточки */}
+      <div ref={cardsScrollRef} className="w-full overflow-x-auto hide-scrollbar md:max-w-[1600px] md:mx-auto md:px-16 touch-pan-x" style={{ WebkitOverflowScrolling: 'touch' }}>
+        <div
+          className="flex items-start gap-[22px] pb-12 p-4 snap-x snap-mandatory"
+          style={{ minWidth: `${(323 + 22) * (plans.length + 1) + 16}px` }}
+        >
+          {plans.map((plan, index) => {
+            // На десктопе все карточки шире, а 'Стандарт' еще шире и выделен
+            const isStandard = plan.title === 'Стандарт';
+            const cardWidth = isStandard ? 'w-[323px] md:w-[340px]' : 'w-[323px] md:w-[320px]';
+            const highlight = isStandard ? 'md:shadow-2xl md:border-2 md:border-[#0023e9]' : '';
+            return (
+              <Card
+                key={index}
+                className={`${cardWidth} bg-[#ffffffe0] rounded-[10px] overflow-hidden flex-shrink-0 border-none ${highlight}`}
               >
-                <h2
-                  className={`self-stretch font-font-h-2 text-font-h-2 ${plan.headerTextColor}`}
+                <CardHeader
+                  className={`flex flex-col items-start justify-center gap-[19px] px-[15px] py-6 ${plan.headerBgColor}`}
                 >
-                  {plan.title}
-                </h2>
-                <p
-                  className={`self-stretch font-font-body text-font-body ${plan.headerTextColor}`}
-                >
-                  {plan.description}
-                </p>
-                <p
-                  className={`self-stretch font-font-h-2 text-font-h-2 ${plan.headerTextColor}`}
-                >
-                  {plan.price}
-                </p>
-                <Button
-                  variant="white"
-                  size="full"
-                  className={`${plan.buttonTextColor}`}
-                  onClick={() => {
-                    let value = "";
-                    if (plan.title === "Базовый") value = "visa";
-                    else if (plan.title === "Стандарт") value = "citizenship";
-                    setSelectedTariff(value);
-                    setTimeout(() => {
-                      document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                  }}
-                >
-                  {plan.buttonText}
-                </Button>
-              </CardHeader>
-              <CardContent className="flex flex-col items-start gap-3 px-4 py-6">
-                {plan.features.map((feature, featureIndex) => (
-                  <div
-                    key={featureIndex}
-                    className="flex items-start gap-3 w-full"
+                  <h2
+                    className={`self-stretch font-font-h-2 text-font-h-2 ${plan.headerTextColor}`}
                   >
-                    <p className="w-56 font-font-body text-font-body text-black">
-                      {feature.text}
-                    </p>
-                    <span className="font-font-h-2 text-font-h-2 text-white whitespace-nowrap">
-                      {feature.included ? "✅" : "❌"}
-                    </span>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          ))}
+                    {plan.title}
+                  </h2>
+                  <p
+                    className={`self-stretch font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal ${plan.headerTextColor}`}
+                  >
+                    {plan.description}
+                  </p>
+                  <p
+                    className={`self-stretch font-font-h-2 text-font-h-2 ${plan.headerTextColor}`}
+                  >
+                    {plan.price}
+                  </p>
+                  <Button
+                    variant="white"
+                    size="full"
+                    className={`${plan.buttonTextColor}`}
+                    onClick={() => {
+                      let value = "";
+                      if (plan.title === "Базовый") value = "visa";
+                      else if (plan.title === "Стандарт") value = "citizenship";
+                      setSelectedTariff(value);
+                      setTimeout(() => {
+                        document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
+                  >
+                    {plan.buttonText}
+                  </Button>
+                </CardHeader>
+                <CardContent className="flex flex-col items-start gap-3 px-4 py-6">
+                  {plan.features.map((feature, featureIndex) => (
+                    <div
+                      key={featureIndex}
+                      className="flex items-start gap-3 w-full"
+                    >
+                      <p className="w-full font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal text-black">
+                        {feature.text}
+                      </p>
+                      <span className="font-font-h-2 text-font-h-2 text-white whitespace-nowrap">
+                        {feature.included ? "✅" : "❌"}
+                      </span>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            );
+          })}
 
           <div className="flex flex-col items-start justify-center pr-4 gap-4 flex-shrink-0">
             <Card className="w-[323px] bg-[#ffffffe0] rounded-[10px] overflow-hidden border-none">
@@ -189,7 +234,7 @@ export const IntroductionSection = ({ setSelectedTariff }: { setSelectedTariff: 
                 <h2 className="self-stretch font-font-h-2 text-font-h-2 text-black">
                   Индивидуальный
                 </h2>
-                <p className="self-stretch font-font-body text-font-body text-black">
+                <p className="self-stretch font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal text-black">
                   Для нестандартных ситуаций и особых запросов.
                 </p>
                 <p className="self-stretch font-font-h-2 text-font-h-2 text-black">
@@ -205,23 +250,21 @@ export const IntroductionSection = ({ setSelectedTariff }: { setSelectedTariff: 
                 </Button>
               </CardHeader>
               <CardContent className="flex flex-col items-start gap-3 p-4">
-                <p className="w-56 font-font-body text-font-body text-black">
+                <p className="w-56 font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal text-black">
                   Мы можем предложить:
                 </p>
                 {individualPlanBenefits.map((benefit, index) => (
                   <p
                     key={index}
-                    className="w-[285px] font-font-body text-font-body text-black"
+                    className="w-[285px] font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal text-black"
                   >
                     {benefit}
                   </p>
                 ))}
               </CardContent>
             </Card>
-
             {/* Удаляю блок с подачей документов из другой страны */}
           </div>
-        </div>
         </div>
       </div>
     </section>

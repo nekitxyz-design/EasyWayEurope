@@ -33,13 +33,13 @@ const Background: React.FC = () => {
           rotationZ={-60}
           color1="#0024E9"
           color2="#314199"
-          color3="#FFD23F"
-          reflection={0.1}
+          color3="#111111"
+          reflection={1.1}
 
           // View (camera) props
           cAzimuthAngle={180}
           cPolarAngle={80}
-          cDistance={1.8}
+          cDistance={1.4}
           cameraZoom={40.1}
 
           // Effect props
