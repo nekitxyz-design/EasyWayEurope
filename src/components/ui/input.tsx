@@ -8,9 +8,9 @@ interface InputProps extends React.ComponentProps<"input"> {
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, label, placeholder, error, onValidation, value, ...props }, ref) => {
+  ({ className, type, label, placeholder, error, onValidation, value, onChange, ...props }, ref) => {
     const [isFocused, setIsFocused] = React.useState(false);
-    const hasValue = (value as string)?.length > 0 || false;
+    const hasValue = typeof value === 'string' ? value.length > 0 : false;
 
     const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
       setIsFocused(true);
@@ -23,14 +23,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      props.onChange?.(e);
+      onChange?.(e);
     };
 
     return (
       <div className="relative">
-        <input
-          type={type}
-          className={cn(
+      <input
+        type={type}
+        className={cn(
             "flex w-full md:w-[280px] border bg-transparent text-base shadow-sm transition-all duration-200 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0023e9] disabled:cursor-not-allowed disabled:opacity-50 text-white !text-white placeholder:text-transparent leading-normal items-center",
             error 
               ? isFocused || hasValue 
@@ -39,20 +39,22 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               : hasValue && !isFocused
                 ? "border-white hover:border-white focus-visible:border-white"
                 : "border-input hover:border-white/50 focus-visible:border-white/50",
-            (isFocused || hasValue || error) ? "px-4 pt-6 pb-2 rounded-none font-font-body text-font-body" : "px-4 py-4 rounded-none font-font-body text-font-body",
-            className,
-          )}
-          ref={ref}
+            (isFocused || hasValue) ? "px-4 pt-6 pb-2 rounded-none font-font-body text-font-body" : "px-4 py-4 rounded-none font-font-body text-font-body",
+          className,
+        )}
+        ref={ref}
+          value={value}
           onFocus={handleFocus}
           onBlur={handleBlur}
           onChange={handleChange}
-          {...props}
-        />
+          placeholder={placeholder}
+        {...props}
+      />
         {(label || placeholder) && (
           <label
             className={cn(
               "absolute left-4 transition-all duration-200 pointer-events-none leading-none",
-              (isFocused || hasValue || error)
+              (isFocused || hasValue)
                 ? "top-2 text-xs font-font-body-s text-font-body-s !text-white/70"
                 : "top-4 text-base font-font-body text-font-body !text-white"
             )}
@@ -67,7 +69,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     );
-  },
+  }
 );
 Input.displayName = "Input";
 

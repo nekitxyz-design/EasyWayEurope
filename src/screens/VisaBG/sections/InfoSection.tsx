@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "../../../components/ui/card";
 
-export const InfoSection = (): JSX.Element => {
+export const InfoSection = () => {
   const features = [
     {
       icon: "🕒",
@@ -34,33 +34,33 @@ export const InfoSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="gap-6 px-6 py-12 bg-[#3141994c] flex flex-col items-start relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
-      <img 
-        src="/Logo_lp.svg" 
-        alt="EasyWay Europe Logo" 
-        className="w-[88px] h-[88px]"
-      />
-
-      <h1 className="relative self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">
-        О Нас
-      </h1>
-
-      <h2 className="relative self-stretch font-font-h-2 text-font-h-2 text-[#f3fcf0]">
-        Ваш надежный партнер по релокации
-      </h2>
-
-      <Card className="w-full bg-transparent border-none shadow-none">
-        <CardContent className="flex flex-col items-start gap-3 p-0">
-          {features.map((feature, index) => (
-            <p
-              key={index}
-              className="relative self-stretch font-font-body text-font-body text-[#f3fcf0]"
-            >
-              {feature.icon} {feature.text}
-            </p>
-          ))}
-        </CardContent>
-      </Card>
+    <section className="bg-[#3141994c] w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)] md:pt-10 md:pb-10">
+      <div className="max-w-[1600px] mx-auto w-full md:px-16 gap-6 flex flex-col items-start px-6 py-12">
+        <img 
+          src="/Logo_lp.svg" 
+          alt="EasyWay Europe Logo" 
+          className="w-[88px] h-[88px]"
+        />
+        <h1 className="relative self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">
+          О Нас
+        </h1>
+        <h2 className="relative self-stretch font-font-h-2 text-font-h-2 text-[#f3fcf0] mb-2">
+          Ваш надежный партнер по релокации
+        </h2>
+        <Card className="w-full bg-transparent border-none shadow-none">
+          <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6 p-0">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="flex flex-row md:flex-col items-start gap-2 md:max-w-[320px]"
+              >
+                <span className="text-2xl md:text-4xl md:mb-1">{feature.icon}</span>
+                <span className="font-font-body text-font-body text-[#f3fcf0]">{feature.text}</span>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      </div>
     </section>
   );
 };

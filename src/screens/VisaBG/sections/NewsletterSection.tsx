@@ -20,20 +20,20 @@ export const NewsletterSection = (): JSX.Element => {
     <footer className="bg-[#f3fcf0] py-12 px-6 flex flex-col gap-6 w-full backdrop-blur-[2px]">
       {/* Logo and copyright */}
       <img 
-        src="/company-logo.svg" 
+        src="/Logo_lp.svg" 
         alt="EasyWay Europe Logo" 
         className="w-[88px] h-[88px]"
       />
 
-      <div className="font-body font-[number:var(--body-font-weight)] text-black text-[length:var(--body-font-size)] tracking-[var(--body-letter-spacing)] leading-[var(--body-line-height)] [font-style:var(--body-font-style)]">
+      <div className="font-font-body text-font-body text-black">
         EasyWayEyrope.com
         <br />© 2020-2025
       </div>
 
       {/* Pages section */}
-      <Card className="w-full border-none bg-transparent">
+      <Card className="w-full bg-transparent border-none">
         <CardContent className="p-0 flex flex-col gap-4">
-          <h2 className="font-h2 font-[number:var(--h2-font-weight)] text-black text-[length:var(--h2-font-size)] tracking-[var(--h2-letter-spacing)] leading-[var(--h2-line-height)] [font-style:var(--h2-font-style)]">
+          <h2 className="font-font-body text-font-body text-black font-bold">
             Страницы
           </h2>
           <div className="flex flex-col gap-3">
@@ -41,7 +41,7 @@ export const NewsletterSection = (): JSX.Element => {
               <a
                 key={`page-${index}`}
                 href="#"
-                className="font-body font-[number:var(--body-font-weight)] text-black text-[length:var(--body-font-size)] tracking-[var(--body-letter-spacing)] leading-[var(--body-line-height)] [font-style:var(--body-font-style)]"
+                className="font-font-body text-font-body text-black"
               >
                 {page}
               </a>
@@ -51,9 +51,9 @@ export const NewsletterSection = (): JSX.Element => {
       </Card>
 
       {/* Social media section */}
-      <Card className="w-full border-none bg-transparent">
+      <Card className="w-full bg-transparent border-none">
         <CardContent className="p-0 flex flex-col gap-4">
-          <h2 className="font-h2 font-[number:var(--h2-font-weight)] text-black text-[length:var(--h2-font-size)] tracking-[var(--h2-letter-spacing)] leading-[var(--h2-line-height)] [font-style:var(--h2-font-style)]">
+          <h2 className="font-font-body text-font-body text-black font-bold">
             Мы в:
           </h2>
           <div className="flex flex-col gap-3">
@@ -61,7 +61,7 @@ export const NewsletterSection = (): JSX.Element => {
               <a
                 key={`social-${index}`}
                 href="#"
-                className="font-body font-[number:var(--body-font-weight)] text-black text-[length:var(--body-font-size)] tracking-[var(--body-letter-spacing)] leading-[var(--body-line-height)] [font-style:var(--body-font-style)]"
+                className="font-font-body text-font-body text-black"
               >
                 {link}
               </a>

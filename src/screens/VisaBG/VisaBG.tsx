@@ -12,7 +12,8 @@ import { ServicesSection } from "./sections/ServicesSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
 import Background from "../../components/Background";
 
-export const VisaBG = (): JSX.Element => {
+export const VisaBG = () => {
+  const [selectedTariff, setSelectedTariff] = React.useState<string>("");
   return (
     <div className="flex flex-col w-full bg-transparent relative">
       <Background />
@@ -22,9 +23,9 @@ export const VisaBG = (): JSX.Element => {
       <MainContentSection />
       <InfoSection />
       <FooterSection />
-      <IntroductionSection />
-      <ServicesSection />
-      <TestimonialsSection />
+      <IntroductionSection setSelectedTariff={setSelectedTariff} />
+      <ServicesSection selectedTariff={selectedTariff} setSelectedTariff={setSelectedTariff} />
+      {/* <TestimonialsSection /> */}
       <CallToActionSection />
       <NewsletterSection />
     </div>

@@ -38,7 +38,7 @@ const CustomSelect = React.forwardRef<
       >
         <SelectPrimitive.Trigger
           className={cn(
-            "flex w-full md:w-[280px] border bg-transparent text-base shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0023e9] disabled:cursor-not-allowed disabled:opacity-50 text-white !text-white leading-normal items-center justify-between",
+            "flex w-full md:w-[280px] min-h-[56px] border bg-transparent text-base shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0023e9] disabled:cursor-not-allowed disabled:opacity-50 text-white !text-white leading-normal items-center justify-between",
             error 
               ? isOpen || hasValue 
                 ? "border-red-500/50 hover:border-red-500/50 focus-visible:border-red-500/50" 

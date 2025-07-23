@@ -20,7 +20,7 @@ interface PlanFeature {
     features: PlanFeature[];
   }
 
-export const IntroductionSection = (): JSX.Element => {
+export const IntroductionSection = ({ setSelectedTariff }: { setSelectedTariff: (value: string) => void }) => {
   // Custom scrollbar functionality
   React.useEffect(() => {
     const scrollContainer = document.querySelector('.hide-scrollbar');
@@ -33,16 +33,13 @@ export const IntroductionSection = (): JSX.Element => {
       const scrollWidth = scrollContainer.scrollWidth;
       const clientWidth = scrollContainer.clientWidth;
       const maxScroll = scrollWidth - clientWidth;
-      
       if (maxScroll > 0) {
         const thumbWidth = (clientWidth / scrollWidth) * 100;
         const thumbLeft = (scrollLeft / maxScroll) * (100 - thumbWidth);
-        
         customThumb.style.width = `${thumbWidth}%`;
         customThumb.style.left = `${thumbLeft}%`;
       }
     };
-    
     scrollContainer.addEventListener('scroll', updateScrollbar);
     updateScrollbar(); // Initial position
     
@@ -110,7 +107,7 @@ export const IntroductionSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="flex flex-col items-start gap-[22px] bg-[#ff22224c] w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
+    <section className="flex flex-col items-start gap-[22px] bg-[#ff22224c] w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)] md:pt-10 md:pb-10">
       <div className="px-4 pt-16">
         <h1 className="font-font-h-1 text-font-h-1 text-[#f3fcf0]">
           Тарифы
@@ -118,14 +115,16 @@ export const IntroductionSection = (): JSX.Element => {
       </div>
 
       <div className="w-full">
-        <div className="px-4 mb-4">
+        <div className="px-4 mb-4 md:hidden">
           <div className="h-[6px] bg-white rounded-full relative">
             <div className="h-full bg-[#0023e9] rounded-full w-1/3 absolute left-0 top-0 cursor-pointer" id="custom-scrollbar-thumb"></div>
           </div>
         </div>
         <div className="w-full overflow-x-auto hide-scrollbar">
-          <div className="flex items-start gap-[22px] pb-12 p-4 w-full">
-        
+          <div
+            className="flex items-start gap-[22px] pb-12 p-4"
+            style={{ minWidth: `${(323 + 22) * (plans.length + 1) + 16}px` }} // 323px карточка, 22px gap, +1 индивидуальный, +16px запас
+          >
           {plans.map((plan, index) => (
             <Card
               key={index}
@@ -153,6 +152,15 @@ export const IntroductionSection = (): JSX.Element => {
                   variant="white"
                   size="full"
                   className={`${plan.buttonTextColor}`}
+                  onClick={() => {
+                    let value = "";
+                    if (plan.title === "Базовый") value = "visa";
+                    else if (plan.title === "Стандарт") value = "citizenship";
+                    setSelectedTariff(value);
+                    setTimeout(() => {
+                      document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
                 >
                   {plan.buttonText}
                 </Button>
@@ -187,7 +195,12 @@ export const IntroductionSection = (): JSX.Element => {
                 <p className="self-stretch font-font-h-2 text-font-h-2 text-black">
                   По запросу
                 </p>
-                <Button variant="primary" size="full" className="text-[#f3fcf0]">
+                <Button variant="primary" size="full" className="text-[#f3fcf0]" onClick={() => {
+                  setSelectedTariff("consultation");
+                  setTimeout(() => {
+                    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }}>
                   Связаться с нами
                 </Button>
               </CardHeader>

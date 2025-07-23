@@ -8,14 +8,14 @@ import {
   SelectItem,
 } from "../../../components/ui/select";
 
-export const ServicesSection = (): JSX.Element => {
+export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selectedTariff: string, setSelectedTariff: (value: string) => void }) => {
+  console.log('RENDER ServicesSection');
   const [nameError, setNameError] = React.useState<string>("");
   const [nameValue, setNameValue] = React.useState<string>("");
   const [nameTouched, setNameTouched] = React.useState<boolean>(false);
   const [emailError, setEmailError] = React.useState<string>("");
   const [emailValue, setEmailValue] = React.useState<string>("");
   const [emailTouched, setEmailTouched] = React.useState<boolean>(false);
-  const [selectedService, setSelectedService] = React.useState<string>("");
   const [serviceError, setServiceError] = React.useState<string>("");
   const [serviceTouched, setServiceTouched] = React.useState<boolean>(false);
 
@@ -100,7 +100,7 @@ export const ServicesSection = (): JSX.Element => {
   };
 
   const handleServiceChange = (value: string) => {
-    setSelectedService(value);
+    setSelectedTariff(value);
     if (serviceTouched) {
       const error = validateService(value);
       setServiceError(error);
@@ -109,84 +109,116 @@ export const ServicesSection = (): JSX.Element => {
 
   const handleServiceBlur = () => {
     setServiceTouched(true);
-    const error = validateService(selectedService);
+    const error = validateService(selectedTariff);
     setServiceError(error);
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    let hasError = false;
+    if (!nameValue.trim()) {
+      setNameError("Обязательное поле");
+      setNameTouched(true);
+      hasError = true;
+    }
+    if (!emailValue.trim()) {
+      setEmailError("Обязательное поле");
+      setEmailTouched(true);
+      hasError = true;
+    }
+    if (hasError) return;
+    // ...дальнейшая логика отправки формы
+  };
+
   return (
-    <section className="gap-6 px-6 py-12 bg-[#0023e9] flex flex-col items-stretch relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
+    <section id="services" className="gap-6 px-6 py-12 bg-[#0023e9] flex flex-col items-stretch relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
       <img 
-        src="/logo.svg" 
+          src="/logo_horiz.svg" 
         alt="EasyWay Logo" 
-        className="w-[153px] h-[43px]"
+          className="w-[164px] h-[46px] self-start"
       />
 
-      <h1 className="self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">
+        <h1 className="self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">
         Записаться на Консультацию
       </h1>
 
-      <h2 className="self-stretch font-font-h-2 text-font-h-2 text-[#f3fcf0]">
-        Начните свой путь по получению ВНЖ в Болагрии
+        <h2 className="self-stretch font-font-h-2 text-font-h-2 text-[#f3fcf0]">
+          Начните свой путь по получению ВНЖ в Болагрии
       </h2>
 
       <Input
-        placeholder="Ваше Имя"
-        value={nameValue}
-        onChange={handleNameChange}
-        onBlur={handleNameBlur}
-        error={nameTouched ? nameError : ""}
-        maxLength={52}
-      />
+          placeholder="Ваше Имя *"
+          value={nameValue}
+          onChange={handleNameChange}
+          onBlur={handleNameBlur}
+          error={nameTouched ? nameError : ""}
+          maxLength={52}
+        />
 
-      <Input
-        placeholder="E-mail"
-        value={emailValue}
-        onChange={handleEmailChange}
-        onBlur={handleEmailBlur}
-        error={emailTouched ? emailError : ""}
-        maxLength={100}
-      />
+        <Input
+          placeholder="E-mail *"
+          value={emailValue}
+          onChange={handleEmailChange}
+          onBlur={handleEmailBlur}
+          error={emailTouched ? emailError : ""}
+          maxLength={100}
+        />
 
-      <CustomSelect
-        placeholder="Что вас интересует?"
-        value={selectedService}
-        onValueChange={handleServiceChange}
-        onBlur={handleServiceBlur}
-        error={serviceTouched ? serviceError : ""}
-      >
-        <SelectContent>
-          <SelectItem value="visa">Получение ВНЖ</SelectItem>
-          <SelectItem value="citizenship">Получение гражданства</SelectItem>
-          <SelectItem value="consultation">Консультация</SelectItem>
-          <SelectItem value="other">Другое</SelectItem>
-        </SelectContent>
-      </CustomSelect>
+        <CustomSelect
+          placeholder="Что вас интересует?"
+          value={selectedTariff}
+          onValueChange={handleServiceChange}
+          onBlur={handleServiceBlur}
+          error={serviceTouched ? serviceError : ""}
+        >
+          <SelectContent>
+            <SelectItem value="visa">Тариф Базовый</SelectItem>
+            <SelectItem value="citizenship">Тариф Стандарт</SelectItem>
+            <SelectItem value="consultation">Консультация</SelectItem>
+            <SelectItem value="other">Другое</SelectItem>
+          </SelectContent>
+        </CustomSelect>
 
-      <Button variant="accent" size="full" className="text-black">
+        <Button variant="accent" size="full" className="text-black" type="submit">
         Записаться на консультацию
       </Button>
 
-      <div className="self-stretch font-font-body text-font-body text-white text-lg text-center tracking-[-0.18px]">
+        <div className="self-stretch font-font-body text-font-body text-white text-lg text-center tracking-[-0.18px]">
         — или просто&nbsp;&nbsp;—
       </div>
 
       <div className="flex flex-col items-start gap-4 w-full">
-        {contactOptions.map((option, index) => (
+          {contactOptions.map((option, index) => {
+            const href =
+              index === 0
+                ? "https://t.me/EWE_Chat"
+                : "https://api.whatsapp.com/send/?phone=359886173334&text&type=phone_number&app_absent=0";
+            return (
+              <a
+                key={index}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full"
+              >
           <Card
-            key={index}
-            className="flex items-center justify-center gap-4 px-3 py-2 w-full bg-[#0000004f] rounded overflow-hidden backdrop-blur-[32px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(32px)_brightness(100%)] border-none cursor-pointer"
+                  className="flex items-center justify-center gap-2 px-4 py-3 w-full bg-[#0000004f] rounded overflow-hidden backdrop-blur-[32px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(32px)_brightness(100%)] border-none cursor-pointer font-font-body text-font-body hover:bg-white/10 hover:shadow-lg hover:text-[#ffd23f] focus-visible:ring-2 focus-visible:ring-[#ffd23f] focus-visible:ring-offset-2 transition-all duration-200"
           >
             <img 
               src={index === 0 ? "/telegram-icon.svg" : "/whatsapp-icon.svg"} 
               alt={option.text} 
               className="w-8 h-8"
             />
-            <div className="w-[228px] font-font-body text-font-body text-[#f3fcf0] text-[22px] tracking-[-0.22px]">
+                  <div className="w-[228px] font-font-body text-font-body text-[#f3fcf0] text-[22px] tracking-[-0.22px] text-center">
               {option.text}
             </div>
           </Card>
-        ))}
+              </a>
+            );
+          })}
       </div>
+      </form>
     </section>
   );
 };

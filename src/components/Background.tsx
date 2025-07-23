@@ -20,7 +20,7 @@ const Background: React.FC = () => {
           wireframe={false}
           shader="defaults"
           uTime={8}
-          uSpeed={0.3}
+          uSpeed={0.2}
           uStrength={1.5}
           uDensity={1.5}
           uFrequency={0}
@@ -31,16 +31,16 @@ const Background: React.FC = () => {
           rotationX={50}
           rotationY={0}
           rotationZ={-60}
-          color1="#00ad03"
+          color1="#0024E9"
           color2="#314199"
-          color3="#871c1c"
+          color3="#FFD23F"
           reflection={0.1}
 
           // View (camera) props
           cAzimuthAngle={180}
           cPolarAngle={80}
-          cDistance={2.8}
-          cameraZoom={22.1}
+          cDistance={1.8}
+          cameraZoom={40.1}
 
           // Effect props
           lightType="3d"
