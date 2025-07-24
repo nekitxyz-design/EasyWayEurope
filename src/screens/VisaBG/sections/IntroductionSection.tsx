@@ -56,7 +56,7 @@ export const IntroductionSection = ({ setSelectedTariff }: { setSelectedTariff: 
     "✨ Любые другие уникальные запросы",
   ];
 
-  // Plans data
+  // Plans data (включая Индивидуальный)
   const plans: Plan[] = [
     {
       title: "Базовый",
@@ -77,6 +77,16 @@ export const IntroductionSection = ({ setSelectedTariff }: { setSelectedTariff: 
       headerBgColor: "bg-[#0023e9]",
       headerTextColor: "text-white",
       features: standardPlanFeatures,
+    },
+    {
+      title: "Индивидуальный",
+      description: "Для нестандартных ситуаций и особых запросов.",
+      price: "По запросу",
+      buttonText: "Связаться с нами",
+      buttonTextColor: "text-[#f3fcf0]",
+      headerBgColor: "bg-[#f0efef]",
+      headerTextColor: "text-black",
+      features: [], // Особые фичи ниже
     },
   ];
 
@@ -161,13 +171,13 @@ export const IntroductionSection = ({ setSelectedTariff }: { setSelectedTariff: 
       {/* Карточки */}
       <div ref={cardsScrollRef} className="w-full overflow-x-auto hide-scrollbar md:max-w-[1600px] md:mx-auto md:px-16 touch-pan-x" style={{ WebkitOverflowScrolling: 'touch' }}>
         <div
-          className="flex items-start gap-[22px] pb-12 p-4 snap-x snap-mandatory"
-          style={{ minWidth: `${(323 + 22) * (plans.length + 1) + 16}px` }}
+          className="flex md:grid md:grid-cols-3 items-start gap-[22px] md:gap-6 xl:gap-12 pb-12 p-4 snap-x snap-mandatory justify-between"
+          style={{ minWidth: `calc(${plans.length} * 323px + ${(plans.length - 1)} * 22px + 16px)` }}
         >
           {plans.map((plan, index) => {
-            // На десктопе все карточки шире, а 'Стандарт' еще шире и выделен
             const isStandard = plan.title === 'Стандарт';
-            const cardWidth = isStandard ? 'w-[323px] md:w-[340px]' : 'w-[323px] md:w-[320px]';
+            const isIndividual = plan.title === 'Индивидуальный';
+            const cardWidth = 'w-[323px] md:w-full md:min-w-[323px] md:max-w-[420px]';
             const highlight = isStandard ? 'md:shadow-2xl md:border-2 md:border-[#0023e9]' : '';
             return (
               <Card
@@ -193,78 +203,53 @@ export const IntroductionSection = ({ setSelectedTariff }: { setSelectedTariff: 
                     {plan.price}
                   </p>
                   <Button
-                    variant="white"
+                    variant={plan.title === 'Индивидуальный' ? 'primary' : 'white'}
                     size="full"
-                    className={`${plan.buttonTextColor}`}
+                    className={plan.title === 'Индивидуальный' ? 'text-[#f3fcf0]' : plan.buttonTextColor}
                     onClick={() => {
-                      let value = "";
-                      if (plan.title === "Базовый") value = "visa";
-                      else if (plan.title === "Стандарт") value = "citizenship";
+                      let value = '';
+                      if (plan.title === 'Базовый') value = 'visa';
+                      else if (plan.title === 'Стандарт') value = 'citizenship';
+                      else if (plan.title === 'Индивидуальный') value = 'consultation';
                       setSelectedTariff(value);
                       setTimeout(() => {
                         document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
                       }, 100);
                     }}
                   >
-                    {plan.buttonText}
+                    {plan.title === 'Индивидуальный' ? 'Связаться с нами' : 'Выбрать'}
                   </Button>
                 </CardHeader>
-                <CardContent className="flex flex-col items-start gap-3 px-4 py-6">
-                  {plan.features.map((feature, featureIndex) => (
-                    <div
-                      key={featureIndex}
-                      className="flex items-start gap-3 w-full"
-                    >
+                <CardContent className={`flex flex-col items-start gap-3 ${plan.title === 'Индивидуальный' ? 'p-4' : 'px-4 py-6'}`}>
+                  {plan.features && plan.features.length > 0 && plan.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-start gap-3 w-full">
                       <p className="w-full font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal text-black">
                         {feature.text}
                       </p>
                       <span className="font-font-h-2 text-font-h-2 text-white whitespace-nowrap">
-                        {feature.included ? "✅" : "❌"}
+                        {feature.included ? '✅' : '❌'}
                       </span>
                     </div>
                   ))}
+                  {plan.title === 'Индивидуальный' && (
+                    <>
+                      <p className="w-56 font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal text-black">
+                        Мы можем предложить:
+                      </p>
+                      {individualPlanBenefits.map((benefit, index) => (
+                        <p
+                          key={index}
+                          className="w-[285px] font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal text-black"
+                        >
+                          {benefit}
+                        </p>
+                      ))}
+                    </>
+                  )}
                 </CardContent>
               </Card>
             );
           })}
-
-          <div className="flex flex-col items-start justify-center pr-4 gap-4 flex-shrink-0">
-            <Card className="w-[323px] bg-[#ffffffe0] rounded-[10px] overflow-hidden border-none">
-              <CardHeader className="flex flex-col items-start justify-center gap-[19px] px-[15px] py-6 bg-[#f0efef]">
-                <h2 className="self-stretch font-font-h-2 text-font-h-2 text-black">
-                  Индивидуальный
-                </h2>
-                <p className="self-stretch font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal text-black">
-                  Для нестандартных ситуаций и особых запросов.
-                </p>
-                <p className="self-stretch font-font-h-2 text-font-h-2 text-black">
-                  По запросу
-                </p>
-                <Button variant="primary" size="full" className="text-[#f3fcf0]" onClick={() => {
-                  setSelectedTariff("consultation");
-                  setTimeout(() => {
-                    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-                  }, 100);
-                }}>
-                  Связаться с нами
-                </Button>
-              </CardHeader>
-              <CardContent className="flex flex-col items-start gap-3 p-4">
-                <p className="w-56 font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal text-black">
-                  Мы можем предложить:
-                </p>
-                {individualPlanBenefits.map((benefit, index) => (
-                  <p
-                    key={index}
-                    className="w-[285px] font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal text-black"
-                  >
-                    {benefit}
-                  </p>
-                ))}
-              </CardContent>
-            </Card>
-            {/* Удаляю блок с подачей документов из другой страны */}
-          </div>
         </div>
       </div>
     </section>

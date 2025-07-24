@@ -131,8 +131,9 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
   };
 
   return (
-    <section id="services" className="gap-6 px-6 py-12 bg-[#0023e9] flex flex-col items-stretch relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+    <section id="services" className="gap-6 px-6 py-12 md:pt-16 md:pb-16 bg-[#314199] flex flex-col items-stretch relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
+      <div className="w-full md:max-w-[1600px] md:mx-auto md:px-16">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full items-start">
       <img 
           src="/logo_horiz.svg" 
         alt="EasyWay Logo" 
@@ -154,6 +155,7 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
           onBlur={handleNameBlur}
           error={nameTouched ? nameError : ""}
           maxLength={52}
+          className="w-full md:w-[500px]"
         />
 
         <Input
@@ -163,6 +165,7 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
           onBlur={handleEmailBlur}
           error={emailTouched ? emailError : ""}
           maxLength={100}
+          className="w-full md:w-[500px]"
         />
 
         <CustomSelect
@@ -171,6 +174,7 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
           onValueChange={handleServiceChange}
           onBlur={handleServiceBlur}
           error={serviceTouched ? serviceError : ""}
+          className="w-full md:w-[500px]"
         >
           <SelectContent>
             <SelectItem value="visa">Тариф Базовый</SelectItem>
@@ -180,15 +184,15 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
           </SelectContent>
         </CustomSelect>
 
-        <Button variant="accent" size="full" className="text-black" type="submit">
+        <Button variant="accent" size="full" className="text-black w-full md:w-[500px]" type="submit">
         Записаться на консультацию
       </Button>
 
-        <div className="self-stretch font-font-body text-font-body text-white text-lg text-center tracking-[-0.18px]">
-        — или просто&nbsp;&nbsp;—
-      </div>
+        <div className="w-full md:w-[500px] text-center md:text-center font-font-body text-font-body text-white text-lg tracking-[-0.18px] mb-2">
+          — или просто —
+        </div>
 
-      <div className="flex flex-col items-start gap-4 w-full">
+        <div className="flex flex-col items-start gap-4 w-full md:ml-0">
           {contactOptions.map((option, index) => {
             const href =
               index === 0
@@ -202,23 +206,24 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
                 rel="noopener noreferrer"
                 className="w-full"
               >
-          <Card
-                  className="flex items-center justify-center gap-2 px-4 py-3 w-full bg-[#0000004f] rounded overflow-hidden backdrop-blur-[32px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(32px)_brightness(100%)] border-none cursor-pointer font-font-body text-font-body hover:bg-white/10 hover:shadow-lg hover:text-[#ffd23f] focus-visible:ring-2 focus-visible:ring-[#ffd23f] focus-visible:ring-offset-2 transition-all duration-200"
-          >
-            <img 
-              src={index === 0 ? "/telegram-icon.svg" : "/whatsapp-icon.svg"} 
-              alt={option.text} 
-              className="w-8 h-8"
-            />
-                  <div className="w-[228px] font-font-body text-font-body text-[#f3fcf0] text-[22px] tracking-[-0.22px] text-center">
-              {option.text}
-            </div>
-          </Card>
+                <Card
+                  className="flex items-center gap-3 px-4 w-full md:w-[500px] h-[60px] bg-[#0000004f] rounded overflow-hidden backdrop-blur-[32px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(32px)_brightness(100%)] border-none cursor-pointer font-font-body text-font-body hover:bg-white/10 hover:shadow-lg hover:text-[#ffd23f] focus-visible:ring-2 focus-visible:ring-[#ffd23f] focus-visible:ring-offset-2 transition-all duration-200"
+                >
+                  <img 
+                    src={index === 0 ? "/telegram-icon.svg" : "/whatsapp-icon.svg"} 
+                    alt={option.text} 
+                    className="w-8 h-8"
+                  />
+                  <div className="flex-1 text-center font-bold text-[#f3fcf0] text-[20px]">
+                    {option.text}
+                  </div>
+                </Card>
               </a>
             );
           })}
+        </div>
+        </form>
       </div>
-      </form>
     </section>
   );
 };

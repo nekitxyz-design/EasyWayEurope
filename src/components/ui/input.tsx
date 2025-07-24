@@ -27,11 +27,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     return (
-      <div className="relative">
+      <div className="relative w-full">
       <input
         type={type}
         className={cn(
-            "flex w-full md:w-[280px] border bg-transparent text-base shadow-sm transition-all duration-200 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0023e9] disabled:cursor-not-allowed disabled:opacity-50 text-white !text-white placeholder:text-transparent leading-normal items-center",
+            "flex w-full border bg-transparent text-base shadow-sm transition-all duration-200 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0023e9] disabled:cursor-not-allowed disabled:opacity-50 text-white !text-white placeholder:text-transparent leading-normal items-center",
             error 
               ? isFocused || hasValue 
                 ? "border-red-500/50 hover:border-red-500/50 focus-visible:border-red-500/50" 
@@ -39,7 +39,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               : hasValue && !isFocused
                 ? "border-white hover:border-white focus-visible:border-white"
                 : "border-input hover:border-white/50 focus-visible:border-white/50",
-            (isFocused || hasValue) ? "px-4 pt-6 pb-2 rounded-none font-font-body text-font-body" : "px-4 py-4 rounded-none font-font-body text-font-body",
+            (isFocused || hasValue) ? "px-4 pt-6 pb-2 rounded-none font-font-body text-font-body" : "px-4 py-4 rounded-none font-font-body text-font-body h-[60px]",
           className,
         )}
         ref={ref}

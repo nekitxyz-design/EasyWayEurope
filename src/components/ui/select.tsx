@@ -24,7 +24,7 @@ const CustomSelect = React.forwardRef<
   const hasValue = value && value.length > 0;
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <SelectPrimitive.Root
         value={value}
         onValueChange={onValueChange}
@@ -38,7 +38,7 @@ const CustomSelect = React.forwardRef<
       >
         <SelectPrimitive.Trigger
           className={cn(
-            "flex w-full md:w-[280px] min-h-[56px] border bg-transparent text-base shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0023e9] disabled:cursor-not-allowed disabled:opacity-50 text-white !text-white leading-normal items-center justify-between",
+            "flex w-full min-h-[56px] border bg-transparent text-base shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0023e9] disabled:cursor-not-allowed disabled:opacity-50 text-white !text-white leading-normal items-center justify-between",
             error 
               ? isOpen || hasValue 
                 ? "border-red-500/50 hover:border-red-500/50 focus-visible:border-red-500/50" 
@@ -46,7 +46,7 @@ const CustomSelect = React.forwardRef<
               : hasValue && !isOpen
                 ? "border-white hover:border-white focus-visible:border-white"
                 : "border-input hover:border-white/50 focus-visible:border-white/50",
-            (isOpen || hasValue || error) ? "px-4 pt-6 pb-2 rounded-none font-font-body text-font-body" : "px-4 py-4 rounded-none font-font-body text-font-body",
+            (isOpen || hasValue || error) ? "px-4 pt-6 pb-2 rounded-none font-font-body text-font-body" : "px-4 py-4 rounded-none font-font-body text-font-body h-[60px]",
             className,
           )}
         >

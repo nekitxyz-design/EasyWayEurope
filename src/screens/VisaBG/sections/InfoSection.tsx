@@ -48,7 +48,7 @@ export const InfoSection = () => {
           Ваш надежный партнер по релокации
         </h2>
         <Card className="w-full bg-transparent border-none shadow-none">
-          <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6 p-0">
+          <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-[8px] md:gap-6 p-0">
             {features.map((feature, index) => (
               <div
                 key={index}

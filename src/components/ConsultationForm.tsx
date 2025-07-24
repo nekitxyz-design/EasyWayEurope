@@ -194,20 +194,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
         error={emailTouched ? emailError : ""}
         maxLength={100}
       />
-      <CustomSelect
-        placeholder={selectPlaceholder}
-        value={selectedService}
-        onValueChange={handleServiceChange}
-        onBlur={handleServiceBlur}
-        error={serviceTouched ? serviceError : ""}
-      >
-        <SelectContent>
-          <SelectItem value="visa">Тариф Базовый</SelectItem>
-          <SelectItem value="citizenship">Тариф Стандарт</SelectItem>
-          <SelectItem value="consultation">Консультация</SelectItem>
-          <SelectItem value="other">Другое</SelectItem>
-        </SelectContent>
-      </CustomSelect>
+      {/* Селект убран для модалки FAQ */}
       {textareaEnabled && (
         <div className="relative">
           {textareaLabel && (
@@ -218,7 +205,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
           <textarea
             ref={textareaRef}
             rows={2}
-            className="flex w-full md:w-[280px] border bg-transparent text-base shadow-sm transition-all duration-200 px-4 pt-6 pb-2 rounded-none font-font-body text-font-body text-white placeholder:text-white/50 resize-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0023e9] border-input hover:border-white/50 focus-visible:border-white/50"
+            className="flex w-full border bg-transparent text-base shadow-sm transition-all duration-200 px-4 pt-6 pb-2 rounded-none font-font-body text-font-body text-white placeholder:text-white/50 resize-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0023e9] border-input hover:border-white/50 focus-visible:border-white/50"
             placeholder={textareaPlaceholder}
             value={textareaValue}
             onChange={handleTextareaChange}
