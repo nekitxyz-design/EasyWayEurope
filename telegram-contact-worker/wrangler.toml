@@ -1,0 +1,4 @@
+name = "telegram-contact-worker"
+main = "src/index.ts"
+compatibility_date = "2024-07-24" 
+account_id = "749d42422e97aa7ef33f8dccf57b3b67" 

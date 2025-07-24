@@ -47,6 +47,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
   const [textareaValue, setTextareaValue] = React.useState<string>("");
   const [textareaError, setTextareaError] = React.useState<string>("");
   const [textareaTouched, setTextareaTouched] = React.useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = React.useState<string>("");
 
   const validateName = (value: string): string => {
     if (value.length === 0) return "";
@@ -139,7 +140,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
     setTextareaError(validateTextarea(textareaValue));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     let hasError = false;
     if (!nameValue.trim()) {
@@ -158,7 +159,32 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
       hasError = true;
     }
     if (hasError) return;
-    // ...дальнейшая логика отправки формы
+    setSubmitStatus("Отправка...");
+    try {
+      const response = await fetch("https://telegram-contact-worker.nekiteth.workers.dev/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: nameValue,
+          email: emailValue,
+          message: textareaEnabled ? textareaValue : ""
+        })
+      });
+      if (response.ok) {
+        setSubmitStatus("Спасибо! Ваша заявка отправлена.");
+        setNameValue("");
+        setEmailValue("");
+        setTextareaValue("");
+        setNameTouched(false);
+        setEmailTouched(false);
+        setTextareaTouched(false);
+      } else {
+        const data = await response.json().catch(() => ({}));
+        setSubmitStatus(data.message ? `Ошибка: ${data.message}` : "Ошибка при отправке. Попробуйте позже.");
+      }
+    } catch (error: any) {
+      setSubmitStatus(error?.message ? `Ошибка сети: ${error.message}` : "Ошибка сети. Попробуйте позже.");
+    }
   };
 
   // Авто-рост textarea
@@ -223,6 +249,9 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
       <Button variant="accent" size="full" className="text-black" type="submit">
         {buttonText}
       </Button>
+      {submitStatus && (
+        <div className="text-white text-center mt-2">{submitStatus}</div>
+      )}
       {contactOptions.length > 0 && (
         <div className="self-stretch font-font-body text-font-body text-white text-lg text-center tracking-[-0.18px]">
           — или просто&nbsp;&nbsp;—

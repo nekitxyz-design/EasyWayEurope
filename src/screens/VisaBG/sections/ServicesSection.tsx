@@ -18,6 +18,7 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
   const [emailTouched, setEmailTouched] = React.useState<boolean>(false);
   const [serviceError, setServiceError] = React.useState<string>("");
   const [serviceTouched, setServiceTouched] = React.useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = React.useState<string>("");
 
   // Contact method options data
   const contactOptions = [
@@ -113,7 +114,7 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
     setServiceError(error);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     let hasError = false;
     if (!nameValue.trim()) {
@@ -127,7 +128,32 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
       hasError = true;
     }
     if (hasError) return;
-    // ...дальнейшая логика отправки формы
+    setSubmitStatus("Отправка...");
+    try {
+      const response = await fetch("https://telegram-contact-worker.nekiteth.workers.dev/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: nameValue,
+          email: emailValue,
+          message: `Тариф: ${selectedTariff}`
+        })
+      });
+      if (response.ok) {
+        setSubmitStatus("Спасибо! Ваша заявка отправлена.");
+        setNameValue("");
+        setEmailValue("");
+        setSelectedTariff("");
+        setNameTouched(false);
+        setEmailTouched(false);
+        setServiceTouched(false);
+      } else {
+        const data = await response.json().catch(() => ({}));
+        setSubmitStatus(data.message ? `Ошибка: ${data.message}` : "Ошибка при отправке. Попробуйте позже.");
+      }
+    } catch (error: any) {
+      setSubmitStatus(error?.message ? `Ошибка сети: ${error.message}` : "Ошибка сети. Попробуйте позже.");
+    }
   };
 
   return (
@@ -187,6 +213,9 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
         <Button variant="accent" size="full" className="text-black w-full md:w-[500px]" type="submit">
         Записаться на консультацию
       </Button>
+      {submitStatus && (
+        <div className="text-white text-center mt-2">{submitStatus}</div>
+      )}
 
         <div className="w-full md:w-[500px] text-center md:text-center font-font-body text-font-body text-white text-lg tracking-[-0.18px] mb-2">
           — или просто —
