@@ -9,7 +9,6 @@ import {
 } from "../../../components/ui/select";
 
 export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selectedTariff: string, setSelectedTariff: (value: string) => void }) => {
-  console.log('RENDER ServicesSection');
   const [nameError, setNameError] = React.useState<string>("");
   const [nameValue, setNameValue] = React.useState<string>("");
   const [nameTouched, setNameTouched] = React.useState<boolean>(false);
