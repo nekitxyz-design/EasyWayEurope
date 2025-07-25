@@ -2,18 +2,66 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 import { Button } from "./button";
+import * as SelectPrimitive from "@radix-ui/react-select";
+import { ChevronDownIcon } from "lucide-react";
 
 const navItems = [
   { title: "Как это работает", href: "#process" },
   { title: "Гарантии", href: "#guarantees" },
-  { title: "Тарифы", href: "#plans" },
+  { title: "Тарифы", href: "#services" },
   { title: "FAQ", href: "#faq" },
 ];
 
+const LanguageSelect = ({ value, onValueChange }: { value: string; onValueChange: (value: string) => void }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const getFlag = (lang: string) => {
+    switch(lang) {
+      case 'ru': return '🇷🇺';
+      case 'bg': return '🇧🇬';
+      case 'en': return '🇬🇧';
+      default: return '🇷🇺';
+    }
+  };
+
+  return (
+    <SelectPrimitive.Root value={value} onValueChange={onValueChange} onOpenChange={setIsOpen}>
+      <SelectPrimitive.Trigger className="flex items-center gap-2 text-white hover:text-[#ffd23f] transition-colors duration-200 cursor-pointer bg-[#222b4c]/80 p-2 rounded-lg">
+        <span className="text-lg">{getFlag(value)}</span>
+        <SelectPrimitive.Icon asChild>
+          <ChevronDownIcon className="h-4 w-4 opacity-50 text-white" />
+        </SelectPrimitive.Icon>
+      </SelectPrimitive.Trigger>
+      <SelectPrimitive.Portal>
+        <SelectPrimitive.Content 
+          className="bg-[#222b4c] rounded-xl shadow-2xl p-2 min-w-[120px] z-50"
+          position="popper"
+          sideOffset={5}
+        >
+          <SelectPrimitive.Viewport>
+            <SelectPrimitive.Item value="ru" className="flex items-center gap-2 px-3 py-2 text-white hover:bg-white/10 rounded cursor-pointer outline-none">
+              <span>🇷🇺</span>
+              <span>Русский</span>
+            </SelectPrimitive.Item>
+            <SelectPrimitive.Item value="bg" className="flex items-center gap-2 px-3 py-2 text-white hover:bg-white/10 rounded cursor-pointer outline-none">
+              <span>🇧🇬</span>
+              <span>Български</span>
+            </SelectPrimitive.Item>
+            <SelectPrimitive.Item value="en" className="flex items-center gap-2 px-3 py-2 text-white hover:bg-white/10 rounded cursor-pointer outline-none">
+              <span>🇬🇧</span>
+              <span>English</span>
+            </SelectPrimitive.Item>
+          </SelectPrimitive.Viewport>
+        </SelectPrimitive.Content>
+      </SelectPrimitive.Portal>
+    </SelectPrimitive.Root>
+  );
+};
+
 const menuSlide = {
   initial: { x: "100%" },
-  enter: { x: 0, transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] } },
-  exit: { x: "100%", transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] } },
+  enter: { x: 0, transition: { duration: 0.3 } },
+  exit: { x: "100%", transition: { duration: 0.3 } },
 };
 
 function Curve() {
@@ -22,26 +70,18 @@ function Curve() {
   const initialPath = `M100 0 L200 0 L200 ${height} L100 ${height} Q-${curveAmount} ${height/2} 100 0`;
   const targetPath = `M100 0 L200 0 L200 ${height} L100 ${height} Q${curveAmount} ${height/2} 100 0`;
 
-  const curve = {
-    initial: { d: initialPath },
-    enter: { d: targetPath, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
-    exit: { d: initialPath, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }
-  };
-
   return (
     <svg className="absolute top-0 -left-[99px] w-[100px] h-full fill-[#314199cc] pointer-events-none z-30">
       <motion.path
-        variants={curve}
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        transition={curve.enter.transition}
+        d={targetPath}
       />
     </svg>
   );
 }
 
 export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; setIsActive: (v: boolean) => void }) => {
+  const [selectedLanguage, setSelectedLanguage] = useState("ru");
+
   useEffect(() => {
     if (isActive) {
       document.body.classList.add("overflow-hidden");
@@ -52,6 +92,7 @@ export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; set
       document.body.classList.remove("overflow-hidden");
     };
   }, [isActive]);
+  
   return (
     <AnimatePresence>
       {isActive && (
@@ -64,17 +105,17 @@ export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; set
         >
           {/* Логотип-иконка в левом верхнем углу */}
           <img src="/logo_icon.svg" alt="Logo Icon" className="absolute top-4 left-4 h-[46px] w-auto z-20" />
-          <div className="flex justify-between items-center p-4">
+          <div className="flex justify-between items-center px-4 py-2">
             <button onClick={() => setIsActive(false)} className="text-3xl text-white ml-auto">
               <IoClose />
             </button>
           </div>
-          <nav className="flex flex-col items-start justify-center flex-1 gap-8 pl-6">
-            {navItems.map((item, idx) => (
+          <nav className="flex flex-col items-start justify-center flex-1 gap-8 px-6">
+            {navItems.map((item) => (
               <h2
                 key={item.title}
                 className="font-font-h-1 text-font-h-1 text-white font-bold hover:text-[#ffd23f] transition-colors duration-200 cursor-pointer text-left"
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
                   setIsActive(false);
                   setTimeout(() => {
@@ -87,23 +128,29 @@ export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; set
               </h2>
             ))}
           </nav>
-          <div className="pl-6 pb-8 w-full flex flex-col items-start">
-            <Button
-              variant="primary"
-              size="full"
-              className="w-[90%] mt-2"
-              onClick={() => {
-                setIsActive(false);
-                setTimeout(() => {
-                  document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-                }, 200);
-              }}
-            >
-              Записаться на консультацию
-            </Button>
-          </div>
+<div className="px-6 pb-8 w-full flex justify-center">
+  <div className="w-full flex gap-2 items-center">
+    <Button
+      variant="primary"
+      size="full"
+      className="flex-1 min-w-0"
+      onClick={() => {
+        setIsActive(false);
+        setTimeout(() => {
+          document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+        }, 200);
+      }}
+    >
+      Записаться на консультацию
+    </Button>
+    <div className="flex-shrink-0">
+      <LanguageSelect value={selectedLanguage} onValueChange={setSelectedLanguage} />
+    </div>
+  </div>
+</div>
+          <Curve />
         </motion.div>
       )}
     </AnimatePresence>
   );
-}; 
+};
