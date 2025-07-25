@@ -64,7 +64,7 @@ export const MainNavbar: React.FC = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("ru");
 
   return (
-    <nav className="w-full h-16 flex items-center justify-between px-3.5 py-4 md:py-6 relative z-20 backdrop-blur-md" style={{ background: 'transparent', boxShadow: '0 4px 24px 0 rgba(34,43,76,0.10)' }}>
+    <nav className="w-full h-16 flex items-center justify-between px-3.5 py-4 md:py-6 relative z-10">
       <div className="w-full md:max-w-[1600px] md:mx-auto px-6 md:px-16 flex items-center justify-between">
         {/* Логотип */}
         <img
