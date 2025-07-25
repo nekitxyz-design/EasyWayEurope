@@ -107,7 +107,7 @@ export const IntroductionSection = ({ setSelectedTariff }: { setSelectedTariff: 
       {/* Удалена стрелка. Добавлен обработчик wheel/touchmove для горизонтального скролла карточек на мобилке */}
       
       {/* Карточки */}
-      <div ref={cardsScrollRef} className="w-full overflow-x-auto hide-scrollbar md:max-w-[1600px] md:mx-auto md:px-16 touch-pan-x" style={{ WebkitOverflowScrolling: 'touch' }}>
+      <div ref={cardsScrollRef} className="w-full overflow-x-auto hide-scrollbar md:max-w-[1600px] md:mx-auto md:px-16" style={{ WebkitOverflowScrolling: 'touch' }}>
         <div
           className="flex md:grid md:grid-cols-3 items-start gap-[22px] md:gap-6 xl:gap-12 pb-12 p-4 snap-x snap-mandatory justify-between"
           style={{ minWidth: `calc(${plans.length} * 323px + ${(plans.length - 1)} * 22px + 16px)` }}
