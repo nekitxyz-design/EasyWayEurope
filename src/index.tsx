@@ -8,7 +8,7 @@ import { AutoHelp } from "./screens/AutoHelp/AutoHelp";
 
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/EasyWayEurope">
       <Routes>
         <Route path="/" element={<VisaBG />} />
         <Route path="/autohelp" element={<AutoHelp />} />

@@ -239,7 +239,7 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
                   className="flex items-center gap-3 px-4 w-full md:w-[500px] h-[60px] bg-[#0000004f] rounded overflow-hidden backdrop-blur-[32px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(32px)_brightness(100%)] border-none cursor-pointer font-font-body text-font-body hover:bg-white/10 hover:shadow-lg hover:text-[#ffd23f] focus-visible:ring-2 focus-visible:ring-[#ffd23f] focus-visible:ring-offset-2 transition-all duration-200"
                 >
                   <img 
-                    src={index === 0 ? "/telegram-icon.svg" : "/whatsapp-icon.svg"} 
+                    src={index === 0 ? `${import.meta.env.BASE_URL}telegram-icon.svg` : `${import.meta.env.BASE_URL}whatsapp-icon.svg`} 
                     alt={option.text} 
                     className="w-8 h-8"
                   />

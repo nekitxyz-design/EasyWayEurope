@@ -104,7 +104,7 @@ export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; set
           className="fixed inset-0 z-50 bg-[#314199cc] backdrop-blur-[8px] text-white flex flex-col"
         >
           {/* Логотип-иконка в левом верхнем углу */}
-          <img src="/logo_icon.svg" alt="Logo Icon" className="absolute top-4 left-4 h-[46px] w-auto z-20" />
+          <img src={`${import.meta.env.BASE_URL}logo_horiz.svg`} alt="Logo Icon" className="absolute top-4 left-4 h-[46px] w-auto z-20" />
           <div className="flex justify-between items-center px-4 py-2">
             <button onClick={() => setIsActive(false)} className="text-3xl text-white ml-auto">
               <IoClose />

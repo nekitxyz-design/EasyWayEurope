@@ -14,7 +14,7 @@ export const NewsletterSection = (): JSX.Element => {
       <div className="flex flex-col gap-6 md:w-1/2">
       {/* Logo and copyright */}
       <img 
-        src="/Logo_lp.svg" 
+        src={`${import.meta.env.BASE_URL}Logo_lp.svg`} 
         alt="EasyWay Europe Logo" 
         className="w-[88px] h-[88px]"
       />

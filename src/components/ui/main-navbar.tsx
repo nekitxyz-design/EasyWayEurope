@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 import React, { useState } from "react";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { CurvedNavbar } from "./curved-navbar";
@@ -67,7 +68,7 @@ export const MainNavbar: React.FC = () => {
       <div className="w-full md:max-w-[1600px] md:mx-auto px-6 md:px-16 flex items-center justify-between">
         {/* Логотип */}
         <img
-          src="/logo_horiz.svg"
+          src={`${import.meta.env.BASE_URL}logo_horiz.svg`}
           alt="EasyWay Europe Logo"
           className="h-[46px] w-[164px] object-contain"
         />
