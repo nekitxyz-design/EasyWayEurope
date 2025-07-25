@@ -31,6 +31,13 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
     },
   ];
 
+  const tariffLabels: Record<string, string> = {
+    visa: 'Тариф Базовый',
+    citizenship: 'Тариф Стандарт',
+    consultation: 'Консультация',
+    other: 'Другое',
+  };
+
   const validateName = (value: string): string => {
     if (value.length === 0) return "";
     
@@ -135,7 +142,8 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
         body: JSON.stringify({
           name: nameValue,
           email: emailValue,
-          message: `Тариф: ${selectedTariff}`
+          message: selectedTariff ? `Тариф: ${tariffLabels[selectedTariff] || selectedTariff}` : undefined,
+          formType: 'consultation',
         })
       });
       if (response.ok) {

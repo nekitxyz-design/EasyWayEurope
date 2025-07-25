@@ -161,13 +161,20 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
     if (hasError) return;
     setSubmitStatus("Отправка...");
     try {
+      const serviceLabels: Record<string, string> = {
+        visa: 'Тариф Базовый',
+        citizenship: 'Тариф Стандарт',
+        consultation: 'Консультация',
+        other: 'Другое',
+      };
       const response = await fetch("https://telegram-contact-worker.nekiteth.workers.dev/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: nameValue,
           email: emailValue,
-          message: textareaEnabled ? textareaValue : ""
+          message: textareaEnabled && textareaValue.trim() ? textareaValue : (selectedService ? `Тариф: ${serviceLabels[selectedService] || selectedService}` : undefined),
+          formType: textareaEnabled ? 'faq' : 'consultation',
         })
       });
       if (response.ok) {

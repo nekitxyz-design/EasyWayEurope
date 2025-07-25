@@ -1,4 +1,6 @@
 // Cloudflare Workers environment provides global types for Request, Response, and fetch
+// Удаляю import type и declare fetch, так как Cloudflare Workers предоставляет эти типы глобально
+
 export interface Env {
 	TELEGRAM_BOT_TOKEN: string;
 	TELEGRAM_CHAT_ID: string;
@@ -28,10 +30,16 @@ export interface Env {
 	  }
   
 	  try {
-		const { name, email, message } = await request.json();
+		const { name, email, message, formType } = await request.json();
   
-		// Текст для Telegram
-		const text = `🦎 *Новая заявка от Гипоганодика!*\n\n👤 *Имя:* ${name}\n📧 *Email:* ${email}\n\n💬 *Вопрос/сообщение:*\n${message}`;
+		let text = `🦎 *Новая заявка от Гипоганодика!*\n\n👤 *Имя:* ${name}\n📧 *Email:* ${email}`;
+		if (formType === 'consultation') {
+		  if (message) text += `\n\n💬 *Тариф:* ${message.replace('Тариф: ', '')}`;
+		  text += `\n\n📝 С формы: консультация`;
+		} else if (formType === 'faq') {
+		  if (message) text += `\n\n💬 *Вопрос/сообщение:*\n${message}`;
+		  text += `\n\n📝 С формы: задать вопрос (FAQ)`;
+		}
   
 		const telegramUrl = `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`;
   

@@ -22,12 +22,12 @@ export const OverviewSection = () => {
               size="compact"
               className="text-white w-full md:w-auto"
               onClick={() => {
-                const el = document.getElementById('plans');
+                const el = document.getElementById('what-vnz');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
             >
               <span className="[font-family:'Space_Grotesk',Helvetica] font-bold text-white text-lg tracking-[-0.18px]">
-                Хочу ВНЖ Болгарии
+                Хочу жить в Болгарии
               </span>
             </Button>
           </div>

@@ -22,7 +22,7 @@ export const ContentWrapperSection = () => {
   ];
 
   return (
-    <section className="w-full bg-[#ffffffb2] md:pt-10 md:pb-10">
+    <section id="what-vnz" className="w-full bg-[#ffffffb2] md:pt-10 md:pb-10">
       <div className="max-w-[1600px] mx-auto w-full md:px-16">
         <Card className="gap-6 px-6 py-12 flex flex-col items-start relative self-stretch w-full flex-[0_0_auto] backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)] rounded-none border-none bg-transparent">
           <CardContent className="flex flex-col items-start gap-6 p-0 w-full">
