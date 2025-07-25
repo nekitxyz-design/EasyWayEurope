@@ -90,73 +90,11 @@ export const IntroductionSection = ({ setSelectedTariff }: { setSelectedTariff: 
     },
   ];
 
-  // useRef для контейнера с карточками
+  // useRef для контейнера с карточками (оставляем только для возможного использования)
   const cardsScrollRef = React.useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    // Только на мобилке
-    if (window.innerWidth >= 768) return;
-    const el = cardsScrollRef.current;
-    if (!el) return;
-
-    // wheel для мыши/трекпада
-    const onWheel = (e: WheelEvent) => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        // Если можно скроллить по горизонтали
-        const maxScroll = el.scrollWidth - el.clientWidth;
-        if (
-          (e.deltaY > 0 && el.scrollLeft < maxScroll) ||
-          (e.deltaY < 0 && el.scrollLeft > 0)
-        ) {
-          el.scrollLeft += e.deltaY;
-          e.preventDefault();
-        }
-      }
-    };
-
-    // touchmove для тача
-    let startX = 0, startY = 0, lastX = 0, lastY = 0, isTouching = false;
-    const onTouchStart = (e: TouchEvent) => {
-      if (e.touches.length === 1) {
-        isTouching = true;
-        startX = lastX = e.touches[0].clientX;
-        startY = lastY = e.touches[0].clientY;
-      }
-    };
-    const onTouchMove = (e: TouchEvent) => {
-      if (!isTouching || e.touches.length !== 1) return;
-      const dx = e.touches[0].clientX - lastX;
-      const dy = e.touches[0].clientY - lastY;
-      lastX = e.touches[0].clientX;
-      lastY = e.touches[0].clientY;
-      // Если вертикальный свайп — скроллим горизонтально
-      if (Math.abs(dy) > Math.abs(dx)) {
-        const maxScroll = el.scrollWidth - el.clientWidth;
-        if (
-          (dy < 0 && el.scrollLeft < maxScroll) ||
-          (dy > 0 && el.scrollLeft > 0)
-        ) {
-          el.scrollLeft += -dy;
-          e.preventDefault();
-        }
-      }
-    };
-    const onTouchEnd = () => { isTouching = false; };
-
-    el.addEventListener('wheel', onWheel, { passive: false });
-    el.addEventListener('touchstart', onTouchStart, { passive: false });
-    el.addEventListener('touchmove', onTouchMove, { passive: false });
-    el.addEventListener('touchend', onTouchEnd);
-    return () => {
-      el.removeEventListener('wheel', onWheel);
-      el.removeEventListener('touchstart', onTouchStart);
-      el.removeEventListener('touchmove', onTouchMove);
-      el.removeEventListener('touchend', onTouchEnd);
-    };
-  }, []);
-
   return (
-    <section className="flex flex-col items-start gap-[22px] bg-[#ff22224c] w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)] md:pt-10 md:pb-10">
+    <section id="plans" className="flex flex-col items-start gap-[22px] bg-[#ff22224c] w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)] md:pt-10 md:pb-10">
       {/* Блок заголовка */}
       <div className="w-full md:max-w-[1600px] md:mx-auto md:px-16">
         <div className="px-4 pt-16">
