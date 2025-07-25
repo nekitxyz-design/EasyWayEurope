@@ -160,7 +160,7 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
       <div className="w-full md:max-w-[1600px] md:mx-auto md:px-16">
         <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full items-start">
       <img 
-          src="/logo_horiz.svg" 
+          src={`${import.meta.env.BASE_URL}logo_horiz.svg`} 
         alt="EasyWay Logo" 
           className="w-[164px] h-[46px] self-start"
       />

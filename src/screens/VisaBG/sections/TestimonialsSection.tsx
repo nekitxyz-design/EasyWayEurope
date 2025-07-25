@@ -45,7 +45,7 @@ export const TestimonialsSection = (): JSX.Element => {
   return (
     <section className="gap-6 px-6 py-12 bg-[#ff6201b2] overflow-hidden flex flex-col items-start relative w-full flex-[0_0_auto] backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
       <img 
-        src="/dots_co.svg" 
+        src={`${import.meta.env.BASE_URL}dots_co.svg`} 
         alt="Dots decoration" 
         className="w-6 h-6 mb-2"
       />
@@ -101,7 +101,7 @@ export const TestimonialsSection = (): JSX.Element => {
           {[...Array(5)].map((_, index) => (
             <img
               key={index}
-              src="/star-icon.svg"
+              src={`${import.meta.env.BASE_URL}star-icon.svg`}
               alt="Star"
               className="w-[20.92px] h-[19.9px]"
             />
