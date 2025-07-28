@@ -18,4 +18,7 @@ export default defineConfig({
       '@shadergradient/react'
     ]
   },
+  define: {
+    __DEV__: false,
+  },
 });

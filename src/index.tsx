@@ -5,6 +5,13 @@ import "./tailwind.css";
 import { VisaBG } from "./screens/VisaBG/VisaBG";
 import { AutoHelp } from "./screens/AutoHelp/AutoHelp";
 
+// Отключаем логи в production
+if (import.meta.env.PROD) {
+  console.log = () => {};
+  console.info = () => {};
+  console.debug = () => {};
+}
+
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
     <BrowserRouter>
