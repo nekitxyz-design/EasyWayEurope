@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Input } from "./ui/input";
+import { track } from '@amplitude/analytics-browser';
 import {
   CustomSelect,
   SelectContent,
@@ -158,8 +159,28 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
       setTextareaTouched(true);
       hasError = true;
     }
-    if (hasError) return;
+    if (hasError) {
+      // Track form validation error
+      track('Form Validation Error', {
+        formType: textareaEnabled ? 'faq' : 'consultation',
+        errors: {
+          name: !nameValue.trim(),
+          email: !emailValue.trim(),
+          textarea: textareaEnabled && textareaRequired && !textareaValue.trim(),
+        }
+      });
+      return;
+    }
+    
     setSubmitStatus("Отправка...");
+    
+    // Track form submission start
+    track('Form Submission Started', {
+      formType: textareaEnabled ? 'faq' : 'consultation',
+      hasTextarea: textareaEnabled,
+      selectedService: selectedService || 'none',
+    });
+    
     try {
       const serviceLabels: Record<string, string> = {
         visa: 'Тариф Базовый',
@@ -178,6 +199,13 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
         })
       });
       if (response.ok) {
+        // Track successful submission
+        track('Form Submission Success', {
+          formType: textareaEnabled ? 'faq' : 'consultation',
+          hasTextarea: textareaEnabled,
+          selectedService: selectedService || 'none',
+        });
+        
         setSubmitStatus("Спасибо! Ваша заявка отправлена.");
         setNameValue("");
         setEmailValue("");
@@ -188,9 +216,22 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
       } else {
         const data = await response.json().catch(() => ({}));
         setSubmitStatus(data.message ? `Ошибка: ${data.message}` : "Ошибка при отправке. Попробуйте позже.");
+        
+        // Track submission error
+        track('Form Submission Error', {
+          formType: textareaEnabled ? 'faq' : 'consultation',
+          error: data.message || 'Unknown error',
+          statusCode: response.status,
+        });
       }
     } catch (error: any) {
       setSubmitStatus(error?.message ? `Ошибка сети: ${error.message}` : "Ошибка сети. Попробуйте позже.");
+      
+      // Track network error
+      track('Form Submission Network Error', {
+        formType: textareaEnabled ? 'faq' : 'consultation',
+        error: error?.message || 'Unknown network error',
+      });
     }
   };
 

@@ -4,6 +4,7 @@ import { IoClose } from "react-icons/io5";
 import { Button } from "./button";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { ChevronDownIcon } from "lucide-react";
+import { track } from '@amplitude/analytics-browser';
 
 const navItems = [
   { title: "Как это работает", href: "#process" },
@@ -82,9 +83,20 @@ function Curve() {
 export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; setIsActive: (v: boolean) => void }) => {
   const [selectedLanguage, setSelectedLanguage] = useState("ru");
 
+  const handleLanguageChange = (value: string) => {
+    // Track mobile language change
+    track('Mobile Language Changed', {
+      from: selectedLanguage,
+      to: value,
+    });
+    setSelectedLanguage(value);
+  };
+
   useEffect(() => {
     if (isActive) {
       document.body.classList.add("overflow-hidden");
+      // Track mobile menu opened
+      track('Mobile Menu Opened');
     } else {
       document.body.classList.remove("overflow-hidden");
     }
@@ -117,6 +129,14 @@ export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; set
                 className="font-font-h-1 text-font-h-1 text-white font-bold hover:text-[#ffd23f] transition-colors duration-200 cursor-pointer text-left"
                 onClick={(e) => {
                   e.preventDefault();
+                  
+                  // Track mobile navigation click
+                  track('Mobile Navigation Clicked', {
+                    item: item.title,
+                    href: item.href,
+                    section: item.href.replace('#', ''),
+                  });
+                  
                   setIsActive(false);
                   setTimeout(() => {
                     const id = item.href.replace('#', '');
@@ -135,6 +155,12 @@ export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; set
       size="full"
       className="flex-1 min-w-0"
       onClick={() => {
+        // Track mobile consultation button click
+        track('Mobile Consultation Button Clicked', {
+          buttonText: 'Записаться на консультацию',
+          section: 'mobile-menu',
+        });
+        
         setIsActive(false);
         setTimeout(() => {
           document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
@@ -144,7 +170,7 @@ export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; set
       Записаться на консультацию
     </Button>
     <div className="flex-shrink-0">
-      <LanguageSelect value={selectedLanguage} onValueChange={setSelectedLanguage} />
+      <LanguageSelect value={selectedLanguage} onValueChange={handleLanguageChange} />
     </div>
   </div>
 </div>

@@ -5,6 +5,7 @@ import { CurvedNavbar } from "./curved-navbar";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { ChevronDownIcon } from "lucide-react";
 import { cn } from "../../lib/utils";
+import { track } from '@amplitude/analytics-browser';
 
 const navItems = [
   { title: "Как это работает", href: "#process" },
@@ -63,6 +64,15 @@ export const MainNavbar: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("ru");
 
+  const handleLanguageChange = (value: string) => {
+    // Track language change
+    track('Language Changed', {
+      from: selectedLanguage,
+      to: value,
+    });
+    setSelectedLanguage(value);
+  };
+
   return (
     <nav className="w-full h-16 flex items-center justify-between px-6 py-4 md:py-6 relative z-10">
       <div className="w-full md:max-w-[1600px] md:mx-auto px-0 md:px-16 flex items-center justify-between">
@@ -81,6 +91,14 @@ export const MainNavbar: React.FC = () => {
                 className="font-font-body text-font-body hover:text-[#ffd23f] transition-colors duration-200"
                 onClick={e => {
                   e.preventDefault();
+                  
+                  // Track navigation click
+                  track('Navigation Clicked', {
+                    item: item.title,
+                    href: item.href,
+                    section: item.href.replace('#', ''),
+                  });
+                  
                   const id = item.href.replace('#', '');
                   const el = document.getElementById(id);
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -93,7 +111,7 @@ export const MainNavbar: React.FC = () => {
         </ul>
         {/* Переключатель языка */}
         <div className="hidden md:flex items-center gap-2">
-          <LanguageSelect value={selectedLanguage} onValueChange={setSelectedLanguage} />
+          <LanguageSelect value={selectedLanguage} onValueChange={handleLanguageChange} />
         </div>
         {/* Мобильный бургер */}
         <button className="flex md:hidden text-white text-2xl" onClick={() => setOpen(true)}>

@@ -1,8 +1,20 @@
 import React from "react";
 import { Button } from "../../../components/ui/button";
 import { MainNavbar } from "../../../components/ui/main-navbar";
+import { track } from '@amplitude/analytics-browser';
 
 export const HeroSection = () => {
+  const handleHeroButtonClick = () => {
+    // Track hero button click
+    track('Hero Button Clicked', {
+      buttonText: 'Хочу жить в Болгарии',
+      section: 'hero',
+    });
+    
+    const el = document.getElementById('what-vnz');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="flex flex-col h-screen w-full bg-transparent">
       <MainNavbar />
@@ -21,10 +33,7 @@ export const HeroSection = () => {
               variant="primary" 
               size="compact"
               className="text-white w-full md:w-auto"
-              onClick={() => {
-                const el = document.getElementById('what-vnz');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={handleHeroButtonClick}
             >
               <span className="[font-family:'Space_Grotesk',Helvetica] font-bold text-white text-lg tracking-[-0.18px]">
                 Хочу жить в Болгарии
