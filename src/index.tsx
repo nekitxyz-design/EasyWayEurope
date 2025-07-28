@@ -1,10 +1,21 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { init } from '@amplitude/analytics-browser';
 // @ts-ignore
 import "./tailwind.css";
 import { VisaBG } from "./screens/VisaBG/VisaBG";
 import { AutoHelp } from "./screens/AutoHelp/AutoHelp";
+
+// Initialize Amplitude
+init('rFJkp4e68XofgGD_uZSekIJotanLzwaV', {
+  defaultTracking: {
+    sessions: true,
+    pageViews: true,
+    formInteractions: true,
+    fileDownloads: true,
+  },
+});
 
 console.log(
   "%cHey, if you're savvy enough to pop open this console, you're already primed to snag an awesome job in vibrant Bulgaria! 🧙‍♂️🌟\n" +
@@ -15,7 +26,7 @@ console.log(
 
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
-    <BrowserRouter basename="/EasyWayEurope">
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<VisaBG />} />
         <Route path="/autohelp" element={<AutoHelp />} />
