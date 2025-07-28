@@ -108,7 +108,7 @@ export const MainNavbar: React.FC = () => {
         <div className="w-full md:max-w-[1600px] md:mx-auto px-0 md:px-16 flex items-center justify-between">
           {/* Логотип */}
           <img
-            src="/logo_horiz.svg"
+            src="logo_horiz.svg"
             alt="EasyWay Europe Logo"
             className="h-[46px] w-[164px] object-contain"
           />
@@ -174,7 +174,7 @@ export const MainNavbar: React.FC = () => {
               }}
             >
               <img
-                src="/logo_horiz.svg"
+                src="logo_horiz.svg"
                 alt="EasyWay Europe Logo"
                 className="h-[46px] w-[164px] object-contain"
               />

@@ -15,7 +15,7 @@ export const FooterSection = () => {
         <div className="flex flex-col gap-6 md:w-1/2">
         {/* Logo and copyright */}
         <img 
-          src="/logo_lp.svg" 
+          src="logo_lp.svg" 
           alt="EasyWay Europe Logo" 
           className="w-[88px] h-[88px]"
         />

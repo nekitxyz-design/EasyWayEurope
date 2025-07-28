@@ -37,7 +37,7 @@ export const AboutUsSection = () => {
     <section className="bg-[#3141994c] w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)] md:pt-10 md:pb-10">
       <div className="max-w-[1600px] mx-auto w-full md:px-16 gap-6 flex flex-col items-start px-6 py-12">
         <img 
-          src="/logo_lp.svg" 
+          src="logo_lp.svg" 
           alt="EasyWay Europe Logo" 
           className="w-[88px] h-[88px]"
         />
