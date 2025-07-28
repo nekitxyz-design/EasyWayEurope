@@ -2,12 +2,19 @@ import React from "react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Input } from "./ui/input";
-import { track } from '@amplitude/analytics-browser';
+// import { track } from '@amplitude/analytics-browser';
 import {
   CustomSelect,
   SelectContent,
   SelectItem,
 } from "./ui/select";
+
+// Helper function for tracking
+const track = (eventName: string, properties?: any) => {
+  if ((window as any).amplitude) {
+    (window as any).amplitude.track(eventName, properties);
+  }
+};
 
 interface ConsultationFormProps {
   title: string;

@@ -4,7 +4,14 @@ import { IoClose } from "react-icons/io5";
 import { Button } from "./button";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { ChevronDownIcon } from "lucide-react";
-import { track } from '@amplitude/analytics-browser';
+// import { track } from '@amplitude/analytics-browser';
+
+// Helper function for tracking
+const track = (eventName: string, properties?: any) => {
+  if ((window as any).amplitude) {
+    (window as any).amplitude.track(eventName, properties);
+  }
+};
 
 const navItems = [
   { title: "Как это работает", href: "#process" },

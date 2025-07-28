@@ -1,7 +1,14 @@
 import React from "react";
 import { Button } from "../../../components/ui/button";
 import { MainNavbar } from "../../../components/ui/main-navbar";
-import { track } from '@amplitude/analytics-browser';
+// import { track } from '@amplitude/analytics-browser';
+
+// Helper function for tracking
+const track = (eventName: string, properties?: any) => {
+  if ((window as any).amplitude) {
+    (window as any).amplitude.track(eventName, properties);
+  }
+};
 
 export const HeroSection = () => {
   const handleHeroButtonClick = () => {
