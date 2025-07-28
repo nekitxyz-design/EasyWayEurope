@@ -8,7 +8,7 @@ import {
   SelectItem,
 } from "../../../components/ui/select";
 
-export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selectedTariff: string, setSelectedTariff: (value: string) => void }) => {
+export const FormSection = () => {
   const [nameError, setNameError] = React.useState<string>("");
   const [nameValue, setNameValue] = React.useState<string>("");
   const [nameTouched, setNameTouched] = React.useState<boolean>(false);
@@ -107,7 +107,7 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
   };
 
   const handleServiceChange = (value: string) => {
-    setSelectedTariff(value);
+    // setSelectedTariff(value); // This line was removed as per the new_code
     if (serviceTouched) {
       const error = validateService(value);
       setServiceError(error);
@@ -116,7 +116,7 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
 
   const handleServiceBlur = () => {
     setServiceTouched(true);
-    const error = validateService(selectedTariff);
+    const error = validateService(/* selectedTariff */ "consultation"); // This line was changed as per the new_code
     setServiceError(error);
   };
 
@@ -142,7 +142,7 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
         body: JSON.stringify({
           name: nameValue,
           email: emailValue,
-          message: selectedTariff ? `Тариф: ${tariffLabels[selectedTariff] || selectedTariff}` : undefined,
+          message: /* selectedTariff */ "consultation" ? `Тариф: ${tariffLabels["consultation"] || "Консультация"}` : undefined, // This line was changed as per the new_code
           formType: 'consultation',
         })
       });
@@ -150,7 +150,7 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
         setSubmitStatus("Спасибо! Ваша заявка отправлена.");
         setNameValue("");
         setEmailValue("");
-        setSelectedTariff("");
+        // setSelectedTariff(""); // This line was removed as per the new_code
         setNameTouched(false);
         setEmailTouched(false);
         setServiceTouched(false);
@@ -164,7 +164,7 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
   };
 
   return (
-    <section id="services" className="gap-6 px-6 py-12 md:pt-16 md:pb-16 bg-[#314199] flex flex-col items-stretch relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
+    <section id="services" className="gap-6 px-6 py-12 md:pt-16 md:pb-16 bg-[#31419980] flex flex-col items-stretch relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
       <div className="w-full md:max-w-[1600px] md:mx-auto md:px-16">
         <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full items-start">
       <img 
@@ -203,7 +203,7 @@ export const ServicesSection = ({ selectedTariff, setSelectedTariff }: { selecte
 
         <CustomSelect
           placeholder="Что вас интересует?"
-          value={selectedTariff}
+          // value={selectedTariff} // This line was removed as per the new_code
           onValueChange={handleServiceChange}
           onBlur={handleServiceBlur}
           error={serviceTouched ? serviceError : ""}

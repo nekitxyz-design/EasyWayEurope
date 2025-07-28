@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../../../components/ui/button";
 import { Card, CardContent } from "../../../components/ui/card";
 
-export const MainContentSection = () => {
+export const ProcessSection = () => {
   // Data for the process steps
   const processSteps = [
     {

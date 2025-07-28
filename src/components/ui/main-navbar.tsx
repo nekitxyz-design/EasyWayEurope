@@ -64,8 +64,8 @@ export const MainNavbar: React.FC = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("ru");
 
   return (
-    <nav className="w-full h-16 flex items-center justify-between px-3.5 py-4 md:py-6 relative z-10">
-      <div className="w-full md:max-w-[1600px] md:mx-auto px-6 md:px-16 flex items-center justify-between">
+    <nav className="w-full h-16 flex items-center justify-between px-6 py-4 md:py-6 relative z-10">
+      <div className="w-full md:max-w-[1600px] md:mx-auto px-0 md:px-16 flex items-center justify-between">
         {/* Логотип */}
         <img
           src={`${import.meta.env.BASE_URL}logo_horiz.svg`}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "../../../components/ui/card";
 
-export const FeatureSection = () => {
+export const FeatBulgariaSection = () => {
   // Feature data for mapping
   const features = [
     {

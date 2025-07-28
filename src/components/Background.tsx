@@ -3,7 +3,7 @@ import { ShaderGradientCanvas, ShaderGradient } from '@shadergradient/react';
 
 const Background: React.FC = () => {
   return (
-    <div className="fixed inset-0 -z-10">
+    <div className="fixed inset-0 z-0">
       <ShaderGradientCanvas
         style={{
           width: '100%',

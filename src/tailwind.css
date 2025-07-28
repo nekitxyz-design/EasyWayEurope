@@ -128,6 +128,14 @@
   }
 }
 
+/* === Dark Background for iOS Safari Status Bar === */
+html, body {
+  background-color: #171e2a; /* Dark blue, adjust to match Three.js base color */
+  margin: 0;
+  padding: 0;
+}
+
+
 
 
 

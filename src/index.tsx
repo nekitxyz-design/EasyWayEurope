@@ -8,7 +8,7 @@ import { VisaBG } from "./screens/VisaBG/VisaBG";
 import { AutoHelp } from "./screens/AutoHelp/AutoHelp";
 
 // Initialize Amplitude
-init('rFJkp4e68XofgGD_uZSekIJotanLzwaV', {
+init('4ed9b522574efefdaa2b94863d98b472', {
   defaultTracking: {
     sessions: true,
     pageViews: true,

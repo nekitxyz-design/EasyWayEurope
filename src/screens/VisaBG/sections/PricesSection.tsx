@@ -20,7 +20,7 @@ interface PlanFeature {
     features: PlanFeature[];
   }
 
-export const IntroductionSection = ({ setSelectedTariff }: { setSelectedTariff: (value: string) => void }) => {
+export const PricesSection = () => {
   // Basic plan features
   const basicPlanFeatures: PlanFeature[] = [
     { text: "♟️ Первичная консультация и стратегия", included: true },
@@ -149,7 +149,7 @@ export const IntroductionSection = ({ setSelectedTariff }: { setSelectedTariff: 
                       if (plan.title === 'Базовый') value = 'visa';
                       else if (plan.title === 'Стандарт') value = 'citizenship';
                       else if (plan.title === 'Индивидуальный') value = 'consultation';
-                      setSelectedTariff(value);
+                      // setSelectedTariff(value); // This line was removed
                       setTimeout(() => {
                         document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
                       }, 100);

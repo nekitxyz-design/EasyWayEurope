@@ -9,7 +9,7 @@ import { Button } from "../../../components/ui/button";
 import * as Dialog from '@radix-ui/react-dialog';
 import { ConsultationForm } from '../../../components/ConsultationForm';
 
-export const CallToActionSection = (): JSX.Element => {
+export const FAQSection = (): JSX.Element => {
   // FAQ data for mapping
   const faqItems = [
     {

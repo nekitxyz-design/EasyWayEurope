@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../../../components/ui/button";
 import { Card, CardContent } from "../../../components/ui/card";
 
-export const ContentWrapperSection = () => {
+export const BonusesBgSection = () => {
   // Data for the "This is for you if you are" section
   const targetAudienceItems = [
     "IT-специалисты и цифровые кочевники",

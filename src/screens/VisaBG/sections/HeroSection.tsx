@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../../../components/ui/button";
 import { MainNavbar } from "../../../components/ui/main-navbar";
 
-export const OverviewSection = () => {
+export const HeroSection = () => {
   return (
     <section className="flex flex-col h-screen w-full bg-transparent">
       <MainNavbar />
