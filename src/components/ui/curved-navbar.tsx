@@ -16,7 +16,7 @@ const track = (eventName: string, properties?: any) => {
 const navItems = [
   { title: "Как это работает", href: "#process" },
   { title: "Гарантии", href: "#guarantees" },
-  { title: "Тарифы", href: "#services" },
+  { title: "Тарифы", href: "#plans" },
   { title: "FAQ", href: "#faq" },
 ];
 
@@ -79,7 +79,7 @@ function Curve() {
   const targetPath = `M100 0 L200 0 L200 ${height} L100 ${height} Q${curveAmount} ${height/2} 100 0`;
 
   return (
-    <svg className="absolute top-0 -left-[99px] w-[100px] h-full fill-[#314199cc] pointer-events-none z-30">
+    <svg className="absolute top-0 -left-[99px] w-[100px] h-full fill-transparent pointer-events-none z-30">
       <motion.path
         d={targetPath}
       />
@@ -120,7 +120,7 @@ export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; set
           initial="initial"
           animate="enter"
           exit="exit"
-          className="fixed inset-0 z-50 bg-[#314199cc] backdrop-blur-[8px] text-white flex flex-col"
+          className="fixed inset-0 z-50 backdrop-blur-[8px] text-white flex flex-col"
         >
           {/* Логотип-иконка в левом верхнем углу */}
           <img src={`${import.meta.env.BASE_URL}logo_horiz.svg`} alt="Logo Icon" className="absolute top-4 left-4 h-[46px] w-auto z-20" />
