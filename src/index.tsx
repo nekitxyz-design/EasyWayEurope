@@ -5,6 +5,10 @@ import "./tailwind.css";
 import "./lib/i18n"; // Импортируем конфигурацию i18n
 import { VisaBG } from "./screens/VisaBG/VisaBG";
 import { AutoHelp } from "./screens/AutoHelp/AutoHelp";
+import { PrivacyPolicy } from "./screens/PrivacyPolicy/PrivacyPolicy";
+import { CookiePolicy } from "./screens/CookiePolicy/CookiePolicy";
+import { TermsOfService } from "./screens/TermsOfService/TermsOfService";
+import { AnalyticsProvider } from "./components/AnalyticsProvider";
 
 // Отключаем логи в production
 if (import.meta.env.PROD) {
@@ -12,9 +16,21 @@ if (import.meta.env.PROD) {
   console.info = () => {};
   console.debug = () => {};
 } else {
+  // Отключаем React Router предупреждения и Performance логи
+  const originalWarn = console.warn;
+  console.warn = (...args) => {
+    const message = args[0];
+    if (typeof message === 'string' && (
+      message.includes('React Router Future Flag Warning') ||
+      message.includes('[Performance] material')
+    )) {
+      return;
+    }
+    originalWarn.apply(console, args);
+  };
   // Beautiful message for developers
   console.log(
-    '%c🚀 EasyWay Europe - Bulgarian Residence Permit',
+    '%c🚀 EasyWayEurope - Bulgarian Residence Permit',
     'color: #ffd23f; font-size: 20px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);'
   );
   console.log(
@@ -34,6 +50,7 @@ if (import.meta.env.PROD) {
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
     <BrowserRouter>
+      <AnalyticsProvider />
       <Routes>
         {/* Редирект с корня на английский */}
         <Route path="/" element={<Navigate to="/en" replace />} />
@@ -43,11 +60,29 @@ createRoot(document.getElementById("app") as HTMLElement).render(
         <Route path="/bg" element={<VisaBG />} />
         <Route path="/en" element={<VisaBG />} />
         
-        {/* AutoHelp маршруты */}
-        <Route path="/autohelp" element={<Navigate to="/en/autohelp" replace />} />
-        <Route path="/ru/autohelp" element={<AutoHelp />} />
-        <Route path="/bg/autohelp" element={<AutoHelp />} />
-        <Route path="/en/autohelp" element={<AutoHelp />} />
+                         {/* AutoHelp маршруты */}
+                 <Route path="/autohelp" element={<Navigate to="/en/autohelp" replace />} />
+                 <Route path="/ru/autohelp" element={<AutoHelp />} />
+                 <Route path="/bg/autohelp" element={<AutoHelp />} />
+                 <Route path="/en/autohelp" element={<AutoHelp />} />
+
+                 {/* Privacy Policy маршруты */}
+                 <Route path="/privacy-policy" element={<Navigate to="/en/privacy-policy" replace />} />
+                 <Route path="/ru/privacy-policy" element={<PrivacyPolicy />} />
+                 <Route path="/bg/privacy-policy" element={<PrivacyPolicy />} />
+                 <Route path="/en/privacy-policy" element={<PrivacyPolicy />} />
+
+                 {/* Cookie Policy маршруты */}
+                 <Route path="/cookie-policy" element={<Navigate to="/en/cookie-policy" replace />} />
+                 <Route path="/ru/cookie-policy" element={<CookiePolicy />} />
+                 <Route path="/bg/cookie-policy" element={<CookiePolicy />} />
+                 <Route path="/en/cookie-policy" element={<CookiePolicy />} />
+
+                 {/* Terms of Service маршруты */}
+                 <Route path="/terms-of-service" element={<Navigate to="/en/terms-of-service" replace />} />
+                 <Route path="/ru/terms-of-service" element={<TermsOfService />} />
+                 <Route path="/bg/terms-of-service" element={<TermsOfService />} />
+                 <Route path="/en/terms-of-service" element={<TermsOfService />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

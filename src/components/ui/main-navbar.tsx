@@ -10,21 +10,21 @@ import { useLanguageRoute } from "../../lib/hooks/useLanguageRoute";
 // import { track } from '@amplitude/analytics-browser';
 import { AnimatePresence, motion } from "framer-motion";
 
+import { trackEvent } from '../../components/AnalyticsProvider';
+
 // Helper function for tracking
 const track = (eventName: string, properties?: any) => {
-  if ((window as any).amplitude) {
-    (window as any).amplitude.track(eventName, properties);
-  }
+  trackEvent(eventName, properties);
 };
 
 const useNavItems = () => {
   const { t } = useTranslation();
   
   return [
-    { title: t('nav.how_it_works'), href: "#process" },
-    { title: t('nav.guarantees'), href: "#guarantees" },
-    { title: t('nav.prices'), href: "#plans" },
-    { title: t('nav.faq'), href: "#faq" },
+    { title: t('nav.how_it_works'), href: "/#process" },
+    { title: t('nav.guarantees'), href: "/#guarantees" },
+    { title: t('nav.prices'), href: "/#plans" },
+    { title: t('nav.faq'), href: "/#faq" },
   ];
 };
 
@@ -116,8 +116,8 @@ export const MainNavbar: React.FC = () => {
         <div className="w-full md:max-w-[1600px] md:mx-auto px-0 md:px-16 flex items-center justify-between">
           {/* Логотип */}
           <img
-            src="logo_horiz.svg"
-            alt="EasyWay Europe Logo"
+            src="/logo_horiz.svg"
+            alt="EasyWayEurope Logo"
             className="h-[46px] w-[164px] object-contain"
           />
           {/* Десктоп меню */}
@@ -134,12 +134,11 @@ export const MainNavbar: React.FC = () => {
                     track('Navigation Clicked', {
                       item: item.title,
                       href: item.href,
-                      section: item.href.replace('#', ''),
+                      section: item.href.replace('/#', ''),
                     });
                     
-                    const id = item.href.replace('#', '');
-                    const el = document.getElementById(id);
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    // Navigate to main page with anchor
+                    window.location.href = item.href;
                   }}
                 >
                   {item.title}
@@ -182,8 +181,8 @@ export const MainNavbar: React.FC = () => {
               }}
             >
               <img
-                src="logo_horiz.svg"
-                alt="EasyWay Europe Logo"
+                src="/logo_horiz.svg"
+                alt="EasyWayEurope Logo"
                 className="h-[46px] w-[164px] object-contain"
               />
               <button className="text-white text-2xl" onClick={() => setOpen(true)}>

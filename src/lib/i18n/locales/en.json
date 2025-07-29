@@ -265,14 +265,8 @@
         "basic": "Basic Tariff",
         "standard": "Standard Tariff",
         "consultation": "Consultation",
-                  "other": "Other"
-        },
-        "options": {
-          "basic": "Basic Tariff",
-          "standard": "Standard Tariff",
-          "consultation": "Consultation",
-          "other": "Other"
-        }
+        "other": "Other"
+      }
       },
     "faq": {
       "title": "Have a question?",
@@ -333,5 +327,140 @@
     "schema_description": "Obtaining Bulgarian residence permit for Russians. Legal support for residence permit in Europe.",
     "schema_service_type": "Bulgarian Residence Permit",
     "schema_area_served": "Russia"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "description": "Privacy Policy for EasyWayEurope - Learn how we collect, use, and protect your personal data.",
+    "effective_date": "Effective Date",
+    "intro": "easywayeurope.com (\"we\", \"our\", \"us\") values your privacy. This Privacy Policy describes how we collect, use, and process your data when you visit or use our website.",
+    "section1": {
+      "title": "Information We Collect",
+      "intro": "We may collect and process the following types of information:",
+      "usage_data": "Usage Data: Information about your interactions with our website (e.g. pages viewed, time spent) via cookies and similar technologies.",
+      "device_data": "Device & Browser Data: Information such as IP address, browser type, operating system, device identifiers."
+    },
+    "section2": {
+      "title": "Cookies and Tracking Technologies",
+      "intro": "We use cookies and similar technologies to:",
+      "essential": "Enable essential website functions;",
+      "analytics": "Analyze website traffic and usage patterns.",
+      "consent": "Non-essential cookies (e.g., analytics) are only used after you provide consent via our cookie banner."
+    },
+    "section3": {
+      "title": "Analytics Tools",
+      "intro": "We use the following analytics services:",
+      "google_analytics": "Google Analytics: Google Analytics helps us understand how visitors interact with our website. Google may process data in accordance with its own privacy policy.",
+      "amplitude": "Amplitude: Amplitude helps us analyze user behavior and improve our services.",
+      "opt_out": "These services use cookies and similar technologies to collect usage data, subject to your consent. Opt-out: You can withdraw consent or adjust cookie preferences at any time using the consent banner or your browser settings."
+    },
+    "section4": {
+      "title": "Legal Basis for Processing",
+      "intro": "We process your data based on:",
+      "consent": "Consent (for analytics cookies);",
+      "legitimate": "Legitimate interests (for security, troubleshooting, and providing basic site functionality)."
+    },
+    "section5": {
+      "title": "Data Sharing and International Transfers",
+      "content": "We do not sell your personal data. Data collected by analytics tools may be processed outside the European Economic Area (EEA) in compliance with applicable laws and security measures."
+    },
+    "section6": {
+      "title": "Your Rights",
+      "intro": "Subject to applicable law, you have the right to:",
+      "access": "Access, correct, or delete your personal data;",
+      "withdraw": "Withdraw consent at any time;",
+      "object": "Object to or restrict certain types of processing;",
+      "complaint": "Lodge a complaint with a supervisory authority.",
+      "contact": "To exercise these rights, please contact us using the details below."
+    },
+    "section7": {
+      "title": "Data Retention",
+      "content": "We retain your personal data only as long as necessary for analytics and to comply with legal obligations."
+    },
+    "section8": {
+      "title": "Security",
+      "content": "We implement technical and organizational measures to protect your personal data."
+    },
+    "section9": {
+      "title": "Contact Us",
+      "intro": "For questions or requests about your data and this policy, please contact:",
+      "email": "Email"
+    },
+    "back_button": "Back"
+  },
+  "cookie": {
+    "title": "Cookie Policy",
+    "description": "Cookie Policy for EasyWayEurope - Learn how we use cookies and similar technologies.",
+    "effective_date": "Effective Date",
+    "intro": "This Cookie Policy explains how easywayeurope.com (\"we\", \"us\", or \"our\") uses cookies and similar technologies on our website.",
+    "section1": {
+      "title": "What Are Cookies?",
+      "content": "Cookies are small text files stored on your device when you visit our website. They help us enhance your browsing experience, remember your preferences, and analyze how visitors use our site."
+    },
+    "section2": {
+      "title": "Types of Cookies We Use",
+      "necessary": "Strictly Necessary Cookies: Required for basic website functionality (e.g., security, page navigation). These cannot be switched off in our systems.",
+      "analytics": "Analytics Cookies: With your consent, we use analytics cookies (e.g., Google Analytics, Amplitude) to better understand website usage and improve our services.",
+      "preference": "Preference Cookies: Remember your settings and preferences (e.g., language choice)."
+    },
+    "section3": {
+      "title": "How We Use Cookies",
+      "intro": "We use cookies to:",
+      "operate": "Operate and secure our website;",
+      "understand": "Understand visitor interactions (pages visited, time spent);",
+      "improve": "Improve website content and user experience.",
+      "consent": "Analytics cookies are only enabled after you provide consent via the cookie banner. You can withdraw or modify your consent at any time via the banner or browser settings."
+    },
+    "section4": {
+      "title": "Managing Cookies",
+      "banner": "You can accept or reject cookies using our cookie consent banner.",
+      "browser": "Most browsers allow you to control cookies through their settings.",
+      "info": "For more information about cookies, visit www.allaboutcookies.org."
+    },
+    "section5": {
+      "title": "Contact",
+      "intro": "If you have questions about our Cookie Policy, contact us at:",
+      "email": "Email"
+    },
+    "back_button": "Back"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "description": "Terms of Service for EasyWayEurope - Learn about the terms and conditions for using our website.",
+    "effective_date": "Effective Date",
+    "intro": "Welcome to easywayeurope.com (\"Site\"). By accessing or using our website, you agree to the following terms:",
+    "section1": {
+      "title": "Website Use",
+      "content": "You may use our Site only for lawful purposes. You agree not to misuse the Site or attempt unauthorized access to any part of the website."
+    },
+    "section2": {
+      "title": "Content",
+      "content": "All content provided on this Site is for general information only. We reserve the right to modify any content without notice."
+    },
+    "section3": {
+      "title": "Analytics and Cookies",
+      "content": "We use analytics services (Google Analytics, Amplitude) and cookies to understand how users interact with the Site, according to our Cookie Policy and Privacy Policy."
+    },
+    "section4": {
+      "title": "Intellectual Property",
+      "content": "All content, trademarks, and logos belong to easywayeurope.com or their respective owners. You may not reproduce or distribute any content without permission."
+    },
+    "section5": {
+      "title": "Limitation of Liability",
+      "content": "We do our best to provide accurate information but do not guarantee completeness or accuracy. We are not liable for any damages arising from your use of the Site."
+    },
+    "section6": {
+      "title": "Third-Party Links",
+      "content": "Our Site may contain links to external websites. We are not responsible for their content or practices."
+    },
+    "section7": {
+      "title": "Changes to Terms",
+      "content": "We reserve the right to update these Terms at any time. We encourage users to review this page periodically."
+    },
+    "section8": {
+      "title": "Contact",
+      "intro": "For questions about these Terms, contact us at:",
+      "email": "Email"
+    },
+    "back_button": "Back"
   }
 } 

@@ -25,7 +25,7 @@ i18n
   .init({
     resources,
     fallbackLng: 'en', // Изменили на английский по умолчанию
-    debug: import.meta.env.DEV,
+    debug: false, // Отключаем debug логи
     
     interpolation: {
       escapeValue: false, // React уже экранирует значения

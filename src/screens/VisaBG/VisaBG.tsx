@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { SEOHead } from "../../components/SEOHead";
 import { TariffProvider } from "../../lib/contexts/TariffContext";
+import { CookieConsent } from "../../components/CookieConsent";
 import { HeroSection } from "./sections/HeroSection";
 import { FeatBulgariaSection } from "./sections/FeatBulgariaSection";
 import { BonusesBgSection } from "./sections/BonusesBgSection";
@@ -30,6 +31,7 @@ export const VisaBG = () => {
     <TariffProvider>
       <div className="flex flex-col w-full bg-transparent relative">
         <SEOHead />
+        <CookieConsent />
         <FluidGlassBackground mode="lens" isScrolled={isScrolled} />
         <div style={{ paddingTop: 'env(safe-area-inset-top, 44px)', zIndex: 1, position: 'relative' }}>
           <HeroSection />

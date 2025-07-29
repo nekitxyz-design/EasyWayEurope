@@ -1,5 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "../../../components/ui/card";
+import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 export const FooterSection = () => {
   // Social media links
@@ -8,6 +10,10 @@ export const FooterSection = () => {
     "Написать в Telegram",
     "Написать в WhatsApp",
   ];
+
+  const { t, i18n } = useTranslation();
+  const location = useLocation();
+  const lang = location.pathname.split("/")[1] || "en";
 
   return (
     <footer className="bg-[#171717] py-12 w-full backdrop-blur-[2px]">
@@ -25,29 +31,19 @@ export const FooterSection = () => {
           <br />© 2020-2025
         </div>
         </div>
-
-        {/*
-        <div className="flex flex-col gap-6 md:w-1/2">
-          <Card className="w-full bg-transparent border-none">
-            <CardContent className="p-0 flex flex-col gap-4">
-              <h2 className="font-font-body text-font-body text-white font-bold">
-                Мы в:
-              </h2>
-              <div className="flex flex-col gap-3">
-                {socialLinks.map((link, index) => (
-                  <a
-                    key={`social-${index}`}
-                    href="#"
-                    className="font-font-body text-font-body text-white"
-                  >
-                    {link}
-                  </a>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+        <div className="flex flex-col gap-4 md:w-1/2 justify-end items-start md:items-end">
+          <div className="flex flex-col gap-2">
+            <a href={`/${lang}/privacy-policy`} className="text-white font-font-body text-font-body hover:underline">
+              {t("privacy.title")}
+            </a>
+            <a href={`/${lang}/cookie-policy`} className="text-white font-font-body text-font-body hover:underline">
+              {t("cookie.title")}
+            </a>
+            <a href={`/${lang}/terms-of-service`} className="text-white font-font-body text-font-body hover:underline">
+              {t("terms.title")}
+            </a>
+          </div>
         </div>
-        */}
       </div>
     </footer>
   );

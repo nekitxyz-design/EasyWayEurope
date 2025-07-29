@@ -8,21 +8,21 @@ import { ChevronDownIcon } from "lucide-react";
 import { useLanguageRoute } from "../../lib/hooks/useLanguageRoute";
 // import { track } from '@amplitude/analytics-browser';
 
+import { trackEvent } from '../../components/AnalyticsProvider';
+
 // Helper function for tracking
 const track = (eventName: string, properties?: any) => {
-  if ((window as any).amplitude) {
-    (window as any).amplitude.track(eventName, properties);
-  }
+  trackEvent(eventName, properties);
 };
 
 const useNavItems = () => {
   const { t } = useTranslation();
   
   return [
-    { title: t('nav.how_it_works'), href: "#process" },
-    { title: t('nav.guarantees'), href: "#guarantees" },
-    { title: t('nav.prices'), href: "#plans" },
-    { title: t('nav.faq'), href: "#faq" },
+    { title: t('nav.how_it_works'), href: "/#process" },
+    { title: t('nav.guarantees'), href: "/#guarantees" },
+    { title: t('nav.prices'), href: "/#plans" },
+    { title: t('nav.faq'), href: "/#faq" },
   ];
 };
 
@@ -149,14 +149,12 @@ export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; set
                   track('Mobile Navigation Clicked', {
                     item: item.title,
                     href: item.href,
-                    section: item.href.replace('#', ''),
+                    section: item.href.replace('/#', ''),
                   });
                   
                   setIsActive(false);
-                  setTimeout(() => {
-                    const id = item.href.replace('#', '');
-                    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-                  }, 200);
+                  // Navigate to main page with anchor
+                  window.location.href = item.href;
                 }}
               >
                 <a href={item.href}>{item.title}</a>
@@ -177,9 +175,8 @@ export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; set
         });
         
         setIsActive(false);
-        setTimeout(() => {
-          document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-        }, 200);
+        // Navigate to main page with consultation form
+        window.location.href = '/#plans';
       }}
     >
       Записаться на консультацию

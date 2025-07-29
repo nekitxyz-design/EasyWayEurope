@@ -74,4 +74,106 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/autohelp"/>
   </url>
   
+  <!-- Privacy Policy - русский -->
+  <url>
+    <loc>https://ewe.com/ru/privacy-policy</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/privacy-policy"/>
+  </url>
+  <!-- Privacy Policy - болгарский -->
+  <url>
+    <loc>https://ewe.com/bg/privacy-policy</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/privacy-policy"/>
+  </url>
+  <!-- Privacy Policy - английский -->
+  <url>
+    <loc>https://ewe.com/en/privacy-policy</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/privacy-policy"/>
+  </url>
+
+  <!-- Cookie Policy - русский -->
+  <url>
+    <loc>https://ewe.com/ru/cookie-policy</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/cookie-policy"/>
+  </url>
+  <!-- Cookie Policy - болгарский -->
+  <url>
+    <loc>https://ewe.com/bg/cookie-policy</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/cookie-policy"/>
+  </url>
+  <!-- Cookie Policy - английский -->
+  <url>
+    <loc>https://ewe.com/en/cookie-policy</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/cookie-policy"/>
+  </url>
+
+  <!-- Terms of Service - русский -->
+  <url>
+    <loc>https://ewe.com/ru/terms-of-service</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/terms-of-service"/>
+  </url>
+  <!-- Terms of Service - болгарский -->
+  <url>
+    <loc>https://ewe.com/bg/terms-of-service</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/terms-of-service"/>
+  </url>
+  <!-- Terms of Service - английский -->
+  <url>
+    <loc>https://ewe.com/en/terms-of-service</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/terms-of-service"/>
+  </url>
+  
 </urlset> 
