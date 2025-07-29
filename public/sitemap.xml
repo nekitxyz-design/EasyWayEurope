@@ -1,9 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Главная страница - русский -->
   <url>
-    <loc>https://ewe.com/</loc>
+    <loc>https://ewe.com/ru</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en"/>
   </url>
+  
+  <!-- Главная страница - болгарский -->
+  <url>
+    <loc>https://ewe.com/bg</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en"/>
+  </url>
+  
+  <!-- Главная страница - английский -->
+  <url>
+    <loc>https://ewe.com/en</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en"/>
+  </url>
+  
+  <!-- AutoHelp - русский -->
+  <url>
+    <loc>https://ewe.com/ru/autohelp</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/autohelp"/>
+  </url>
+  
+  <!-- AutoHelp - болгарский -->
+  <url>
+    <loc>https://ewe.com/bg/autohelp</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/autohelp"/>
+  </url>
+  
+  <!-- AutoHelp - английский -->
+  <url>
+    <loc>https://ewe.com/en/autohelp</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/autohelp"/>
+  </url>
+  
 </urlset> 

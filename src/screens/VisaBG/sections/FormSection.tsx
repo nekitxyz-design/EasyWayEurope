@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "../../../components/ui/button";
 import { Card } from "../../../components/ui/card";
 import { Input } from "../../../components/ui/input";
@@ -9,6 +10,7 @@ import {
 } from "../../../components/ui/select";
 
 export const FormSection = () => {
+  const { t } = useTranslation();
   const [nameError, setNameError] = React.useState<string>("");
   const [nameValue, setNameValue] = React.useState<string>("");
   const [nameTouched, setNameTouched] = React.useState<boolean>(false);
@@ -23,11 +25,11 @@ export const FormSection = () => {
   const contactOptions = [
     {
       icon: "/group-2.svg",
-      text: "Написать в Telegram",
+      text: t('form.contact.telegram'),
     },
     {
       icon: "/vector.svg",
-      text: "Написать в WhatsApp",
+      text: t('form.contact.whatsapp'),
     },
   ];
 
@@ -43,12 +45,12 @@ export const FormSection = () => {
     
     // Проверяем, что только буквы
     if (!/^[а-яёА-ЯЁa-zA-Z\s-]+$/.test(value)) {
-      return "Имя может содержать только буквы, пробелы и дефисы";
+      return t('form.errors.name_invalid');
     }
     
     // Проверяем максимальную длину
     if (value.length > 52) {
-      return "Имя не может быть длиннее 52 символов";
+      return t('form.errors.name_too_long');
     }
     
     return "";
@@ -60,12 +62,12 @@ export const FormSection = () => {
     // Проверяем email маску
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(value)) {
-      return "Введите корректный email адрес";
+      return t('form.errors.email_invalid');
     }
     
     // Проверяем максимальную длину
     if (value.length > 100) {
-      return "Email не может быть длиннее 100 символов";
+      return t('form.errors.email_too_long');
     }
     
     return "";
@@ -147,7 +149,7 @@ export const FormSection = () => {
         })
       });
       if (response.ok) {
-        setSubmitStatus("Спасибо! Ваша заявка отправлена.");
+        setSubmitStatus(t('form.success.submitted'));
         setNameValue("");
         setEmailValue("");
         // setSelectedTariff(""); // This line was removed as per the new_code
@@ -156,10 +158,10 @@ export const FormSection = () => {
         setServiceTouched(false);
       } else {
         const data = await response.json().catch(() => ({}));
-        setSubmitStatus(data.message ? `Ошибка: ${data.message}` : "Ошибка при отправке. Попробуйте позже.");
+        setSubmitStatus(data.message ? `${t('form.errors.error')}: ${data.message}` : t('form.errors.submission_error'));
       }
     } catch (error: any) {
-      setSubmitStatus(error?.message ? `Ошибка сети: ${error.message}` : "Ошибка сети. Попробуйте позже.");
+      setSubmitStatus(error?.message ? `${t('form.errors.network_error')}: ${error.message}` : t('form.errors.network_error_generic'));
     }
   };
 
@@ -174,15 +176,15 @@ export const FormSection = () => {
       />
 
         <h1 className="self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">
-        Записаться на Консультацию
+        {t('form.consultation.title')}
       </h1>
 
         <h2 className="self-stretch font-font-h-2 text-font-h-2 text-[#f3fcf0]">
-          Начните свой путь по получению ВНЖ в Болагрии
+          {t('form.consultation.subtitle')}
       </h2>
 
       <Input
-          placeholder="Ваше Имя *"
+          placeholder={t('form.fields.name')}
           value={nameValue}
           onChange={handleNameChange}
           onBlur={handleNameBlur}
@@ -192,7 +194,7 @@ export const FormSection = () => {
         />
 
         <Input
-          placeholder="E-mail *"
+          placeholder={t('form.fields.email')}
           value={emailValue}
           onChange={handleEmailChange}
           onBlur={handleEmailBlur}
@@ -202,7 +204,7 @@ export const FormSection = () => {
         />
 
         <CustomSelect
-          placeholder="Что вас интересует?"
+          placeholder={t('form.consultation.interest_placeholder')}
           // value={selectedTariff} // This line was removed as per the new_code
           onValueChange={handleServiceChange}
           onBlur={handleServiceBlur}
@@ -210,22 +212,22 @@ export const FormSection = () => {
           className="w-full md:w-[500px]"
         >
           <SelectContent>
-            <SelectItem value="visa">Тариф Базовый</SelectItem>
-            <SelectItem value="citizenship">Тариф Стандарт</SelectItem>
-            <SelectItem value="consultation">Консультация</SelectItem>
-            <SelectItem value="other">Другое</SelectItem>
+            <SelectItem value="visa">{t('form.consultation.options.basic')}</SelectItem>
+            <SelectItem value="citizenship">{t('form.consultation.options.standard')}</SelectItem>
+            <SelectItem value="consultation">{t('form.consultation.options.consultation')}</SelectItem>
+            <SelectItem value="other">{t('form.consultation.options.other')}</SelectItem>
           </SelectContent>
         </CustomSelect>
 
         <Button variant="accent" size="full" className="text-black w-full md:w-[500px]" type="submit">
-        Записаться на консультацию
+        {t('form.consultation.button')}
       </Button>
       {submitStatus && (
         <div className="text-white text-center mt-2">{submitStatus}</div>
       )}
 
         <div className="w-full md:w-[500px] text-center md:text-center font-font-body text-font-body text-white text-lg tracking-[-0.18px] mb-2">
-          — или просто —
+          — {t('form.or_simply')} —
         </div>
 
         <div className="flex flex-col items-start gap-4 w-full md:ml-0">

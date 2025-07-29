@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Input } from "./ui/input";
@@ -43,6 +44,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
   textareaRequired = false,
   contactOptions = [],
 }) => {
+  const { t } = useTranslation();
   const [nameError, setNameError] = React.useState<string>("");
   const [nameValue, setNameValue] = React.useState<string>("");
   const [nameTouched, setNameTouched] = React.useState<boolean>(false);
@@ -60,10 +62,10 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
   const validateName = (value: string): string => {
     if (value.length === 0) return "";
     if (!/^[а-яёА-ЯЁa-zA-Z\s-]+$/.test(value)) {
-      return "Имя может содержать только буквы, пробелы и дефисы";
+      return t('form.errors.name_invalid');
     }
     if (value.length > 52) {
-      return "Имя не может быть длиннее 52 символов";
+      return t('form.errors.name_too_long');
     }
     return "";
   };
@@ -72,10 +74,10 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
     if (value.length === 0) return "";
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(value)) {
-      return "Введите корректный email адрес";
+      return t('form.errors.email_invalid');
     }
     if (value.length > 100) {
-      return "Email не может быть длиннее 100 символов";
+      return t('form.errors.email_too_long');
     }
     return "";
   };
@@ -87,7 +89,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
 
   const validateTextarea = (value: string): string => {
     if (textareaRequired && !value.trim()) {
-      return "Обязательное поле";
+      return t('form.errors.required_field');
     }
     return "";
   };
@@ -213,7 +215,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
           selectedService: selectedService || 'none',
         });
         
-        setSubmitStatus("Спасибо! Ваша заявка отправлена.");
+        setSubmitStatus(t('form.success.submitted'));
         setNameValue("");
         setEmailValue("");
         setTextareaValue("");
@@ -222,7 +224,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
         setTextareaTouched(false);
       } else {
         const data = await response.json().catch(() => ({}));
-        setSubmitStatus(data.message ? `Ошибка: ${data.message}` : "Ошибка при отправке. Попробуйте позже.");
+        setSubmitStatus(data.message ? `${t('form.errors.error')}: ${data.message}` : t('form.errors.submission_error'));
         
         // Track submission error
         track('Form Submission Error', {
@@ -232,7 +234,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
         });
       }
     } catch (error: any) {
-      setSubmitStatus(error?.message ? `Ошибка сети: ${error.message}` : "Ошибка сети. Попробуйте позже.");
+      setSubmitStatus(error?.message ? `${t('form.errors.network_error')}: ${error.message}` : t('form.errors.network_error_generic'));
       
       // Track network error
       track('Form Submission Network Error', {
@@ -309,7 +311,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
       )}
       {contactOptions.length > 0 && (
         <div className="self-stretch font-font-body text-font-body text-white text-lg text-center tracking-[-0.18px]">
-          — или просто&nbsp;&nbsp;—
+          — {t('form.or_simply')} —
         </div>
       )}
       {contactOptions.length > 0 && (

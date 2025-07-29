@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "../../../components/ui/button";
 import { Card, CardContent, CardHeader } from "../../../components/ui/card";
 
@@ -21,68 +22,70 @@ interface PlanFeature {
   }
 
 export const PricesSection = () => {
+  const { t } = useTranslation();
+
   // Basic plan features
   const basicPlanFeatures: PlanFeature[] = [
-    { text: "♟️ Первичная консультация и стратегия", included: true },
-    { text: "🏢 Регистрация  торг. представительства вашей компании", included: true },
-    { text: "📍 Предоставление юридического адреса", included: true },
-    { text: "📑 Подготовка пакета документов", included: true },
-    { text: " 🤝 Сопровождение до получения ВНЖ", included: true },
-    { text: "📍 Предоставление  адреса регистрации физ. лица", included: false },
-    { text: "🏦 Помощь в открытии банковского счета", included: false },
-    { text: "🛡️ Помощь в оформлении страховки", included: false },
+    { text: t('prices.basic.features.consultation'), included: true },
+    { text: t('prices.basic.features.registration'), included: true },
+    { text: t('prices.basic.features.address'), included: true },
+    { text: t('prices.basic.features.documents'), included: true },
+    { text: t('prices.basic.features.support'), included: true },
+    { text: t('prices.basic.features.personal_address'), included: false },
+    { text: t('prices.basic.features.bank_account'), included: false },
+    { text: t('prices.basic.features.insurance'), included: false },
   ];
 
   // Standard plan features
   const standardPlanFeatures: PlanFeature[] = [
-    { text: "♟️ Первичная консультация и стратегия", included: true },
-    { text: "🏢 Включение в существующее торг. представительство", included: true },
-    { text: "📍 Предоставление юридического адреса", included: true },
-    { text: "📑 Подготовка пакета документов", included: true },
-    { text: " 🤝 Сопровождение до получения ВНЖ", included: true },
-    { text: "📍 Предоставление  адреса регистрации физ. лица", included: true },
-    { text: "🏦 Помощь в открытии банковского счета", included: true },
-    { text: "🛡️ Помощь в оформлении страховки", included: true },
+    { text: t('prices.standard.features.consultation'), included: true },
+    { text: t('prices.standard.features.registration'), included: true },
+    { text: t('prices.standard.features.address'), included: true },
+    { text: t('prices.standard.features.documents'), included: true },
+    { text: t('prices.standard.features.support'), included: true },
+    { text: t('prices.standard.features.personal_address'), included: true },
+    { text: t('prices.standard.features.bank_account'), included: true },
+    { text: t('prices.standard.features.insurance'), included: true },
   ];
 
   // Individual plan benefits
   const individualPlanBenefits: string[] = [
-    "👨 Релокация всей семьи",
-    "📈 Решения для инвесторов",
-    "💡 Помощь в сложных случаях",
-    "🌍 Подача не из страны гражданства",
-    "👵 ВНЖ для пенсионеров",
-    "🇺🇦 Решения для граждан Украины с временной защитой",
-    "✨ Любые другие уникальные запросы",
+    t('prices.individual.benefits.family'),
+    t('prices.individual.benefits.investors'),
+    t('prices.individual.benefits.complex_cases'),
+    t('prices.individual.benefits.foreign_submission'),
+    t('prices.individual.benefits.pensioners'),
+    t('prices.individual.benefits.ukrainians'),
+    t('prices.individual.benefits.unique_requests'),
   ];
 
   // Plans data (включая Индивидуальный)
   const plans: Plan[] = [
     {
-      title: "Базовый",
-      description: "Для тех, у кого есть своя иностранная компания.",
-      price: "— 1500 €",
-      buttonText: "Выбрать",
+      title: t('prices.basic.title'),
+      description: t('prices.basic.description'),
+      price: t('prices.basic.price'),
+      buttonText: t('prices.basic.button'),
       buttonTextColor: "text-black",
       headerBgColor: "bg-[#f0efef]",
       headerTextColor: "text-black",
       features: basicPlanFeatures,
     },
     {
-      title: "Стандарт",
-      description: "Комплексное решение «под ключ» для максимального удобства.",
-      price: "— 4500 €",
-      buttonText: "Выбрать",
+      title: t('prices.standard.title'),
+      description: t('prices.standard.description'),
+      price: t('prices.standard.price'),
+      buttonText: t('prices.standard.button'),
       buttonTextColor: "text-black",
       headerBgColor: "bg-[#0023e9]",
       headerTextColor: "text-white",
       features: standardPlanFeatures,
     },
     {
-      title: "Индивидуальный",
-      description: "Для нестандартных ситуаций и особых запросов.",
-      price: "По запросу",
-      buttonText: "Связаться с нами",
+      title: t('prices.individual.title'),
+      description: t('prices.individual.description'),
+      price: t('prices.individual.price'),
+      buttonText: t('prices.individual.button'),
       buttonTextColor: "text-[#f3fcf0]",
       headerBgColor: "bg-[#f0efef]",
       headerTextColor: "text-black",
@@ -99,7 +102,7 @@ export const PricesSection = () => {
       <div className="w-full md:max-w-[1600px] md:mx-auto md:px-16">
         <div className="px-4 pt-16">
           <h1 className="font-font-h-1 text-font-h-1 text-[#f3fcf0]">
-            Тарифы
+            {t('prices.title')}
           </h1>
         </div>
       </div>
@@ -113,8 +116,8 @@ export const PricesSection = () => {
           style={{ minWidth: `calc(${plans.length} * 323px + ${(plans.length - 1)} * 22px + 16px)` }}
         >
           {plans.map((plan, index) => {
-            const isStandard = plan.title === 'Стандарт';
-            const isIndividual = plan.title === 'Индивидуальный';
+            const isStandard = plan.title === t('prices.standard.title');
+            const isIndividual = plan.title === t('prices.individual.title');
             const cardWidth = 'w-[323px] md:w-full md:min-w-[323px] md:max-w-[420px]';
             const highlight = isStandard ? 'md:shadow-2xl md:border-2 md:border-[#0023e9]' : '';
             return (
@@ -141,24 +144,24 @@ export const PricesSection = () => {
                     {plan.price}
                   </p>
                   <Button
-                    variant={plan.title === 'Индивидуальный' ? 'primary' : 'white'}
+                    variant={plan.title === t('prices.individual.title') ? 'primary' : 'white'}
                     size="full"
-                    className={plan.title === 'Индивидуальный' ? 'text-[#f3fcf0]' : plan.buttonTextColor}
+                    className={plan.title === t('prices.individual.title') ? 'text-[#f3fcf0]' : plan.buttonTextColor}
                     onClick={() => {
                       let value = '';
-                      if (plan.title === 'Базовый') value = 'visa';
-                      else if (plan.title === 'Стандарт') value = 'citizenship';
-                      else if (plan.title === 'Индивидуальный') value = 'consultation';
+                      if (plan.title === t('prices.basic.title')) value = 'visa';
+                      else if (plan.title === t('prices.standard.title')) value = 'citizenship';
+                      else if (plan.title === t('prices.individual.title')) value = 'consultation';
                       // setSelectedTariff(value); // This line was removed
                       setTimeout(() => {
                         document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
                       }, 100);
                     }}
                   >
-                    {plan.title === 'Индивидуальный' ? 'Связаться с нами' : 'Выбрать'}
+                    {plan.buttonText}
                   </Button>
                 </CardHeader>
-                <CardContent className={`flex flex-col items-start gap-3 ${plan.title === 'Индивидуальный' ? 'p-4' : 'px-4 py-6'}`}>
+                <CardContent className={`flex flex-col items-start gap-3 ${plan.title === t('prices.individual.title') ? 'p-4' : 'px-4 py-6'}`}>
                   {plan.features && plan.features.length > 0 && plan.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-start gap-3 w-full">
                       <p className="w-full font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal text-black">
@@ -169,10 +172,10 @@ export const PricesSection = () => {
                       </span>
                     </div>
                   ))}
-                  {plan.title === 'Индивидуальный' && (
+                  {plan.title === t('prices.individual.title') && (
                     <>
                       <p className="w-56 font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal text-black">
-                        Мы можем предложить:
+                        {t('prices.individual.we_can_offer')}:
                       </p>
                       {individualPlanBenefits.map((benefit, index) => (
                         <p

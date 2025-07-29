@@ -1,7 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./tailwind.css";
+import "./lib/i18n"; // Импортируем конфигурацию i18n
 import { VisaBG } from "./screens/VisaBG/VisaBG";
 import { AutoHelp } from "./screens/AutoHelp/AutoHelp";
 
@@ -34,8 +35,19 @@ createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<VisaBG />} />
-        <Route path="/autohelp" element={<AutoHelp />} />
+        {/* Редирект с корня на английский */}
+        <Route path="/" element={<Navigate to="/en" replace />} />
+        
+        {/* Языковые маршруты */}
+        <Route path="/ru" element={<VisaBG />} />
+        <Route path="/bg" element={<VisaBG />} />
+        <Route path="/en" element={<VisaBG />} />
+        
+        {/* AutoHelp маршруты */}
+        <Route path="/autohelp" element={<Navigate to="/en/autohelp" replace />} />
+        <Route path="/ru/autohelp" element={<AutoHelp />} />
+        <Route path="/bg/autohelp" element={<AutoHelp />} />
+        <Route path="/en/autohelp" element={<AutoHelp />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

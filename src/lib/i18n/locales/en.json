@@ -1,0 +1,331 @@
+{
+  "hero": {
+    "title": "Your path to Europe through Bulgarian Residence Permit",
+    "subtitle": "We provide complete legal support for obtaining residence permits. Transparent, reliable and with guaranteed results.",
+    "button": "I want to live in Bulgaria"
+  },
+  "features": {
+    "title": "Bulgaria's Advantages",
+    "subtitle": "Advantages of obtaining residence permit in Bulgaria",
+    "items": {
+      "safety": {
+        "title": "Safety and Stability",
+        "description": "Low crime rate in a stable EU country."
+      },
+      "climate": {
+        "title": "Excellent climate",
+        "description": "European winter and warm summer without rain."
+      },
+      "eu_access": {
+        "title": "EU Access",
+        "description": "Freedom of movement and business in the EU and Schengen zone"
+      },
+      "tax": {
+        "title": "Favorable tax regime",
+        "description": "10% tax on profit and personal income — one of the lowest in Europe."
+      },
+      "business": {
+        "title": "Simple business integration",
+        "description": "Clear legal environment and developed business community"
+      },
+      "low_cost": {
+        "title": "Affordable cost",
+        "description": "One of the most affordable residence permit programs in the EU"
+      },
+      "fast_process": {
+        "title": "Fast processing",
+        "description": "Obtaining residence permit in 3-6 months"
+      },
+      "family": {
+        "title": "Family program",
+        "description": "Possibility to relocate with the whole family"
+      }
+    }
+  },
+  "bonuses": {
+    "title": "What does Bulgarian residence permit give?",
+    "subtitle": "Residence permit in Bulgaria — this is your official status as a resident of the European Union.",
+    "audience": {
+      "title": "This is for you if you are:",
+      "it_specialists": "IT specialists and digital nomads",
+      "entrepreneurs": "Entrepreneurs and businessmen",
+      "freelancers": "Freelancers and self-employed",
+      "remote_workers": "Remote workers seeking a stable base in Europe",
+      "families": "Families striving for high quality of life and opportunities in the EU"
+    },
+    "benefits": {
+      "title": "Benefits",
+      "legal_residence": "Legal residence and work",
+      "eu_banks": "Access to European banks",
+      "schengen_travel": "Free movement in Schengen countries",
+      "family_relocation": "Possibility to relocate family",
+      "citizenship_path": "Path to permanent residence and EU citizenship"
+    },
+    "cta_button": "Learn price",
+    "items": {
+      "healthcare": {
+        "title": "Healthcare",
+        "description": "Access to European healthcare system"
+      },
+      "education": {
+        "title": "Education",
+        "description": "Opportunity to study at European universities"
+      },
+      "business": {
+        "title": "Business",
+        "description": "Possibility to open business in the EU"
+      },
+      "citizenship": {
+        "title": "Path to citizenship",
+        "description": "Possibility to obtain citizenship after 5 years"
+      }
+    }
+  },
+  "process": {
+    "title": "Residence permit application process",
+    "subtitle": {
+      "bold": "5 simple steps",
+      "rest": " to become an EU resident"
+    },
+    "cta_button": "Book consultation",
+    "steps": {
+      "consultation": {
+        "title": "Consultation and strategy",
+        "description": "We analyze your situation and select the optimal path for obtaining a residence permit."
+      },
+      "documents": {
+        "title": "Document preparation",
+        "description": "We help collect and perfectly prepare all documents, minimizing the risk of refusal."
+      },
+      "business": {
+        "title": "Business registration",
+        "description": "We register a representative office of your company or integrate you into an existing structure."
+      },
+      "application": {
+        "title": "D visa and residence permit application",
+        "description": "We accompany you when submitting documents to the consulate and migration service."
+      },
+      "approval": {
+        "title": "Receiving resident card",
+        "description": "You receive your personal residence permit card. Congratulations on your new status in Europe!"
+      }
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Your reliable relocation partner",
+    "description": "We specialize in helping obtain residence permits in European countries. Our team of lawyers has years of experience working with immigration law.",
+    "features": {
+      "experience": "10+ years in immigration and business law",
+      "cases": "Over 100 completed cases",
+      "lawyers": "Best lawyers in Bulgaria on the team",
+      "expertise": "Understanding of specifics and migration law",
+      "approach": "Personalized approach",
+      "support": "Support at all stages",
+      "legal": "We work 100% legally and transparently"
+    },
+    "stats": {
+      "clients": "satisfied clients",
+      "success_rate": "% success rate",
+      "experience": "years of experience"
+    }
+  },
+  "prices": {
+    "title": "Prices",
+    "subtitle": "Transparent prices without hidden fees",
+    "basic": {
+      "title": "Basic",
+      "description": "For those who have their own foreign company.",
+      "price": "— 1500 €",
+      "button": "Choose",
+      "features": {
+        "consultation": "♟️ Initial consultation and strategy",
+        "registration": "🏢 Registration of your company’s rep. office",
+        "address": "📍 Provision of legal address",
+        "documents": "📑 Preparation of document package",
+        "support": "🤝 Support until obtaining residence permit",
+        "personal_address": "📍 Provision of personal registration address",
+        "bank_account": "🏦 Help in opening bank account",
+        "insurance": "🛡️ Help in insurance registration"
+      }
+    },
+    "standard": {
+      "title": "Standard",
+      "description": "Turnkey comprehensive solution for maximum convenience.",
+      "price": "— 4500 €",
+      "button": "Choose",
+      "features": {
+        "consultation": "♟️ Initial consultation and strategy",
+        "registration": "🏢 Inclusion in an existing rep. office",
+        "address": "📍 Provision of legal address",
+        "documents": "📑 Preparation of document package",
+        "support": "🤝 Support until obtaining residence permit",
+        "personal_address": "📍 Provision of personal registration address",
+        "bank_account": "🏦 Help in opening bank account",
+        "insurance": "🛡️ Help in insurance registration"
+      }
+    },
+    "individual": {
+      "title": "Individual",
+      "description": "For non-standard situations and special requests.",
+      "price": "On request",
+      "button": "Contact us",
+      "we_can_offer": "We can offer",
+      "benefits": {
+        "family": "👨 Relocation of the whole family",
+        "investors": "📈 Solutions for investors",
+        "complex_cases": "💡 Help in complex cases",
+        "foreign_submission": "🌍 Submission not from country of citizenship",
+        "pensioners": "👵 Residence permit for pensioners",
+        "ukrainians": "🇺🇦 Solutions for Ukrainian citizens with temporary protection",
+        "unique_requests": "✨ Any other unique requests"
+      }
+    }
+  },
+  "form": {
+    "title": "Get consultation",
+    "subtitle": "Leave a request and we will contact you",
+    "fields": {
+      "name": "Name",
+      "phone": "Phone",
+      "email": "Email",
+      "message": "Message"
+    },
+    "button": "Send request",
+    "privacy": "I agree to the privacy policy"
+  },
+  "guarantees": {
+    "title": "Guarantees",
+    "subtitle": "We value your trust",
+    "items": {
+      "contract": {
+        "title": "Contract work",
+        "description": "Contract with Bulgarian legal entity for your protection"
+      },
+      "payment": {
+        "title": "Payment in stages",
+        "description": "Pay part upon completion of each stage"
+      },
+      "legal": {
+        "title": "Legality guarantee",
+        "description": "All procedures 100% comply with Bulgarian and EU migration legislation."
+      },
+      "support": {
+        "title": "Support until result",
+        "description": "We are with you at every step — from the first call to receiving the residence permit card."
+      }
+    }
+  },
+  "faq": {
+    "title": "FAQ",
+    "subtitle": "Your questions, our answers",
+    "ask_question": "Ask a Question",
+    "questions": {
+      "representation": {
+        "question": "1. What is a trade representative office and who is suitable for this method of obtaining a residence permit?",
+        "answer": "A trade representative office is a branch of a foreign company registered in Bulgaria. On its basis, it is possible to obtain a temporary residence permit for official representatives of the company. The program is suitable for owners or directors of foreign companies, individual entrepreneurs and those who want to legally reside in Bulgaria with the possibility of extending their status."
+      },
+      "representatives": {
+        "question": "2. How many representatives can be registered from one trade representative office?",
+        "answer": "The law allows registration of up to two official representatives with the right to apply for a residence permit."
+      },
+      "documents": {
+        "question": "3. What documents are required for registration of a representative office?",
+        "answer": "You will need:\n• founding documents of the foreign company\n• confirmation of its activities\n• passport data of applicants\n• powers of attorney, translations and apostilles\nWe will provide an exact list and help with preparation."
+      },
+      "validity": {
+        "question": "4. What is the validity period of the residence permit and can the family be relocated?",
+        "answer": "The residence permit is issued for 1 year with the right to annual renewal. After 5 years, you can apply for permanent residence and citizenship. After obtaining a residence permit, family reunification is possible (spouse and minor children)."
+      },
+      "costs": {
+        "question": "5. What costs should be considered when applying for a residence permit?",
+        "answer": "Main costs:\n• Registration of representative office\n• State fees\n• Translations, notary, apostilles\n• Legal address and office\n• Medical insurance\n• Support services\n• Proof of financial solvency (deposit in account)"
+      },
+      "timeline": {
+        "question": "6. How long does the residence permit application process take?",
+        "answer": "Estimated timeframes:\n• Document preparation: 2–4 weeks\n• Representative office registration: up to 1 month\n• Residence permit application review: 1–2 months\nTotal time — from 2 to 3 months."
+      },
+      "presence": {
+        "question": "7. Do you need to personally come to Bulgaria to apply for a residence permit?",
+        "answer": "Yes, personal presence is mandatory for document submission, biometric data processing and receiving the residence permit card. We accompany clients at all stages."
+      },
+      "additional_services": {
+        "question": "8. Do you help with opening a bank account, insurance and housing?",
+        "answer": "Yes, we offer full support: help with opening an account, insurance selection, housing rental, translator and accompaniment to authorities."
+      }
+    }
+  },
+  "form": {
+    "consultation": {
+      "title": "Sign up for Consultation",
+      "subtitle": "Start your journey to obtain residence permit in Bulgaria",
+      "interest_placeholder": "What interests you?",
+      "button": "Sign up for consultation",
+      "options": {
+        "basic": "Basic Tariff",
+        "standard": "Standard Tariff",
+        "consultation": "Consultation",
+        "other": "Other"
+      }
+    },
+    "faq": {
+      "title": "Have a question?",
+      "subtitle": "Write to us and we will answer",
+      "question_label": "Your question",
+      "question_placeholder": "Describe your question"
+    },
+    "fields": {
+      "name": "Your Name *",
+      "email": "E-mail *"
+    },
+    "button": "Send",
+    "or_simply": "or simply",
+    "contact": {
+      "telegram": "Write in Telegram",
+      "whatsapp": "Write in WhatsApp"
+    },
+    "errors": {
+      "name_invalid": "Name can only contain letters, spaces and hyphens",
+      "name_too_long": "Name cannot be longer than 52 characters",
+      "email_invalid": "Please enter a valid email address",
+      "email_too_long": "Email cannot be longer than 100 characters",
+      "required_field": "Required field",
+      "error": "Error",
+      "submission_error": "Submission error. Please try again later.",
+      "network_error": "Network error",
+      "network_error_generic": "Network error. Please try again later."
+    },
+    "success": {
+      "submitted": "Thank you! Your application has been sent."
+    }
+  },
+  "footer": {
+    "contact": "Contacts",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "social": "Social networks",
+    "rights": "All rights reserved"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "how_it_works": "How it works",
+    "guarantees": "Guarantees",
+    "prices": "Prices",
+    "faq": "FAQ"
+  },
+  "seo": {
+    "title": "EasyWay Europe - Bulgarian Residence Permit | Residence Permit in Europe",
+    "description": "Obtaining Bulgarian residence permit for Russians. Legal support for residence permit in Europe. Guaranteed result.",
+    "keywords": "Bulgarian residence permit, residence permit, Bulgaria, Europe, EU citizenship, relocation to Europe, trade representative office, residence permit for Russians",
+    "og_title": "EasyWay Europe - Bulgarian Residence Permit",
+    "og_description": "Obtaining Bulgarian residence permit for Russians. Legal support for residence permit in Europe.",
+    "schema_name": "EasyWay Europe",
+    "schema_description": "Obtaining Bulgarian residence permit for Russians. Legal support for residence permit in Europe.",
+    "schema_service_type": "Bulgarian Residence Permit",
+    "schema_area_served": "Russia"
+  }
+} 

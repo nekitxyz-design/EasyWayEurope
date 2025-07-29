@@ -1,10 +1,12 @@
 /// <reference types="vite/client" />
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { CurvedNavbar } from "./curved-navbar";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { ChevronDownIcon } from "lucide-react";
 import { cn } from "../../lib/utils";
+import { useLanguageRoute } from "../../lib/hooks/useLanguageRoute";
 // import { track } from '@amplitude/analytics-browser';
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -15,12 +17,16 @@ const track = (eventName: string, properties?: any) => {
   }
 };
 
-const navItems = [
-  { title: "Как это работает", href: "#process" },
-  { title: "Гарантии", href: "#guarantees" },
-  { title: "Тарифы", href: "#plans" },
-  { title: "FAQ", href: "#faq" },
-];
+const useNavItems = () => {
+  const { t } = useTranslation();
+  
+  return [
+    { title: t('nav.how_it_works'), href: "#process" },
+    { title: t('nav.guarantees'), href: "#guarantees" },
+    { title: t('nav.prices'), href: "#plans" },
+    { title: t('nav.faq'), href: "#faq" },
+  ];
+};
 
 const LanguageSelect = ({ value, onValueChange }: { value: string; onValueChange: (value: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,18 +75,20 @@ const LanguageSelect = ({ value, onValueChange }: { value: string; onValueChange
 };
 
 export const MainNavbar: React.FC = () => {
+  const { i18n } = useTranslation();
+  const { currentLanguage, changeLanguage } = useLanguageRoute();
+  const navItems = useNavItems();
   const [open, setOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState("ru");
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const handleLanguageChange = (value: string) => {
     // Track language change
     track('Language Changed', {
-      from: selectedLanguage,
+      from: currentLanguage,
       to: value,
     });
-    setSelectedLanguage(value);
+    changeLanguage(value);
   };
 
   // Handle scroll for mobile menu
@@ -141,7 +149,7 @@ export const MainNavbar: React.FC = () => {
           </ul>
           {/* Переключатель языка */}
           <div className="hidden md:flex items-center gap-2">
-            <LanguageSelect value={selectedLanguage} onValueChange={handleLanguageChange} />
+            <LanguageSelect value={currentLanguage} onValueChange={handleLanguageChange} />
           </div>
           {/* Мобильный бургер */}
           <button className="flex md:hidden text-white text-2xl" onClick={() => setOpen(true)}>

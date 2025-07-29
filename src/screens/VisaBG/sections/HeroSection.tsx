@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "../../../components/ui/button";
 import { MainNavbar } from "../../../components/ui/main-navbar";
+import { LanguageSwitcher } from "../../../components/LanguageSwitcher";
 // import { track } from '@amplitude/analytics-browser';
 
 // Helper function for tracking
@@ -11,10 +13,12 @@ const track = (eventName: string, properties?: any) => {
 };
 
 export const HeroSection = () => {
+  const { t } = useTranslation();
+
   const handleHeroButtonClick = () => {
     // Track hero button click
     track('Hero Button Clicked', {
-      buttonText: 'Хочу жить в Болгарии',
+      buttonText: t('hero.button'),
       section: 'hero',
     });
     
@@ -29,11 +33,10 @@ export const HeroSection = () => {
         <div className="max-w-[1600px] mx-auto w-full md:px-16 flex flex-col justify-end h-full">
           <div className="flex flex-col items-start gap-4 pt-8 pb-12 px-6 w-full">
             <h1 className="w-full font-font-h-1 text-font-h-1 text-white md:text-[56px] md:leading-[66px] md:max-w-[700px]">
-              Ваш путь в Европу через ВНЖ Болгарии
+              {t('hero.title')}
             </h1>
             <p className="w-full font-font-body text-font-body text-white md:text-[20px] md:leading-[28px] md:max-w-[500px]">
-              Обеспечим полное юридическое сопровождение для получения вида на
-              жительство. Прозрачно, надежно и с гарантией результата.
+              {t('hero.subtitle')}
             </p>
             <div className="mb-1"></div>
             <Button 
@@ -43,7 +46,7 @@ export const HeroSection = () => {
               onClick={handleHeroButtonClick}
             >
               <span className="[font-family:'Space_Grotesk',Helvetica] font-bold text-white text-lg tracking-[-0.18px]">
-                Хочу жить в Болгарии
+                {t('hero.button')}
               </span>
             </Button>
           </div>

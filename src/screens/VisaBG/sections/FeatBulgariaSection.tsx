@@ -1,35 +1,36 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "../../../components/ui/card";
 
 export const FeatBulgariaSection = () => {
+  const { t } = useTranslation();
+
   // Feature data for mapping
   const features = [
     {
       icon: "🛡",
-      title: "Безопасность и Стабильность",
-      description: "Низкий уровень преступности в стабильной стране ЕС.",
+      title: t('features.items.safety.title'),
+      description: t('features.items.safety.description'),
     },
     {
       icon: "☀️",
-      title: "Отличный климат",
-      description: "Европейская зима и теплое лето без дождей.",
+      title: t('features.items.climate.title'),
+      description: t('features.items.climate.description'),
     },
     {
       icon: "🇪🇺",
-      title: "Доступ в Евросоюз",
-      description:
-        "Свобода передвижения и ведения бизнеса в ЕС и Шенгенской зоне",
+      title: t('features.items.eu_access.title'),
+      description: t('features.items.eu_access.description'),
     },
     {
       icon: "💶",
-      title: "Выгодный налоговый режим",
-      description:
-        "10% налог на прибыль и личные доходы — один из самых низких в Европе.",
+      title: t('features.items.tax.title'),
+      description: t('features.items.tax.description'),
     },
     {
       icon: "🤝",
-      title: "Простая бизнес-интеграция",
-      description: "Понятная юридическая среда и развитое бизнес-сообщество",
+      title: t('features.items.business.title'),
+      description: t('features.items.business.description'),
     },
   ];
 
@@ -39,7 +40,7 @@ export const FeatBulgariaSection = () => {
         <Card className="flex flex-col gap-8 px-4 py-12 relative self-stretch w-full bg-transparent border-none">
           <CardContent className="flex flex-col gap-8 p-0 w-full">
             <h1 className="self-start text-white font-font-h-1 text-font-h-1 md:text-[56px] md:leading-[66px] md:mb-4">
-              Преимущества Болагарии 🇧🇬
+              {t('features.title')} 🇧🇬
             </h1>
             {/* Desktop: 2-2-1 layout, карточки по 440px, последняя по центру */}
             <div className="hidden md:grid grid-cols-2 gap-8 w-full">

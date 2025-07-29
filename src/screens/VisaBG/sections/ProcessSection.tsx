@@ -1,38 +1,36 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "../../../components/ui/button";
 import { Card, CardContent } from "../../../components/ui/card";
 
 export const ProcessSection = () => {
+  const { t } = useTranslation();
+
   // Data for the process steps
   const processSteps = [
     {
-      title: "Консультация и стратегия",
-      description:
-        "Анализируем вашу ситуацию и подбираем оптимальный путь для получения ВНЖ.",
+      title: t('process.steps.consultation.title'),
+      description: t('process.steps.consultation.description'),
       highlighted: false,
     },
     {
-      title: "Подготовка документов",
-      description:
-        "Помогаем собрать и безупречно оформить все документы, минимизируя риск отказа.",
+      title: t('process.steps.documents.title'),
+      description: t('process.steps.documents.description'),
       highlighted: false,
     },
     {
-      title: "Регистрация бизнеса",
-      description:
-        "Регистрируем представительство вашей компании или интегрируем вас в существующую структуру.",
+      title: t('process.steps.business.title'),
+      description: t('process.steps.business.description'),
       highlighted: false,
     },
     {
-      title: "Подача на визу D и ВНЖ",
-      description:
-        "Сопровождаем при подаче документов в консульство и миграционную службу.",
+      title: t('process.steps.application.title'),
+      description: t('process.steps.application.description'),
       highlighted: false,
     },
     {
-      title: "Получение карты резидента",
-      description:
-        "Вы получаете вашу личную карту ВНЖ. Поздравляем с новым статусом в Европе!",
+      title: t('process.steps.approval.title'),
+      description: t('process.steps.approval.description'),
       highlighted: true,
     },
   ];
@@ -43,11 +41,11 @@ export const ProcessSection = () => {
         {/* Arrow SVG */}
         <img src={`${import.meta.env.BASE_URL}arrow_lp.svg`} alt="Arrow" className="w-6 h-8 mb-2" />
         <h1 className="self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">
-          Процесс получения ВНЖ
+          {t('process.title')}
         </h1>
         <div className="flex flex-col items-start gap-0.5 relative self-stretch w-full">
           <p className="relative self-stretch mt-[-1.00px] font-font-body text-font-body text-white">
-            <span className="font-bold">5 простых шагов</span>, чтобы стать резедентов Евросоюза
+            <span className="font-bold">{t('process.subtitle.bold')}</span>{t('process.subtitle.rest')}
           </p>
         </div>
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -105,7 +103,7 @@ export const ProcessSection = () => {
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}
         >
-          Записаться на консультацию
+          {t('process.cta_button')}
         </Button>
       </div>
     </section>

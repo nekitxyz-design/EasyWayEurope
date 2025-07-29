@@ -1,35 +1,38 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "../../../components/ui/card";
 
 export const AboutUsSection = () => {
+  const { t } = useTranslation();
+
   const features = [
     {
       icon: "🕒",
-      text: "10+ лет в сфере иммиграционного и бизнес-права",
+      text: t('about.features.experience'),
     },
     {
       icon: "👨",
-      text: "Более 100 реализованных кейсов",
+      text: t('about.features.cases'),
     },
     {
       icon: "⚖️",
-      text: "Лучшие юристы Болгарии в команде",
+      text: t('about.features.lawyers'),
     },
     {
       icon: "💻",
-      text: "Понимание специфики и миграционного права",
+      text: t('about.features.expertise'),
     },
     {
       icon: "🤝",
-      text: "Персонализированный подход",
+      text: t('about.features.approach'),
     },
     {
       icon: "📑",
-      text: "Поддержка на всех этапах",
+      text: t('about.features.support'),
     },
     {
       icon: "💡",
-      text: "Работаем на 100% легально и прозрачно",
+      text: t('about.features.legal'),
     },
   ];
 
@@ -42,10 +45,10 @@ export const AboutUsSection = () => {
           className="w-[88px] h-[88px]"
         />
         <h1 className="relative self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">
-          О Нас
+          {t('about.title')}
         </h1>
         <h2 className="relative self-stretch font-font-h-2 text-font-h-2 text-[#f3fcf0] mb-2">
-          Ваш надежный партнер по релокации
+          {t('about.subtitle')}
         </h2>
         <Card className="w-full bg-transparent border-none shadow-none">
           <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-[8px] md:gap-6 p-0">
