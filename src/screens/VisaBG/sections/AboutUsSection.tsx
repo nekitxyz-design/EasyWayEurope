@@ -41,7 +41,7 @@ export const AboutUsSection = () => {
       <div className="max-w-[1600px] mx-auto w-full md:px-16 gap-6 flex flex-col items-start px-6 py-12">
         <img 
           src="logo_lp.svg" 
-          alt="EasyWay Europe Logo" 
+          alt="EasyWayEurope Logo" 
           className="w-[88px] h-[88px]"
         />
         <h1 className="relative self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">

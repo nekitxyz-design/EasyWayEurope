@@ -16,7 +16,7 @@ export const FooterSection = () => {
         {/* Logo and copyright */}
         <img 
           src="logo_lp.svg" 
-          alt="EasyWay Europe Logo" 
+          alt="EasyWayEurope Logo" 
           className="w-[88px] h-[88px]"
         />
 
