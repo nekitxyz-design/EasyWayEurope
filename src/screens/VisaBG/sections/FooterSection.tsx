@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardContent } from "../../../components/ui/card";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
+import { getAssetPath } from "../../../lib/utils";
 
 export const FooterSection = () => {
   // Social media links
@@ -21,7 +22,7 @@ export const FooterSection = () => {
         <div className="flex flex-col gap-6 md:w-1/2">
         {/* Logo and copyright */}
         <img 
-          src="logo_lp.svg" 
+          src={getAssetPath("/logo_lp.svg")} 
           alt="EasyWayEurope Logo" 
           className="w-[88px] h-[88px]"
         />

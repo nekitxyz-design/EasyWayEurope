@@ -3,9 +3,9 @@ import tailwind from "tailwindcss";
 import { defineConfig } from "vite";
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  base: './',
+  base: mode === 'production' ? '/EasyWayEurope/' : './',
   server: {
     port: 1337,
     host: true,
@@ -25,4 +25,4 @@ export default defineConfig({
   define: {
     __DEV__: false,
   },
-});
+}));

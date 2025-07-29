@@ -6,6 +6,7 @@ import { CurvedNavbar } from "./curved-navbar";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { ChevronDownIcon } from "lucide-react";
 import { cn } from "../../lib/utils";
+import { getAssetPath } from "../../lib/utils";
 import { useLanguageRoute } from "../../lib/hooks/useLanguageRoute";
 // import { track } from '@amplitude/analytics-browser';
 import { AnimatePresence, motion } from "framer-motion";
@@ -116,7 +117,7 @@ export const MainNavbar: React.FC = () => {
         <div className="w-full md:max-w-[1600px] md:mx-auto px-0 md:px-16 flex items-center justify-between">
           {/* Логотип */}
           <img
-            src="/logo_horiz.svg"
+            src={getAssetPath("/logo_horiz.svg")}
             alt="EasyWayEurope Logo"
             className="h-[46px] w-[164px] object-contain"
           />
@@ -181,7 +182,7 @@ export const MainNavbar: React.FC = () => {
               }}
             >
               <img
-                src="/logo_horiz.svg"
+                src={getAssetPath("/logo_horiz.svg")}
                 alt="EasyWayEurope Logo"
                 className="h-[46px] w-[164px] object-contain"
               />

@@ -9,6 +9,8 @@ import { useLanguageRoute } from "../../lib/hooks/useLanguageRoute";
 // import { track } from '@amplitude/analytics-browser';
 
 import { trackEvent } from '../../components/AnalyticsProvider';
+import { cn } from "../../lib/utils";
+import { getAssetPath } from "../../lib/utils";
 
 // Helper function for tracking
 const track = (eventName: string, properties?: any) => {
@@ -131,7 +133,7 @@ export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; set
           className="fixed inset-0 z-50 backdrop-blur-[8px] bg-black/60 text-white flex flex-col"
         >
           {/* Логотип-иконка в левом верхнем углу */}
-          <img src={`${import.meta.env.BASE_URL}logo_icon.svg`} alt="Logo Icon" className="absolute top-4 left-4 h-[46px] w-auto z-20" />
+          <img src={getAssetPath("/logo_icon.svg")} alt="Logo Icon" className="absolute top-4 left-4 h-[46px] w-auto z-20" />
           <div className="flex justify-between items-center px-4 py-2">
             <button onClick={() => setIsActive(false)} className="text-3xl text-white ml-auto h-[46px] flex items-center">
               <IoClose />

@@ -9,6 +9,7 @@ import {
   SelectContent,
   SelectItem,
 } from "../../../components/ui/select";
+import { getAssetPath } from "../../../lib/utils";
 
 export const FormSection = () => {
   const { t } = useTranslation();
@@ -27,11 +28,11 @@ export const FormSection = () => {
   // Contact method options data
   const contactOptions = [
     {
-      icon: "/group-2.svg",
+      icon: getAssetPath("/group-2.svg"),
       text: t('form.contact.telegram'),
     },
     {
-      icon: "/vector.svg",
+      icon: getAssetPath("/vector.svg"),
       text: t('form.contact.whatsapp'),
     },
   ];
@@ -179,10 +180,10 @@ export const FormSection = () => {
     <section id="services" className="gap-6 px-6 py-12 md:pt-16 md:pb-16 bg-[#31419980] flex flex-col items-stretch relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
       <div className="w-full md:max-w-[1600px] md:mx-auto md:px-16">
         <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full items-start">
-      <img 
-          src={`${import.meta.env.BASE_URL}logo_horiz.svg`} 
-        alt="EasyWay Logo" 
-          className="w-[164px] h-[46px] self-start"
+      <img
+          src={getAssetPath("/logo_horiz.svg")}
+        alt="EasyWayEurope Logo"
+          className="w-32 h-auto mb-4"
       />
 
         <h1 className="self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">
@@ -258,7 +259,7 @@ export const FormSection = () => {
                   className="flex items-center gap-3 px-4 w-full md:w-[500px] h-[60px] bg-[#0000004f] rounded overflow-hidden backdrop-blur-[32px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(32px)_brightness(100%)] border-none cursor-pointer font-font-body text-font-body hover:bg-white/10 hover:shadow-lg hover:text-[#ffd23f] focus-visible:ring-2 focus-visible:ring-[#ffd23f] focus-visible:ring-offset-2 transition-all duration-200"
                 >
                   <img 
-                    src={index === 0 ? `${import.meta.env.BASE_URL}telegram-icon.svg` : `${import.meta.env.BASE_URL}whatsapp-icon.svg`} 
+                    src={index === 0 ? getAssetPath("/telegram-icon.svg") : getAssetPath("/whatsapp-icon.svg")} 
                     alt={option.text} 
                     className="w-8 h-8"
                   />

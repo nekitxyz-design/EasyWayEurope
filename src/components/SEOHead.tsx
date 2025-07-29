@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
+import { getAssetPath } from '../lib/utils';
 
 interface SEOHeadProps {
   title?: string;
@@ -14,14 +15,14 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
   keywords,
-  ogImage = '/og-image.png',
+  ogImage = getAssetPath('/og-image.png'),
   canonicalUrl
 }) => {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   
   const currentLanguage = i18n.language;
-  const baseUrl = 'https://ewe.com';
+  const baseUrl = 'https://easywayeurope.com';
   
   // Определяем язык для HTML атрибута
   const getHtmlLang = () => {
@@ -85,7 +86,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     // Обновляем основные meta теги
     updateMetaTag('description', getSEODescription());
     updateMetaTag('keywords', getSEOKeywords());
-    updateMetaTag('author', 'EasyWay Europe');
+    updateMetaTag('author', 'EasyWayEurope');
 
     // Обновляем Open Graph теги
     updatePropertyTag('og:title', getSEOTitle());

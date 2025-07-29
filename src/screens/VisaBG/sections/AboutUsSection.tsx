@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { getAssetPath } from "../../../lib/utils";
 import { Card, CardContent } from "../../../components/ui/card";
 
 export const AboutUsSection = () => {
@@ -39,11 +40,7 @@ export const AboutUsSection = () => {
   return (
     <section className="bg-[#3141994c] w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)] md:pt-10 md:pb-10">
       <div className="max-w-[1600px] mx-auto w-full md:px-16 gap-6 flex flex-col items-start px-6 py-12">
-        <img 
-          src="logo_lp.svg" 
-          alt="EasyWayEurope Logo" 
-          className="w-[88px] h-[88px]"
-        />
+        <img src={getAssetPath("/logo_lp.svg")} alt="EasyWayEurope Logo" className="w-32 h-auto mb-4" />
         <h1 className="relative self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">
           {t('about.title')}
         </h1>

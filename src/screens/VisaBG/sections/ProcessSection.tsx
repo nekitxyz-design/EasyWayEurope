@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../../components/ui/button";
 import { Card, CardContent } from "../../../components/ui/card";
+import { getAssetPath } from "../../../lib/utils";
 
 export const ProcessSection = () => {
   const { t } = useTranslation();
@@ -39,7 +40,7 @@ export const ProcessSection = () => {
     <section id="process" className="bg-[#000000b2] w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)] md:pt-10 md:pb-10">
       <div className="max-w-[1600px] mx-auto w-full md:px-16 gap-6 flex flex-col items-start px-6 py-12">
         {/* Arrow SVG */}
-        <img src={`${import.meta.env.BASE_URL}arrow_lp.svg`} alt="Arrow" className="w-6 h-8 mb-2" />
+        <img src={getAssetPath("/arrow_lp.svg")} alt="Arrow" className="w-6 h-8 mb-2" />
         <h1 className="self-stretch font-font-h-1 text-font-h-1 text-[#f3fcf0]">
           {t('process.title')}
         </h1>
