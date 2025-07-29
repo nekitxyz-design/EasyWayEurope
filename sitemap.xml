@@ -4,176 +4,176 @@
   
   <!-- Главная страница - русский -->
   <url>
-    <loc>https://ewe.com/ru</loc>
+    <loc>https://easywayeurope.com/ru</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en"/>
   </url>
   
   <!-- Главная страница - болгарский -->
   <url>
-    <loc>https://ewe.com/bg</loc>
+    <loc>https://easywayeurope.com/bg</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en"/>
   </url>
   
   <!-- Главная страница - английский -->
   <url>
-    <loc>https://ewe.com/en</loc>
+    <loc>https://easywayeurope.com/en</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en"/>
   </url>
   
   <!-- AutoHelp - русский -->
   <url>
-    <loc>https://ewe.com/ru/autohelp</loc>
+    <loc>https://easywayeurope.com/ru/autohelp</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/autohelp"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/autohelp"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/autohelp"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en/autohelp"/>
   </url>
   
   <!-- AutoHelp - болгарский -->
   <url>
-    <loc>https://ewe.com/bg/autohelp</loc>
+    <loc>https://easywayeurope.com/bg/autohelp</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/autohelp"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/autohelp"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/autohelp"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en/autohelp"/>
   </url>
   
   <!-- AutoHelp - английский -->
   <url>
-    <loc>https://ewe.com/en/autohelp</loc>
+    <loc>https://easywayeurope.com/en/autohelp</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/autohelp"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/autohelp"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/autohelp"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en/autohelp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en/autohelp"/>
   </url>
   
   <!-- Privacy Policy - русский -->
   <url>
-    <loc>https://ewe.com/ru/privacy-policy</loc>
+    <loc>https://easywayeurope.com/ru/privacy-policy</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/privacy-policy"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/privacy-policy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/privacy-policy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en/privacy-policy"/>
   </url>
   <!-- Privacy Policy - болгарский -->
   <url>
-    <loc>https://ewe.com/bg/privacy-policy</loc>
+    <loc>https://easywayeurope.com/bg/privacy-policy</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/privacy-policy"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/privacy-policy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/privacy-policy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en/privacy-policy"/>
   </url>
   <!-- Privacy Policy - английский -->
   <url>
-    <loc>https://ewe.com/en/privacy-policy</loc>
+    <loc>https://easywayeurope.com/en/privacy-policy</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/privacy-policy"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/privacy-policy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/privacy-policy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en/privacy-policy"/>
   </url>
 
   <!-- Cookie Policy - русский -->
   <url>
-    <loc>https://ewe.com/ru/cookie-policy</loc>
+    <loc>https://easywayeurope.com/ru/cookie-policy</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/cookie-policy"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/cookie-policy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/cookie-policy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en/cookie-policy"/>
   </url>
   <!-- Cookie Policy - болгарский -->
   <url>
-    <loc>https://ewe.com/bg/cookie-policy</loc>
+    <loc>https://easywayeurope.com/bg/cookie-policy</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/cookie-policy"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/cookie-policy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/cookie-policy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en/cookie-policy"/>
   </url>
   <!-- Cookie Policy - английский -->
   <url>
-    <loc>https://ewe.com/en/cookie-policy</loc>
+    <loc>https://easywayeurope.com/en/cookie-policy</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/cookie-policy"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/cookie-policy"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/cookie-policy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en/cookie-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en/cookie-policy"/>
   </url>
 
   <!-- Terms of Service - русский -->
   <url>
-    <loc>https://ewe.com/ru/terms-of-service</loc>
+    <loc>https://easywayeurope.com/ru/terms-of-service</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/terms-of-service"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/terms-of-service"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/terms-of-service"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en/terms-of-service"/>
   </url>
   <!-- Terms of Service - болгарский -->
   <url>
-    <loc>https://ewe.com/bg/terms-of-service</loc>
+    <loc>https://easywayeurope.com/bg/terms-of-service</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/terms-of-service"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/terms-of-service"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/terms-of-service"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en/terms-of-service"/>
   </url>
   <!-- Terms of Service - английский -->
   <url>
-    <loc>https://ewe.com/en/terms-of-service</loc>
+    <loc>https://easywayeurope.com/en/terms-of-service</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://ewe.com/ru/terms-of-service"/>
-    <xhtml:link rel="alternate" hreflang="bg" href="https://ewe.com/bg/terms-of-service"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ewe.com/en/terms-of-service"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ewe.com/en/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://easywayeurope.com/ru/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://easywayeurope.com/bg/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://easywayeurope.com/en/terms-of-service"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://easywayeurope.com/en/terms-of-service"/>
   </url>
   
 </urlset> 
