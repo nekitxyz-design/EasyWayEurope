@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../../components/ui/button";
 import { Card, CardContent, CardHeader } from "../../../components/ui/card";
+import { useTariff } from "../../../lib/contexts/TariffContext";
 
 // Define plan features data structure
 interface PlanFeature {
@@ -19,10 +20,12 @@ interface PlanFeature {
     headerBgColor: string;
     headerTextColor: string;
     features: PlanFeature[];
+    planType: 'basic' | 'standard' | 'individual';
   }
 
 export const PricesSection = () => {
   const { t } = useTranslation();
+  const { setSelectedTariff } = useTariff();
 
   // Basic plan features
   const basicPlanFeatures: PlanFeature[] = [
@@ -70,6 +73,7 @@ export const PricesSection = () => {
       headerBgColor: "bg-[#f0efef]",
       headerTextColor: "text-black",
       features: basicPlanFeatures,
+      planType: 'basic', // Добавляем тип плана для идентификации
     },
     {
       title: t('prices.standard.title'),
@@ -80,6 +84,7 @@ export const PricesSection = () => {
       headerBgColor: "bg-[#0023e9]",
       headerTextColor: "text-white",
       features: standardPlanFeatures,
+      planType: 'standard', // Добавляем тип плана для идентификации
     },
     {
       title: t('prices.individual.title'),
@@ -90,6 +95,7 @@ export const PricesSection = () => {
       headerBgColor: "bg-[#f0efef]",
       headerTextColor: "text-black",
       features: [], // Особые фичи ниже
+      planType: 'individual', // Добавляем тип плана для идентификации
     },
   ];
 
@@ -116,8 +122,8 @@ export const PricesSection = () => {
           style={{ minWidth: `calc(${plans.length} * 323px + ${(plans.length - 1)} * 22px + 16px)` }}
         >
           {plans.map((plan, index) => {
-            const isStandard = plan.title === t('prices.standard.title');
-            const isIndividual = plan.title === t('prices.individual.title');
+            const isStandard = plan.planType === 'standard';
+            const isIndividual = plan.planType === 'individual';
             const cardWidth = 'w-[323px] md:w-full md:min-w-[323px] md:max-w-[420px]';
             const highlight = isStandard ? 'md:shadow-2xl md:border-2 md:border-[#0023e9]' : '';
             return (
@@ -144,15 +150,15 @@ export const PricesSection = () => {
                     {plan.price}
                   </p>
                   <Button
-                    variant={plan.title === t('prices.individual.title') ? 'primary' : 'white'}
+                    variant={plan.planType === 'individual' ? 'primary' : 'white'}
                     size="full"
-                    className={plan.title === t('prices.individual.title') ? 'text-[#f3fcf0]' : plan.buttonTextColor}
+                    className={plan.planType === 'individual' ? 'text-[#f3fcf0]' : plan.buttonTextColor}
                     onClick={() => {
                       let value = '';
-                      if (plan.title === t('prices.basic.title')) value = 'visa';
-                      else if (plan.title === t('prices.standard.title')) value = 'citizenship';
-                      else if (plan.title === t('prices.individual.title')) value = 'consultation';
-                      // setSelectedTariff(value); // This line was removed
+                      if (plan.planType === 'basic') value = 'visa';
+                      else if (plan.planType === 'standard') value = 'citizenship';
+                      else if (plan.planType === 'individual') value = 'consultation';
+                      setSelectedTariff(value);
                       setTimeout(() => {
                         document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
                       }, 100);
@@ -161,7 +167,7 @@ export const PricesSection = () => {
                     {plan.buttonText}
                   </Button>
                 </CardHeader>
-                <CardContent className={`flex flex-col items-start gap-3 ${plan.title === t('prices.individual.title') ? 'p-4' : 'px-4 py-6'}`}>
+                <CardContent className={`flex flex-col items-start gap-3 ${plan.planType === 'individual' ? 'p-4' : 'px-4 py-6'}`}>
                   {plan.features && plan.features.length > 0 && plan.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-start gap-3 w-full">
                       <p className="w-full font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal text-black">
@@ -172,7 +178,7 @@ export const PricesSection = () => {
                       </span>
                     </div>
                   ))}
-                  {plan.title === t('prices.individual.title') && (
+                  {plan.planType === 'individual' && (
                     <>
                       <p className="w-56 font-font-body text-font-body text-[18px] md:text-[18px] leading-normal md:leading-normal text-black">
                         {t('prices.individual.we_can_offer')}:

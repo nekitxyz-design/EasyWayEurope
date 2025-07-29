@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Input } from "./ui/input";
+import { useTariff } from "../lib/contexts/TariffContext";
 // import { track } from '@amplitude/analytics-browser';
 import {
   CustomSelect,
@@ -45,6 +46,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
   contactOptions = [],
 }) => {
   const { t } = useTranslation();
+  const { selectedTariff } = useTariff();
   const [nameError, setNameError] = React.useState<string>("");
   const [nameValue, setNameValue] = React.useState<string>("");
   const [nameTouched, setNameTouched] = React.useState<boolean>(false);
@@ -192,10 +194,10 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
     
     try {
       const serviceLabels: Record<string, string> = {
-        visa: 'Тариф Базовый',
-        citizenship: 'Тариф Стандарт',
-        consultation: 'Консультация',
-        other: 'Другое',
+        visa: t('form.options.basic'),
+        citizenship: t('form.options.standard'),
+        consultation: t('form.options.consultation'),
+        other: t('form.options.other'),
       };
       const response = await fetch("https://telegram-contact-worker.nekiteth.workers.dev/", {
         method: "POST",
@@ -203,7 +205,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
         body: JSON.stringify({
           name: nameValue,
           email: emailValue,
-          message: textareaEnabled && textareaValue.trim() ? textareaValue : (selectedService ? `Тариф: ${serviceLabels[selectedService] || selectedService}` : undefined),
+          message: textareaEnabled && textareaValue.trim() ? textareaValue : (selectedTariff ? `Тариф: ${serviceLabels[selectedTariff] || selectedTariff}` : (selectedService ? `Тариф: ${serviceLabels[selectedService] || selectedService}` : undefined)),
           formType: textareaEnabled ? 'faq' : 'consultation',
         })
       });
@@ -212,7 +214,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
         track('Form Submission Success', {
           formType: textareaEnabled ? 'faq' : 'consultation',
           hasTextarea: textareaEnabled,
-          selectedService: selectedService || 'none',
+          selectedService: selectedTariff || selectedService || 'none',
         });
         
         setSubmitStatus(t('form.success.submitted'));

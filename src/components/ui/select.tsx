@@ -58,7 +58,11 @@ const CustomSelect = React.forwardRef<
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  onValueChange?.("");
+                  console.log('Clear button clicked, current value:', value);
+                  if (onValueChange) {
+                    onValueChange("");
+                    console.log('onValueChange called with empty string');
+                  }
                 }}
                 className="p-1 hover:bg-white/10 rounded transition-colors"
               >

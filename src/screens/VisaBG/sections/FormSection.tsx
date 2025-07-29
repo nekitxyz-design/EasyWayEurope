@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "../../../components/ui/button";
 import { Card } from "../../../components/ui/card";
 import { Input } from "../../../components/ui/input";
+import { useTariff } from "../../../lib/contexts/TariffContext";
 import {
   CustomSelect,
   SelectContent,
@@ -11,12 +12,14 @@ import {
 
 export const FormSection = () => {
   const { t } = useTranslation();
+  const { selectedTariff } = useTariff();
   const [nameError, setNameError] = React.useState<string>("");
   const [nameValue, setNameValue] = React.useState<string>("");
   const [nameTouched, setNameTouched] = React.useState<boolean>(false);
   const [emailError, setEmailError] = React.useState<string>("");
   const [emailValue, setEmailValue] = React.useState<string>("");
   const [emailTouched, setEmailTouched] = React.useState<boolean>(false);
+  const [selectedService, setSelectedService] = React.useState<string>("");
   const [serviceError, setServiceError] = React.useState<string>("");
   const [serviceTouched, setServiceTouched] = React.useState<boolean>(false);
   const [submitStatus, setSubmitStatus] = React.useState<string>("");
@@ -34,10 +37,10 @@ export const FormSection = () => {
   ];
 
   const tariffLabels: Record<string, string> = {
-    visa: 'Тариф Базовый',
-    citizenship: 'Тариф Стандарт',
-    consultation: 'Консультация',
-    other: 'Другое',
+    visa: t('form.options.basic'),
+    citizenship: t('form.options.standard'),
+    consultation: t('form.options.consultation'),
+    other: t('form.options.other'),
   };
 
   const validateName = (value: string): string => {
@@ -78,6 +81,13 @@ export const FormSection = () => {
     return "";
   };
 
+  // Автоматически устанавливаем выбранный тариф
+  React.useEffect(() => {
+    if (selectedTariff) {
+      setSelectedService(selectedTariff);
+    }
+  }, [selectedTariff]);
+
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setNameValue(value);
@@ -109,7 +119,7 @@ export const FormSection = () => {
   };
 
   const handleServiceChange = (value: string) => {
-    // setSelectedTariff(value); // This line was removed as per the new_code
+    setSelectedService(value);
     if (serviceTouched) {
       const error = validateService(value);
       setServiceError(error);
@@ -118,7 +128,7 @@ export const FormSection = () => {
 
   const handleServiceBlur = () => {
     setServiceTouched(true);
-    const error = validateService(/* selectedTariff */ "consultation"); // This line was changed as per the new_code
+    const error = validateService(selectedService);
     setServiceError(error);
   };
 
@@ -144,7 +154,7 @@ export const FormSection = () => {
         body: JSON.stringify({
           name: nameValue,
           email: emailValue,
-          message: /* selectedTariff */ "consultation" ? `Тариф: ${tariffLabels["consultation"] || "Консультация"}` : undefined, // This line was changed as per the new_code
+          message: selectedService ? `Тариф: ${tariffLabels[selectedService] || selectedService}` : undefined,
           formType: 'consultation',
         })
       });
@@ -152,7 +162,7 @@ export const FormSection = () => {
         setSubmitStatus(t('form.success.submitted'));
         setNameValue("");
         setEmailValue("");
-        // setSelectedTariff(""); // This line was removed as per the new_code
+        setSelectedService("");
         setNameTouched(false);
         setEmailTouched(false);
         setServiceTouched(false);
@@ -205,7 +215,7 @@ export const FormSection = () => {
 
         <CustomSelect
           placeholder={t('form.consultation.interest_placeholder')}
-          // value={selectedTariff} // This line was removed as per the new_code
+          value={selectedService}
           onValueChange={handleServiceChange}
           onBlur={handleServiceBlur}
           error={serviceTouched ? serviceError : ""}

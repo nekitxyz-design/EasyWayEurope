@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { SEOHead } from "../../components/SEOHead";
+import { TariffProvider } from "../../lib/contexts/TariffContext";
 import { HeroSection } from "./sections/HeroSection";
 import { FeatBulgariaSection } from "./sections/FeatBulgariaSection";
 import { BonusesBgSection } from "./sections/BonusesBgSection";
@@ -26,21 +27,23 @@ export const VisaBG = () => {
   }, []);
 
   return (
-    <div className="flex flex-col w-full bg-transparent relative">
-      <SEOHead />
-      <FluidGlassBackground mode="lens" isScrolled={isScrolled} />
-      <div style={{ paddingTop: 'env(safe-area-inset-top, 44px)', zIndex: 1, position: 'relative' }}>
-        <HeroSection />
-        <FeatBulgariaSection />
-        <BonusesBgSection />
-        <ProcessSection />
-        <AboutUsSection />
-        <PricesSection />
-        <FormSection />
-        <GuaranteesSection />
-        <FAQSection />
-        <FooterSection />
+    <TariffProvider>
+      <div className="flex flex-col w-full bg-transparent relative">
+        <SEOHead />
+        <FluidGlassBackground mode="lens" isScrolled={isScrolled} />
+        <div style={{ paddingTop: 'env(safe-area-inset-top, 44px)', zIndex: 1, position: 'relative' }}>
+          <HeroSection />
+          <FeatBulgariaSection />
+          <BonusesBgSection />
+          <ProcessSection />
+          <AboutUsSection />
+          <PricesSection />
+          <FormSection />
+          <GuaranteesSection />
+          <FAQSection />
+          <FooterSection />
+        </div>
       </div>
-    </div>
+    </TariffProvider>
   );
 };

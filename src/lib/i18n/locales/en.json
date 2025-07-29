@@ -265,9 +265,15 @@
         "basic": "Basic Tariff",
         "standard": "Standard Tariff",
         "consultation": "Consultation",
-        "other": "Other"
-      }
-    },
+                  "other": "Other"
+        },
+        "options": {
+          "basic": "Basic Tariff",
+          "standard": "Standard Tariff",
+          "consultation": "Consultation",
+          "other": "Other"
+        }
+      },
     "faq": {
       "title": "Have a question?",
       "subtitle": "Write to us and we will answer",
