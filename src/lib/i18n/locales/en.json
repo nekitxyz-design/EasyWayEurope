@@ -47,19 +47,19 @@
     "subtitle": "Residence permit in Bulgaria — this is your official status as a resident of the European Union.",
     "audience": {
       "title": "This is for you if you are:",
-      "it_specialists": "IT specialists and digital nomads",
-      "entrepreneurs": "Entrepreneurs and businessmen",
-      "freelancers": "Freelancers and self-employed",
-      "remote_workers": "Remote workers seeking a stable base in Europe",
-      "families": "Families striving for high quality of life and opportunities in the EU"
+      "it_specialists": "<strong>IT specialists</strong> and digital nomads",
+      "entrepreneurs": "<strong>Entrepreneurs</strong> and businessmen",
+      "freelancers": "<strong>Freelancers</strong> and self-employed",
+      "remote_workers": "<strong>Remote workers</strong> seeking a stable base in Europe",
+      "families": "<strong>Families</strong> striving for high quality of life and opportunities in the EU"
     },
     "benefits": {
       "title": "Benefits",
-      "legal_residence": "Legal residence and work",
-      "eu_banks": "Access to European banks",
-      "schengen_travel": "Free movement in Schengen countries",
-      "family_relocation": "Possibility to relocate family",
-      "citizenship_path": "Path to permanent residence and EU citizenship"
+      "legal_residence": "<strong>Legal</strong> residence and work",
+      "eu_banks": "Access to <strong>European banks</strong>",
+      "schengen_travel": "Free movement in <strong>Schengen countries</strong>",
+      "family_relocation": "Possibility to <strong>relocate family</strong>",
+      "citizenship_path": "Path to <strong>permanent residence and EU citizenship</strong>"
     },
     "cta_button": "Learn price",
     "items": {
@@ -136,15 +136,15 @@
     "basic": {
       "title": "Basic",
       "description": "For those who have their own foreign company.",
-      "price": "— 1500 €",
+      "price": "— 2000 €",
       "button": "Choose",
       "features": {
         "consultation": "♟️ Initial consultation and strategy",
-        "registration": "🏢 Registration of your company’s rep. office",
+        "registration": "🗄️ Registration of your company’s rep. office",
         "address": "📍 Provision of legal address",
         "documents": "📑 Preparation of document package",
         "support": "🤝 Support until obtaining residence permit",
-        "personal_address": "📍 Provision of personal registration address",
+        "personal_address": "🗾 Provision of personal registration address",
         "bank_account": "🏦 Help in opening bank account",
         "insurance": "🛡️ Help in insurance registration"
       }
@@ -152,7 +152,7 @@
     "standard": {
       "title": "Standard",
       "description": "Turnkey comprehensive solution for maximum convenience.",
-      "price": "— 4500 €",
+      "price": "— 5000 €",
       "button": "Choose",
       "features": {
         "consultation": "♟️ Initial consultation and strategy",
@@ -160,7 +160,7 @@
         "address": "📍 Provision of legal address",
         "documents": "📑 Preparation of document package",
         "support": "🤝 Support until obtaining residence permit",
-        "personal_address": "📍 Provision of personal registration address",
+        "personal_address": "🗾 Provision of personal registration address",
         "bank_account": "🏦 Help in opening bank account",
         "insurance": "🛡️ Help in insurance registration"
       }

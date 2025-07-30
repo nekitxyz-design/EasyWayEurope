@@ -10,24 +10,38 @@ import { CookiePolicy } from "./screens/CookiePolicy/CookiePolicy";
 import { TermsOfService } from "./screens/TermsOfService/TermsOfService";
 import { AnalyticsProvider } from "./components/AnalyticsProvider";
 
-// Отключаем логи в production
+// Отключаем React Router предупреждения и Performance логи
+const originalWarn = console.warn;
+console.warn = (...args) => {
+  const message = args[0];
+  if (typeof message === 'string' && (
+    message.includes('React Router Future Flag Warning') ||
+    message.includes('[Performance] material')
+  )) {
+    return;
+  }
+  originalWarn.apply(console, args);
+};
+
+// Отключаем обычные логи в production, но оставляем наши красивые сообщения
 if (import.meta.env.PROD) {
-  console.log = () => {};
+  const originalLog = console.log;
+  console.log = (...args) => {
+    // Проверяем, является ли это нашим специальным логом (с эмодзи)
+    const firstArg = args[0];
+    if (typeof firstArg === 'string' && (
+      firstArg.includes('🚀') ||
+      firstArg.includes('👨‍💻') ||
+      firstArg.includes('🌍') ||
+      firstArg.includes('📧')
+    )) {
+      originalLog.apply(console, args);
+    }
+    // Остальные логи игнорируем в продакшене
+  };
   console.info = () => {};
   console.debug = () => {};
 } else {
-  // Отключаем React Router предупреждения и Performance логи
-  const originalWarn = console.warn;
-  console.warn = (...args) => {
-    const message = args[0];
-    if (typeof message === 'string' && (
-      message.includes('React Router Future Flag Warning') ||
-      message.includes('[Performance] material')
-    )) {
-      return;
-    }
-    originalWarn.apply(console, args);
-  };
   // Beautiful message for developers
   console.log(
     '%c🚀 EasyWayEurope - Bulgarian Residence Permit',
@@ -63,7 +77,7 @@ createRoot(document.getElementById("app") as HTMLElement).render(
                          {/* AutoHelp маршруты */}
                  <Route path="/autohelp" element={<Navigate to="/en/autohelp" replace />} />
                  <Route path="/ru/autohelp" element={<AutoHelp />} />
-                 <Route path="/bg/autohelp" element={<AutoHelp />} />
+                 <Route path="/bg/autohelp" element={<AutoHelp />} />в
                  <Route path="/en/autohelp" element={<AutoHelp />} />
 
                  {/* Privacy Policy маршруты */}

@@ -119,7 +119,8 @@ export const MainNavbar: React.FC = () => {
           <img
             src={getAssetPath("/logo_horiz.svg")}
             alt="EasyWayEurope Logo"
-            className="h-[46px] w-[164px] object-contain"
+            className="h-[46px] w-[164px] object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
+            onClick={() => window.location.href = `/${currentLanguage}`}
           />
           {/* Десктоп меню */}
           <ul className="hidden md:flex items-center gap-8 text-white">
@@ -130,16 +131,24 @@ export const MainNavbar: React.FC = () => {
                   className="font-font-body text-font-body hover:text-[#ffd23f] transition-colors duration-200"
                   onClick={e => {
                     e.preventDefault();
-                    
-                    // Track navigation click
                     track('Navigation Clicked', {
                       item: item.title,
                       href: item.href,
                       section: item.href.replace('/#', ''),
                     });
-                    
-                    // Navigate to main page with anchor
-                    window.location.href = item.href;
+                    // Плавный скролл, если уже на главной или языковой странице
+                    const langPaths = ['/', '/en', '/ru', '/bg'];
+                    if (langPaths.includes(window.location.pathname)) {
+                      const anchor = item.href.replace('/#', '');
+                      const el = document.getElementById(anchor);
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                      } else {
+                        window.location.href = item.href;
+                      }
+                    } else {
+                      window.location.href = item.href;
+                    }
                   }}
                 >
                   {item.title}
@@ -184,7 +193,15 @@ export const MainNavbar: React.FC = () => {
               <img
                 src={getAssetPath("/logo_horiz.svg")}
                 alt="EasyWayEurope Logo"
-                className="h-[46px] w-[164px] object-contain"
+                className="h-[46px] w-[164px] object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
+                onClick={() => {
+                  const langPaths = ['/', '/en', '/ru', '/bg'];
+                  if (langPaths.includes(window.location.pathname)) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  } else {
+                    window.location.href = `/${currentLanguage}`;
+                  }
+                }}
               />
               <button className="text-white text-2xl" onClick={() => setOpen(true)}>
                 <FaBarsStaggered />

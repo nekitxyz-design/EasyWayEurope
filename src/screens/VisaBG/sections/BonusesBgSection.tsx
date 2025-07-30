@@ -47,16 +47,9 @@ export const BonusesBgSection = () => {
       {t('bonuses.audience.title')}
     </h2>
     <ul className="relative self-stretch font-font-body text-font-body text-black list-disc pl-6">
-      {targetAudienceItems.map((item, index) => {
-        const parts = item.split(/(IT-специалисты|Предприниматели|бизнесмены|Фрилансеры|самозанятые|Удалённые сотрудники|высокому качеству жизни и возможностям в ЕС)/);
-        return (
-          <li key={index}>
-            {parts.map((part, i) => (
-              part.match(/(IT-специалисты|Предприниматели|бизнесмены|Фрилансеры|самозанятые|Удалённые сотрудники|высокому качеству жизни и возможностям в ЕС)/) ? <span key={i} className="font-bold">{part}</span> : part
-            ))}
-          </li>
-        );
-      })}
+      {targetAudienceItems.map((item, index) => (
+        <li key={index} className="font-font-body text-font-body text-black" dangerouslySetInnerHTML={{ __html: item }} />
+      ))}
     </ul>
   </div>
   {/* Правая колонка (теперь гибкая, без фиксированной ширины) */}
@@ -65,16 +58,9 @@ export const BonusesBgSection = () => {
       {t('bonuses.benefits.title')}
     </h2>
     <ul className="relative self-stretch font-font-body text-font-body text-black list-disc pl-6">
-      {benefitsItems.map((item, index) => {
-        const parts = item.split(/ (Легальное|европейским банкам|Шенгена|перевезти семью|ПМЖ и гражданству ЕС)/);
-        return (
-          <li key={index}>
-            {parts.map((part, i) => (
-              part.match(/Легальное|европейским банкам|Шенгена|перевезти семью|ПМЖ и гражданству ЕС/) ? <span key={i} className="font-bold">{part}</span> : part
-            ))}
-          </li>
-        );
-      })}
+      {benefitsItems.map((item, index) => (
+        <li key={index} className="font-font-body text-font-body text-black" dangerouslySetInnerHTML={{ __html: item }} />
+      ))}
     </ul>
   </div>
 </div>

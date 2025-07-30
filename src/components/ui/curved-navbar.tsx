@@ -96,7 +96,7 @@ function Curve() {
 }
 
 export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; setIsActive: (v: boolean) => void }) => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const { currentLanguage, changeLanguage } = useLanguageRoute();
   const navItems = useNavItems();
 
@@ -133,7 +133,17 @@ export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; set
           className="fixed inset-0 z-50 backdrop-blur-[8px] bg-black/60 text-white flex flex-col"
         >
           {/* Логотип-иконка в левом верхнем углу */}
-          <img src={getAssetPath("/logo_icon.svg")} alt="Logo Icon" className="absolute top-4 left-4 h-[46px] w-auto z-20" />
+          <img 
+            src={getAssetPath("/logo_icon.svg")} 
+            alt="Logo Icon" 
+            className="absolute top-4 left-4 h-[46px] w-auto z-20 cursor-pointer hover:opacity-80 transition-opacity duration-200" 
+            onClick={() => {
+              setIsActive(false);
+              setTimeout(() => {
+                window.location.href = `/${currentLanguage}`;
+              }, 300);
+            }}
+          />
           <div className="flex justify-between items-center px-4 py-2">
             <button onClick={() => setIsActive(false)} className="text-3xl text-white ml-auto h-[46px] flex items-center">
               <IoClose />
@@ -144,50 +154,69 @@ export const CurvedNavbar = ({ isActive, setIsActive }: { isActive: boolean; set
               <h2
                 key={item.title}
                 className="font-font-h-1 text-font-h-1 text-white font-bold hover:text-[#ffd23f] transition-colors duration-200 cursor-pointer text-left"
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
-                  
-                  // Track mobile navigation click
                   track('Mobile Navigation Clicked', {
                     item: item.title,
                     href: item.href,
                     section: item.href.replace('/#', ''),
                   });
-                  
                   setIsActive(false);
-                  // Navigate to main page with anchor
-                  window.location.href = item.href;
+                  // Плавный скролл, если уже на главной или языковой странице
+                  const langPaths = ['/', '/en', '/ru', '/bg'];
+                  if (langPaths.includes(window.location.pathname)) {
+                    const anchor = item.href.replace('/#', '');
+                    setTimeout(() => {
+                      const el = document.getElementById(anchor);
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                      } else {
+                        window.location.href = item.href;
+                      }
+                    }, 300);
+                  } else {
+                    window.location.href = item.href;
+                  }
                 }}
               >
                 <a href={item.href}>{item.title}</a>
               </h2>
             ))}
           </nav>
-<div className="px-6 pb-8 w-full flex justify-center">
-  <div className="w-full flex gap-2 items-center">
-    <Button
-      variant="primary"
-      size="full"
-      className="flex-1 min-w-0"
-      onClick={() => {
-        // Track mobile consultation button click
-        track('Mobile Consultation Button Clicked', {
-          buttonText: 'Записаться на консультацию',
-          section: 'mobile-menu',
-        });
-        
-        setIsActive(false);
-        // Navigate to main page with consultation form
-        window.location.href = '/#plans';
-      }}
-    >
-      Записаться на консультацию
-    </Button>
-    <div className="flex-shrink-0">
-      <LanguageSelect value={currentLanguage} onValueChange={handleLanguageChange} />
-    </div>
-  </div>
-</div>
+          <div className="px-6 pb-8 w-full flex justify-center">
+            <div className="w-full flex gap-2 items-center">
+              <Button
+                variant="primary"
+                size="full"
+                className="flex-1 min-w-0"
+                onClick={() => {
+                  track('Mobile Consultation Button Clicked', {
+                    buttonText: t('process.cta_button'),
+                    section: 'mobile-menu',
+                  });
+                  setIsActive(false);
+                  const langPaths = ['/', '/en', '/ru', '/bg'];
+                  if (langPaths.includes(window.location.pathname)) {
+                    setTimeout(() => {
+                      const el = document.getElementById('plans');
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                      } else {
+                        window.location.href = '/#plans';
+                      }
+                    }, 300);
+                  } else {
+                    window.location.href = '/#plans';
+                  }
+                }}
+              >
+                {t('process.cta_button')}
+              </Button>
+              <div className="flex-shrink-0">
+                <LanguageSelect value={currentLanguage} onValueChange={handleLanguageChange} />
+              </div>
+            </div>
+          </div>
           <Curve />
         </motion.div>
       )}

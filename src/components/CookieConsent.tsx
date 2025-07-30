@@ -94,6 +94,8 @@ export const CookieConsent = () => {
           <a
             href={`/${i18n.language}/privacy-policy`}
             className="text-blue-400 hover:text-blue-300 font-font-body text-font-body underline"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             {translations.learnMore}
           </a>

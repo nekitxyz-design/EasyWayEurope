@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "../../../components/ui/card";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import { useLanguageRoute } from "../../../lib/hooks/useLanguageRoute";
 import { getAssetPath } from "../../../lib/utils";
 
 export const FooterSection = () => {
@@ -13,8 +13,7 @@ export const FooterSection = () => {
   ];
 
   const { t, i18n } = useTranslation();
-  const location = useLocation();
-  const lang = location.pathname.split("/")[1] || "en";
+  const { currentLanguage } = useLanguageRoute();
 
   return (
     <footer className="bg-[#171717] py-12 w-full backdrop-blur-[2px]">
@@ -34,13 +33,13 @@ export const FooterSection = () => {
         </div>
         <div className="flex flex-col gap-4 md:w-1/2 justify-end items-start md:items-end">
           <div className="flex flex-col gap-2">
-            <a href={`/${lang}/privacy-policy`} className="text-white font-font-body text-font-body hover:underline">
+            <a href={`/${currentLanguage}/privacy-policy`} className="text-white font-font-body text-font-body hover:underline">
               {t("privacy.title")}
             </a>
-            <a href={`/${lang}/cookie-policy`} className="text-white font-font-body text-font-body hover:underline">
+            <a href={`/${currentLanguage}/cookie-policy`} className="text-white font-font-body text-font-body hover:underline">
               {t("cookie.title")}
             </a>
-            <a href={`/${lang}/terms-of-service`} className="text-white font-font-body text-font-body hover:underline">
+            <a href={`/${currentLanguage}/terms-of-service`} className="text-white font-font-body text-font-body hover:underline">
               {t("terms.title")}
             </a>
           </div>

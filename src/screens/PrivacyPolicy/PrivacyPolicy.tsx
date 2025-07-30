@@ -166,18 +166,7 @@ export const PrivacyPolicy = () => {
               </button>
             </div>
             
-            {/* Test Analytics Button */}
-            <div className="mt-4 text-center">
-              <button
-                onClick={() => {
-                  trackEvent('test_analytics', { page: 'privacy_policy', action: 'test_click' });
-                  alert('Analytics event sent! Check console for details.');
-                }}
-                className="bg-green-600 hover:bg-green-700 text-white font-font-body text-font-body font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
-              >
-                Test Analytics
-              </button>
-            </div>
+
           </div>
         </div>
       </div>
