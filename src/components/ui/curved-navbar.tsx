@@ -42,7 +42,7 @@ const LanguageSelect = ({ value, onValueChange }: { value: string; onValueChange
 
   return (
     <SelectPrimitive.Root value={value} onValueChange={onValueChange} onOpenChange={setIsOpen}>
-      <SelectPrimitive.Trigger className="flex items-center gap-2 text-white hover:text-[#ffd23f] transition-colors duration-200 cursor-pointer bg-[#222b4c]/80 p-2 rounded-lg">
+      <SelectPrimitive.Trigger className="flex items-center gap-2 text-white hover:text-[#ffd23f] transition-colors duration-200 cursor-pointer bg-[#222b4c]/80 p-2 rounded-lg h-[60px]">
         <span className="text-lg">{getFlag(value)}</span>
         <SelectPrimitive.Icon asChild>
           <ChevronDownIcon className="h-4 w-4 opacity-50 text-white" />

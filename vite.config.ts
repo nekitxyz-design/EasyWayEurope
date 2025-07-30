@@ -5,7 +5,7 @@ import { defineConfig } from "vite";
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  base: './',
+  base: mode === 'production' ? '/' : './',
   server: {
     port: 1337,
     host: true,
