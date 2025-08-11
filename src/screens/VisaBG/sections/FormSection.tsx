@@ -38,10 +38,11 @@ export const FormSection = () => {
   ];
 
   const tariffLabels: Record<string, string> = {
-    visa: t('form.options.basic'),
-    citizenship: t('form.options.standard'),
-    consultation: t('form.options.consultation'),
-    other: t('form.options.other'),
+    visa: t('form.consultation.options.basic'),
+    basic_plus: t('form.consultation.options.basic_plus'),
+    citizenship: t('form.consultation.options.standard'),
+    consultation: t('form.consultation.options.consultation'),
+    other: t('form.consultation.options.other'),
   };
 
   const validateName = (value: string): string => {
@@ -224,6 +225,7 @@ export const FormSection = () => {
         >
           <SelectContent>
             <SelectItem value="visa">{t('form.consultation.options.basic')}</SelectItem>
+            <SelectItem value="basic_plus">{t('form.consultation.options.basic_plus')}</SelectItem>
             <SelectItem value="citizenship">{t('form.consultation.options.standard')}</SelectItem>
             <SelectItem value="consultation">{t('form.consultation.options.consultation')}</SelectItem>
             <SelectItem value="other">{t('form.consultation.options.other')}</SelectItem>

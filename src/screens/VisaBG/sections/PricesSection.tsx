@@ -20,7 +20,7 @@ interface PlanFeature {
     headerBgColor: string;
     headerTextColor: string;
     features: PlanFeature[];
-    planType: 'basic' | 'standard' | 'individual';
+    planType: 'basic' | 'basic_plus' | 'standard' | 'individual';
   }
 
 export const PricesSection = () => {
@@ -31,6 +31,18 @@ export const PricesSection = () => {
   const basicPlanFeatures: PlanFeature[] = [
     { text: t('prices.basic.features.consultation'), included: true },
     { text: t('prices.basic.features.registration'), included: true },
+    { text: t('prices.basic.features.address'), included: true },
+    { text: t('prices.basic.features.documents'), included: true },
+    { text: t('prices.basic.features.support'), included: true },
+    { text: t('prices.basic.features.personal_address'), included: false },
+    { text: t('prices.basic.features.bank_account'), included: false },
+    { text: t('prices.basic.features.insurance'), included: false },
+  ];
+
+  // Basic+ plan features (initially same as Basic)
+  const basicPlusPlanFeatures: PlanFeature[] = [
+    { text: t('prices.basic.features.consultation'), included: true },
+    { text: t('prices.standard.features.registration'), included: true },
     { text: t('prices.basic.features.address'), included: true },
     { text: t('prices.basic.features.documents'), included: true },
     { text: t('prices.basic.features.support'), included: true },
@@ -76,6 +88,17 @@ export const PricesSection = () => {
       planType: 'basic', // Добавляем тип плана для идентификации
     },
     {
+      title: t('prices.basic_plus.title'),
+      description: t('prices.basic_plus.description'),
+      price: t('prices.basic_plus.price'),
+      buttonText: t('prices.basic_plus.button'),
+      buttonTextColor: "text-black",
+      headerBgColor: "bg-[#ABB8FF]",
+      headerTextColor: "text-black",
+      features: basicPlusPlanFeatures,
+      planType: 'basic_plus',
+    },
+    {
       title: t('prices.standard.title'),
       description: t('prices.standard.description'),
       price: t('prices.standard.price'),
@@ -118,12 +141,11 @@ export const PricesSection = () => {
       {/* Карточки */}
       <div ref={cardsScrollRef} className="w-full overflow-x-auto hide-scrollbar md:max-w-[1600px] md:mx-auto md:px-16" style={{ WebkitOverflowScrolling: 'touch' }}>
         <div
-          className="flex md:grid md:grid-cols-3 items-start gap-[22px] md:gap-6 xl:gap-12 pb-12 p-4 snap-x snap-mandatory justify-between"
+          className="flex md:grid md:grid-cols-4 items-start gap-[22px] md:gap-6 xl:gap-12 pb-12 p-4 snap-x snap-mandatory justify-between"
           style={{ minWidth: `calc(${plans.length} * 323px + ${(plans.length - 1)} * 22px + 16px)` }}
         >
           {plans.map((plan, index) => {
             const isStandard = plan.planType === 'standard';
-            const isIndividual = plan.planType === 'individual';
             const cardWidth = 'w-[323px] md:w-full md:min-w-[323px] md:max-w-[420px]';
             const highlight = isStandard ? 'md:shadow-2xl md:border-2 md:border-[#0023e9]' : '';
             return (
@@ -150,12 +172,13 @@ export const PricesSection = () => {
                     {plan.price}
                   </p>
                   <Button
-                    variant={plan.planType === 'individual' ? 'primary' : 'white'}
+                    variant={(plan.planType === 'individual' || plan.planType === 'basic_plus') ? 'primary' : 'white'}
                     size="full"
-                    className={plan.planType === 'individual' ? 'text-[#f3fcf0]' : plan.buttonTextColor}
+                    className={(plan.planType === 'individual' || plan.planType === 'basic_plus') ? 'text-[#f3fcf0]' : plan.buttonTextColor}
                     onClick={() => {
                       let value = '';
                       if (plan.planType === 'basic') value = 'visa';
+                      else if (plan.planType === 'basic_plus') value = 'basic_plus';
                       else if (plan.planType === 'standard') value = 'citizenship';
                       else if (plan.planType === 'individual') value = 'consultation';
                       setSelectedTariff(value);

@@ -51,7 +51,7 @@
       "entrepreneurs": "<strong>Entrepreneurs</strong> and businessmen",
       "freelancers": "<strong>Freelancers</strong> and self-employed",
       "remote_workers": "<strong>Remote workers</strong> seeking a stable base in Europe",
-      "families": "<strong>Families</strong> striving for high quality of life and opportunities in the EU"
+      "families": "Active <strong>travelers</strong> seeking a high quality of life and new opportunities across the EU"
     },
     "benefits": {
       "title": "Benefits",
@@ -149,6 +149,22 @@
         "insurance": "🛡️ Help in insurance registration"
       }
     },
+    "basic_plus": {
+      "title": "Basic+",
+      "description": "An extended version of the Basic plan.",
+      "price": "— 3000 €",
+      "button": "Choose",
+      "features": {
+        "consultation": "♟️ Initial consultation and strategy",
+        "registration": "🗄️ Registration of your company’s rep. office",
+        "address": "📍 Provision of legal address",
+        "documents": "📑 Preparation of document package",
+        "support": "🤝 Support until obtaining residence permit",
+        "personal_address": "🗾 Provision of personal registration address",
+        "bank_account": "🏦 Help in opening bank account",
+        "insurance": "🛡️ Help in insurance registration"
+      }
+    },
     "standard": {
       "title": "Standard",
       "description": "Turnkey comprehensive solution for maximum convenience.",
@@ -182,18 +198,7 @@
       }
     }
   },
-  "form": {
-    "title": "Get consultation",
-    "subtitle": "Leave a request and we will contact you",
-    "fields": {
-      "name": "Name",
-      "phone": "Phone",
-      "email": "Email",
-      "message": "Message"
-    },
-    "button": "Send request",
-    "privacy": "I agree to the privacy policy"
-  },
+  
   "guarantees": {
     "title": "Guarantees",
     "subtitle": "We value your trust",
@@ -263,6 +268,7 @@
       "button": "Sign up for consultation",
       "options": {
         "basic": "Basic Tariff",
+        "basic_plus": "Basic+ Tariff",
         "standard": "Standard Tariff",
         "consultation": "Consultation",
         "other": "Other"
