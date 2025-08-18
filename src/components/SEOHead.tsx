@@ -34,6 +34,16 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     }
   };
 
+  // Open Graph locale in full form
+  const getOgLocale = () => {
+    switch (currentLanguage) {
+      case 'ru': return 'ru_RU';
+      case 'bg': return 'bg_BG';
+      case 'en': return 'en_US';
+      default: return 'en_US';
+    }
+  };
+
   // Получаем переводы для SEO
   const getSEOTitle = () => {
     if (title) return title;
@@ -83,6 +93,18 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       meta.setAttribute('content', content);
     };
 
+    // Ensure multiple meta tags for the same property (e.g., og:locale:alternate)
+    const setPropertyTags = (property: string, contents: string[]) => {
+      const existing = document.querySelectorAll(`meta[property="${property}"]`);
+      existing.forEach(node => node.parentElement?.removeChild(node));
+      contents.forEach(content => {
+        const meta = document.createElement('meta');
+        meta.setAttribute('property', property);
+        meta.setAttribute('content', content);
+        document.head.appendChild(meta);
+      });
+    };
+
     // Обновляем основные meta теги
     updateMetaTag('description', getSEODescription());
     updateMetaTag('keywords', getSEOKeywords());
@@ -94,8 +116,11 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     updatePropertyTag('og:type', 'website');
     updatePropertyTag('og:url', getCanonicalUrl());
     updatePropertyTag('og:image', `${baseUrl}${ogImage}`);
-    updatePropertyTag('og:locale', getHtmlLang());
-    updatePropertyTag('og:locale:alternate', currentLanguage === 'ru' ? 'en' : 'ru');
+    updatePropertyTag('og:site_name', 'EasyWayEurope');
+    updatePropertyTag('og:locale', getOgLocale());
+    const allOgLocales = ['ru_RU', 'bg_BG', 'en_US'];
+    const alternates = allOgLocales.filter(l => l !== getOgLocale());
+    setPropertyTags('og:locale:alternate', alternates);
 
     // Обновляем Twitter Card теги
     updatePropertyTag('twitter:card', 'summary_large_image');

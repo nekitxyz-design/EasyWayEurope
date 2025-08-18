@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ewe.com/sitemap.xml 
+Sitemap: https://easywayeurope.com/sitemap.xml

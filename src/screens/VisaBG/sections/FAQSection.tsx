@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Accordion,
@@ -48,6 +48,39 @@ export const FAQSection = (): JSX.Element => {
       answer: t('faq.questions.additional_services.answer'),
     },
   ];
+
+  // Inject FAQPage JSON-LD schema for SEO
+  useEffect(() => {
+    const scriptId = 'faq-schema-jsonld';
+    const existing = document.getElementById(scriptId);
+    if (existing && existing.parentElement) {
+      existing.parentElement.removeChild(existing);
+    }
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    } as const;
+
+    const script = document.createElement('script');
+    script.id = scriptId;
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
+
+    return () => {
+      const node = document.getElementById(scriptId);
+      if (node && node.parentElement) node.parentElement.removeChild(node);
+    };
+  }, [t]);
 
   return (
     <section id="faq" className="flex flex-col items-start gap-4 px-6 py-12 md:pt-16 md:pb-16 bg-[#000000c4] relative w-full backdrop-blur-[2px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(2px)_brightness(100%)]">
