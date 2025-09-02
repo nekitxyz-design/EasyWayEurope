@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useCookieConsent } from '../lib/hooks/useCookieConsent';
 
 // Google Analytics инициализация
@@ -58,13 +59,30 @@ export const trackEvent = (eventName: string, properties?: any) => {
 
 export const AnalyticsProvider = () => {
   const { hasAnalyticsConsent } = useCookieConsent();
+  const location = useLocation();
 
   useEffect(() => {
     if (hasAnalyticsConsent()) {
       initializeGoogleAnalytics();
       initializeAmplitude();
+      // Ensure Meta Pixel exists and optionally grant consent
+      if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+        try {
+          window.fbq('consent', 'grant');
+        } catch {}
+      }
     }
   }, [hasAnalyticsConsent]);
+
+  // Track SPA PageView on route changes for Meta Pixel
+  useEffect(() => {
+    if (!hasAnalyticsConsent()) return;
+    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+      try {
+        window.fbq('track', 'PageView');
+      } catch {}
+    }
+  }, [location.pathname, hasAnalyticsConsent]);
 
   return null;
 };
@@ -75,5 +93,6 @@ declare global {
     gtag: (...args: any[]) => void;
     amplitude: any;
     dataLayer: any[];
+    fbq: (...args: any[]) => void;
   }
 } 
