@@ -35,7 +35,7 @@ export const CookieConsent = () => {
         title: 'Мы используем файлы cookie',
         description: 'Мы используем файлы cookie для улучшения работы сайта, анализа трафика и персонализации контента.',
         acceptAll: 'Принять все',
-        acceptNecessary: 'Только необходимые',
+        acceptNecessary: 'Отказаться',
         learnMore: 'Узнать больше'
       },
       bg: {

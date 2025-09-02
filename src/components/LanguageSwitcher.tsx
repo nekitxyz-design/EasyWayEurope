@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLanguageRoute } from '../lib/hooks/useLanguageRoute';
 import { Button } from './ui/button';
 
 const languages = [
@@ -10,19 +11,16 @@ const languages = [
 
 export const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();
-
-  const handleLanguageChange = (languageCode: string) => {
-    i18n.changeLanguage(languageCode);
-  };
+  const { currentLanguage, changeLanguage } = useLanguageRoute();
 
   return (
     <div className="flex gap-2">
       {languages.map((language) => (
         <Button
           key={language.code}
-          variant={i18n.language === language.code ? "default" : "outline"}
+          variant={(currentLanguage || i18n.language) === language.code ? "default" : "outline"}
           size="sm"
-          onClick={() => handleLanguageChange(language.code)}
+          onClick={() => changeLanguage(language.code)}
           className="flex items-center gap-2 min-w-0 px-3 py-1 text-sm"
         >
           <span className="text-lg">{language.flag}</span>
