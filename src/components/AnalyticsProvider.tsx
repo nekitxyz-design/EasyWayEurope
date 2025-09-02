@@ -55,6 +55,26 @@ export const trackEvent = (eventName: string, properties?: any) => {
   if (window.amplitude) {
     window.amplitude.track(eventName, properties);
   }
+
+  // Meta Pixel
+  if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+    try {
+      const standardEvents = new Set([
+        'PageView',
+        'Lead',
+        'Contact',
+        'CompleteRegistration',
+        'SubmitApplication',
+        'ViewContent',
+        'Purchase'
+      ]);
+      if (standardEvents.has(eventName)) {
+        window.fbq('track', eventName as any, properties || {});
+      } else {
+        window.fbq('trackCustom', eventName as any, properties || {});
+      }
+    } catch {}
+  }
 };
 
 export const AnalyticsProvider = () => {

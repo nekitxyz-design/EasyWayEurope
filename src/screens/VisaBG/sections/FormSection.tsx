@@ -10,6 +10,7 @@ import {
   SelectItem,
 } from "../../../components/ui/select";
 import { getAssetPath } from "../../../lib/utils";
+import { trackEvent } from "../../../components/AnalyticsProvider";
 
 export const FormSection = () => {
   const { t } = useTranslation();
@@ -149,6 +150,7 @@ export const FormSection = () => {
     }
     if (hasError) return;
     setSubmitStatus("Отправка...");
+    trackEvent('Lead', { source: 'form-section', selectedService: selectedService || 'none' });
     try {
       const response = await fetch("https://telegram-contact-worker.nekiteth.workers.dev/", {
         method: "POST",
@@ -171,9 +173,11 @@ export const FormSection = () => {
       } else {
         const data = await response.json().catch(() => ({}));
         setSubmitStatus(data.message ? `${t('form.errors.error')}: ${data.message}` : t('form.errors.submission_error'));
+        trackEvent('Form Submission Error', { source: 'form-section', statusCode: response.status });
       }
     } catch (error: any) {
       setSubmitStatus(error?.message ? `${t('form.errors.network_error')}: ${error.message}` : t('form.errors.network_error_generic'));
+      trackEvent('Form Submission Network Error', { source: 'form-section' });
     }
   };
 
@@ -256,6 +260,10 @@ export const FormSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full"
+                onClick={() => {
+                  const channel = index === 0 ? 'telegram' : 'whatsapp';
+                  trackEvent('Contact', { channel, source: 'form-section' });
+                }}
               >
                 <Card
                   className="flex items-center gap-3 px-4 w-full md:w-[500px] h-[60px] bg-[#0000004f] rounded overflow-hidden backdrop-blur-[32px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(32px)_brightness(100%)] border-none cursor-pointer font-font-body text-font-body hover:bg-white/10 hover:shadow-lg hover:text-[#ffd23f] focus-visible:ring-2 focus-visible:ring-[#ffd23f] focus-visible:ring-offset-2 transition-all duration-200"

@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../../components/ui/button";
 import { MainNavbar } from "../../../components/ui/main-navbar";
+import { trackEvent } from "../../../components/AnalyticsProvider";
 import { LanguageSwitcher } from "../../../components/LanguageSwitcher";
 // import { track } from '@amplitude/analytics-browser';
 
@@ -21,6 +22,7 @@ export const HeroSection = () => {
       buttonText: t('hero.button'),
       section: 'hero',
     });
+    trackEvent('Lead', { source: 'hero-cta' });
     
     const el = document.getElementById('what-vnz');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
