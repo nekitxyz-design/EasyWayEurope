@@ -1,4 +1,5 @@
 import React from "react";
+import { trackEvent } from "./AnalyticsProvider";
 import { useTranslation } from "react-i18next";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
@@ -13,9 +14,14 @@ import {
 
 // Helper function for tracking
 const track = (eventName: string, properties?: any) => {
+  // Send to Amplitude (legacy local helper)
   if ((window as any).amplitude) {
     (window as any).amplitude.track(eventName, properties);
   }
+  // Mirror to centralized tracker (GA/Meta etc.)
+  try {
+    trackEvent(eventName, properties);
+  } catch {}
 };
 
 interface ConsultationFormProps {
@@ -191,6 +197,11 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
       hasTextarea: textareaEnabled,
       selectedService: selectedService || 'none',
     });
+    trackEvent('Lead', {
+      source: 'form',
+      formType: textareaEnabled ? 'faq' : 'consultation',
+      selectedService: selectedTariff || selectedService || 'none',
+    });
     
     try {
       const serviceLabels: Record<string, string> = {
@@ -216,6 +227,11 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
           hasTextarea: textareaEnabled,
           selectedService: selectedTariff || selectedService || 'none',
         });
+        trackEvent('CompleteRegistration', {
+          source: 'form',
+          formType: textareaEnabled ? 'faq' : 'consultation',
+          selectedService: selectedTariff || selectedService || 'none',
+        });
         
         setSubmitStatus(t('form.success.submitted'));
         setNameValue("");
@@ -234,6 +250,11 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
           error: data.message || 'Unknown error',
           statusCode: response.status,
         });
+        trackEvent('Form Submission Error', {
+          source: 'form',
+          formType: textareaEnabled ? 'faq' : 'consultation',
+          statusCode: response.status,
+        });
       }
     } catch (error: any) {
       setSubmitStatus(error?.message ? `${t('form.errors.network_error')}: ${error.message}` : t('form.errors.network_error_generic'));
@@ -242,6 +263,10 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
       track('Form Submission Network Error', {
         formType: textareaEnabled ? 'faq' : 'consultation',
         error: error?.message || 'Unknown network error',
+      });
+      trackEvent('Form Submission Network Error', {
+        source: 'form',
+        formType: textareaEnabled ? 'faq' : 'consultation',
       });
     }
   };
@@ -325,6 +350,11 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               className="w-full"
+              onClick={() => {
+                const channel = option.text.toLowerCase().includes('telegram') ? 'telegram' : 'whatsapp';
+                track('Click Contact', { channel });
+                trackEvent('Contact', { channel });
+              }}
             >
               <Card
                 className="flex items-center justify-center gap-2 px-4 py-3 w-full bg-[#0000004f] rounded overflow-hidden backdrop-blur-[32px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(32px)_brightness(100%)] border-none cursor-pointer font-font-body text-font-body hover:bg-white/10 hover:shadow-lg hover:text-[#ffd23f] focus-visible:ring-2 focus-visible:ring-[#ffd23f] focus-visible:ring-offset-2 transition-all duration-200"
